@@ -64,7 +64,7 @@ all: compilar app
 compilar: $(OBJETOS)
 
 #Executaveis do projeto, se tiver executaveis separar com \$(BIN)/outroaquivocommain 
-app: $(BIN)/testaListaDup
+app: $(BIN)/reference
 	echo $(OBJETOS)
 
 #Compilar e criar os arquivos-objetos
@@ -77,7 +77,7 @@ $(BIN)/%: $(APPS)/%.cpp
 
 #Executar programa
 run:
-	$(BIN)/testaListaDup
+	$(BIN)/reference
 
 #Limpar arquivos .o
 cleanObjetos:
@@ -85,7 +85,7 @@ cleanObjetos:
 
 #Limpar executaveis
 clean:
-	rm -f $(BIN)/testaListaDup
+	rm -f $(BIN)/reference
 
 #Empacotar projeto
 tar:
