@@ -1,6 +1,23 @@
 #include <stdio.h>
 #include "../include/DoublyLinkedList.h"
 
+/*- Cria lista
+- Insere elemento 1
+- Insere elemento 4
+- Insere elemento 5
+- Insere elemento 6
+- Mostra elementos da lista
+- Busca elemento 7
+- Remove elemento 5
+- Mostra elementos da lista
+- Busca elemento 6
+- Remove elemento 1
+- Busca elemento 1
+- Mostra elementos da lista 
+*/
+
+
+
 int main() {
 
    DoublyLinkedList *doublyLinkedList = createDoublyLinkedList();

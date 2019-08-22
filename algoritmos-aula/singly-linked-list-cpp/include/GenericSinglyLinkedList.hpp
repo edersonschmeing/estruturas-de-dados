@@ -29,14 +29,26 @@ public:
     
     void addToHead(const T&);
     void addToTail(const T&);
+    
+    //void addOrdered(const T&);
 
     T deleteFromHead(); 
     T deleteFromTail(); 
+    //T deleteFromElement(const T&); 
+    
     
     void deleteNode(const T&);
     bool isInList(const T&) const;
+
+    //T findElement(); 
+    //T findPosition();
+    
+    //int size();
     
     void printAll() const;
+    
+    //void printAllDesc() const;
+    
 
 private:
     SinglyLinkedListNode<T> *head, *tail;

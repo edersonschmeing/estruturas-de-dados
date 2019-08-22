@@ -34,7 +34,7 @@ void destroyDoublyLinkedList(DoublyLinkedList **doublyLinkedList) {
     if (tmp != NULL) { 
         if (!isEmptyDoublyLinkedList(tmp)) {
             DoublyLinkedListNode *p = tmp->head;
-            while (p != tmp->head)  {
+            while (p != tmp->tail)  {
                 DoublyLinkedListNode *q = p;
                 p = p->next;
                 free(q);
