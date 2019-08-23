@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../include/DoublyLinkedList.h"
+#include "../include/SinglyLinkedList.h"
 
 /*- Cria lista
 - Insere elemento 1
@@ -16,39 +16,59 @@
 - Mostra elementos da lista 
 */
 
+//CTRL + K + C add line comment 
+//CTRL + K + U remove line comment
+
+
 int main() {
 
-   DoublyLinkedList *doublyLinkedList = createDoublyLinkedList();
+   SinglyLinkedList *singlyLinkedList = createSinglyLinkedList();
+
+   addToHeadSinglyLinkedList(singlyLinkedList, 1);
+   addToHeadSinglyLinkedList(singlyLinkedList, 4);
+   addToHeadSinglyLinkedList(singlyLinkedList, 5);
+   addToHeadSinglyLinkedList(singlyLinkedList, 6);
    
- //  addToHeadDoublyLinkedList(doublyLinkedList, 4);
- //  addToHeadDoublyLinkedList(doublyLinkedList, 2);
- //  addToHeadDoublyLinkedList(doublyLinkedList, 10);
+   printAllSinglyLinkedList(singlyLinkedList);
 
-   addToTailDoublyLinkedList(doublyLinkedList, 10);
-   addToTailDoublyLinkedList(doublyLinkedList, 8);
-   addToTailDoublyLinkedList(doublyLinkedList, 14);
-   addToTailDoublyLinkedList(doublyLinkedList, 7);
+   addToTailSinglyLinkedList(singlyLinkedList, 1);
+   addToTailSinglyLinkedList(singlyLinkedList, 4);
+   addToTailSinglyLinkedList(singlyLinkedList, 5);
+   addToTailSinglyLinkedList(singlyLinkedList, 6);
 
-   printAllAscDoublyLinkedList(doublyLinkedList);
-   printAllDescDoublyLinkedList(doublyLinkedList);
+   printAllSinglyLinkedList(singlyLinkedList);
+
+   destroySinglyLinkedList(&singlyLinkedList);
+   
+  // addToHeadDoublyLinkedList(doublyLinkedList, 4);
+  // addToHeadDoublyLinkedList(doublyLinkedList, 2);
+  // addToHeadDoublyLinkedList(doublyLinkedList, 10);
+
+  //  addToTailDoublyLinkedList(doublyLinkedList, 10);
+  //  addToTailDoublyLinkedList(doublyLinkedList, 8);
+  //  addToTailDoublyLinkedList(doublyLinkedList, 14);
+  //  addToTailDoublyLinkedList(doublyLinkedList, 7);
+
+  //  printAllAscDoublyLinkedList(doublyLinkedList);
+  //  printAllDescDoublyLinkedList(doublyLinkedList);
   
-   printf("deletando the element 4");
-   deleteFromDoublyLinkedListNode(doublyLinkedList, 14);
-   printf("\n");
+  //  printf("deletando the element 4");
+  //  deleteFromDoublyLinkedListNode(doublyLinkedList, 14);
+  //  printf("\n");
 
-   printAllAscDoublyLinkedList(doublyLinkedList);
-   printAllDescDoublyLinkedList(doublyLinkedList);
+  //  printAllAscDoublyLinkedList(doublyLinkedList);
+  //  printAllDescDoublyLinkedList(doublyLinkedList);
 
-   printf("deletando the element 7");
-   deleteFromDoublyLinkedListNode(doublyLinkedList, 7);
+  //  printf("deletando the element 7");
+  //  deleteFromDoublyLinkedListNode(doublyLinkedList, 7);
    
-   printf("\n");
+  //  printf("\n");
 
-   printAllAscDoublyLinkedList(doublyLinkedList);
-   printAllDescDoublyLinkedList(doublyLinkedList);
+  //  printAllAscDoublyLinkedList(doublyLinkedList);
+  //  printAllDescDoublyLinkedList(doublyLinkedList);
 
    
-   destroyDoublyLinkedList(&doublyLinkedList);
+  //  destroyDoublyLinkedList(&doublyLinkedList);
    
 
    return 0;

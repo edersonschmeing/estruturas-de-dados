@@ -30,8 +30,7 @@ int sizeSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 int isEmptySinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 //int lista_cheia(Lista* li);
 
-void printAllAscSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
-void printAllDescSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
+void printAllSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 
 int findElementSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 int findPositionSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);

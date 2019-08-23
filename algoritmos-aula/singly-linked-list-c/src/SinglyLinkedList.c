@@ -4,7 +4,7 @@
 #include "../include/SinglyLinkedList.h"
 
 SinglyLinkedListNode *createSinglyLinkedListNode(int element) {
-    SinglyLinkedListNode *singlyLinkedListNode  = (SinglyLinkedListNode*) malloc(sizeof(DoublyLinkedListNode));
+    SinglyLinkedListNode *singlyLinkedListNode  = (SinglyLinkedListNode*) malloc(sizeof(SinglyLinkedListNode));
     if(singlyLinkedListNode == NULL)
         return 0;
     singlyLinkedListNode->element = element; 
@@ -17,6 +17,7 @@ void destroySinglyLinkedListNode(SinglyLinkedListNode **singlyLinkedListNode) {
     if (tmp != NULL) {
         free(tmp);
         *singlyLinkedListNode = NULL;
+    }    
 }
 
 SinglyLinkedList *createSinglyLinkedList() {
@@ -25,69 +26,52 @@ SinglyLinkedList *createSinglyLinkedList() {
        singlyLinkedList->head = NULL;
        singlyLinkedList->tail = NULL;
     return singlyLinkedList;
-}
-/*
-template<class T>
-SinglyLinkedList<T>::~SinglyLinkedList() {
-    cout << "Destructor class" << endl;
-    for (SinglyLinkedListNode<T> *p; !isEmpty(); ) {
-        p = head->next;
-        delete head;
-        head = p;
-    } 
+ }
+
+ void destroySinglyLinkedList(SinglyLinkedList **singlyLinkedList) { 
+     SinglyLinkedList *tmp = *singlyLinkedList;
+     if (tmp != NULL) {
+         if (!isEmptySinglyLinkedList(tmp)) {  
+            SinglyLinkedListNode *head = tmp->head;
+            while (head != tmp->tail) {
+                SinglyLinkedListNode *p = head;
+                head = head->next;
+                free(p);
+            }
+            free(head);
+        }
+        free(tmp);
+     }      
 }
 
-void destroyDoublyLinkedList(SinglyLinkedList *singlyLinkedList) { 
-     SinglyLinkedListNode *head = singlyLinkedList->head;
-     while (isEmptySinglyLinkedList(singlyLinkedListNode)){
-        SinglyLinkedListNode *p = head->next;
-        free(head);
-        head = p; 
-     }
-}
-*/
-
-int isEmptyDoublyLinkedList(SinglyLinkedList *singlyLinkedList) {
+int isEmptySinglyLinkedList(SinglyLinkedList *singlyLinkedList) {
     return (singlyLinkedList->head == NULL);
 }
 
+void addToHeadSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) {
+    SinglyLinkedListNode *singlyLinkedListNode = createSinglyLinkedListNode(element);
+    if (isEmptySinglyLinkedList(singlyLinkedList)) {
+        singlyLinkedList->head = singlyLinkedListNode;
+        singlyLinkedList->tail = singlyLinkedListNode;
+    } else {
+        singlyLinkedListNode->next = singlyLinkedList->head;
+        singlyLinkedList->head = singlyLinkedListNode;  
+    }
+}
 
+void addToTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) {
+    SinglyLinkedListNode *singlyLinkedListNode = createSinglyLinkedListNode(element);
+    if (isEmptySinglyLinkedList(singlyLinkedList)) {
+        singlyLinkedList->head = singlyLinkedListNode;
+        singlyLinkedList->tail = singlyLinkedListNode;
+    } else {
+        singlyLinkedList->tail->next = singlyLinkedListNode;
+        singlyLinkedList->tail = singlyLinkedListNode;
+    }
 
+}
 
 /*
-
-
-
-
-int isEmptyDoublyLinkedList(DoublyLinkedList *doublyLinkedList) {
-    return (doublyLinkedList->head == NULL);
-}
-
-void addToHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
-    DoublyLinkedListNode *doublyLinkedListNode = createDoublyLinkedListNode(element);
-    if (isEmptyDoublyLinkedList(doublyLinkedList)) {
-        doublyLinkedList->head = doublyLinkedListNode;
-        doublyLinkedList->tail = doublyLinkedListNode;
-    } else {
-        doublyLinkedListNode->next = doublyLinkedList->head;
-        doublyLinkedList->head->prev = doublyLinkedListNode; 
-        doublyLinkedList->head = doublyLinkedListNode;  
-    }
-}
-
-void addToTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
-    DoublyLinkedListNode *doublyLinkedListNode = createDoublyLinkedListNode(element);
-    if (isEmptyDoublyLinkedList(doublyLinkedList)) {
-        doublyLinkedList->head = doublyLinkedListNode;
-        doublyLinkedList->tail = doublyLinkedListNode;
-    } else {
-        doublyLinkedList->tail->next = doublyLinkedListNode;
-        doublyLinkedListNode->prev = doublyLinkedList->tail;
-        doublyLinkedList->tail = doublyLinkedListNode;
-    }
-
-}
-
 void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int element) {
     if (!isEmptyDoublyLinkedList(doublyLinkedList)) {
         DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->head;
@@ -121,24 +105,14 @@ void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int elem
         } 
     }
 }
-
-void printAllAscDoublyLinkedList(DoublyLinkedList *doublyLinkedList) {
-     DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->head;
-     printf("L Head-> ");
-     while (doublyLinkedListNode != NULL) {
-       printf("%d-> ", doublyLinkedListNode->element);
-       doublyLinkedListNode = doublyLinkedListNode->next;
-    }
-    printf(" NULL \n"); 
-}
-
-void printAllDescDoublyLinkedList(DoublyLinkedList *doublyLinkedList) {
-    DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->tail;
-    printf("L Tail-> ");
-    while (doublyLinkedListNode != NULL) {
-       printf("%d-> ", doublyLinkedListNode->element);
-       doublyLinkedListNode = doublyLinkedListNode->prev;
-    }
-    printf(" NULL \n");
-}
 */
+
+void printAllSinglyLinkedList(SinglyLinkedList *singlyLinkedList) {
+     SinglyLinkedListNode *singlyLinkedListNode = singlyLinkedList->head;
+     printf("Head-> ");
+     while (singlyLinkedListNode != NULL) {
+       printf("%d-> ", singlyLinkedListNode->element);
+       singlyLinkedListNode = singlyLinkedListNode->next;
+    }
+    printf("TAIL \n"); 
+}
