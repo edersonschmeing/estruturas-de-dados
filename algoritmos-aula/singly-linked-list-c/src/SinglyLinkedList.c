@@ -97,6 +97,10 @@ int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element) 
     }
 }
 
+void deleteNodeFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) {
+
+}
+
 /*
 void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int element) {
     if (!isEmptyDoublyLinkedList(doublyLinkedList)) {
