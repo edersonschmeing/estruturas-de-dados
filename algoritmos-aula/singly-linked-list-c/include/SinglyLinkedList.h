@@ -19,12 +19,12 @@ void destroySinglyLinkedList(SinglyLinkedList **singlyLinkedList);
 
 void addToHeadSinglyLinkedList(SinglyLinkedList *SinglyLinkedList, int element);
 void addToTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
-void addToSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element);
+int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element);
 
 int deleteFromHeadSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 int deleteFromTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
-int deleteElementFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
+int deleteByElementFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
 int sizeSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 int isEmptySinglyLinkedList(SinglyLinkedList *singlyLinkedList);
@@ -32,8 +32,8 @@ int isEmptySinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 
 void printAllSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 
-int findElementSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
-int findPositionSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
+int findByElementSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
+int findByPositionSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
 
 #endif

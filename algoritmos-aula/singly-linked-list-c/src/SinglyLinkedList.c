@@ -32,13 +32,13 @@ SinglyLinkedList *createSinglyLinkedList() {
      SinglyLinkedList *tmp = *singlyLinkedList;
      if (tmp != NULL) {
          if (!isEmptySinglyLinkedList(tmp)) {  
-            SinglyLinkedListNode *head = tmp->head;
-            while (head != tmp->tail) {
-                SinglyLinkedListNode *p = head;
-                head = head->next;
+            SinglyLinkedListNode *current = tmp->head;
+            while (current != tmp->tail) {
+                SinglyLinkedListNode *p = current;
+                current = current->next;
                 free(p);
             }
-            free(head);
+            free(current);
         }
         free(tmp);
      }      
@@ -69,6 +69,32 @@ void addToTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) 
         singlyLinkedList->tail = singlyLinkedListNode;
     }
 
+}
+
+int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element) {
+    if(singlyLinkedList == NULL)
+        return 0;
+    SinglyLinkedListNode *singlyLinkedListNode = createSinglyLinkedListNode(element);
+    if (isEmptySinglyLinkedList(singlyLinkedList)) {
+       singlyLinkedListNode->next = NULL;
+       singlyLinkedList->head = singlyLinkedListNode;  
+       singlyLinkedList->tail = singlyLinkedListNode;
+       return 1;  
+    } else { 
+        SinglyLinkedListNode *prev, *current = singlyLinkedList->head; 
+        while (current != NULL && current->element < element) {
+            prev = current;
+            current = current->next;
+        }
+        if (current == singlyLinkedList->head) {
+            singlyLinkedListNode->next = singlyLinkedList->head;
+            singlyLinkedList->head = singlyLinkedListNode; 
+        } else {
+            singlyLinkedListNode->next = current;
+            prev->next = singlyLinkedListNode; 
+        }
+        return 1;
+    }
 }
 
 /*

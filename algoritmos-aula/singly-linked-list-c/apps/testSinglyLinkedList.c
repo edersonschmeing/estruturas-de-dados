@@ -24,7 +24,7 @@ int main() {
 
    SinglyLinkedList *singlyLinkedList = createSinglyLinkedList();
 
-   addToHeadSinglyLinkedList(singlyLinkedList, 1);
+  /* addToHeadSinglyLinkedList(singlyLinkedList, 1);
    addToHeadSinglyLinkedList(singlyLinkedList, 4);
    addToHeadSinglyLinkedList(singlyLinkedList, 5);
    addToHeadSinglyLinkedList(singlyLinkedList, 6);
@@ -34,8 +34,16 @@ int main() {
    addToTailSinglyLinkedList(singlyLinkedList, 1);
    addToTailSinglyLinkedList(singlyLinkedList, 4);
    addToTailSinglyLinkedList(singlyLinkedList, 5);
-   addToTailSinglyLinkedList(singlyLinkedList, 6);
+   addToTailSinglyLinkedList(singlyLinkedList, 6); */
 
+   printAllSinglyLinkedList(singlyLinkedList);
+
+   addSinglyLinkedListOrdered(singlyLinkedList, 6);
+   addSinglyLinkedListOrdered(singlyLinkedList, 2);
+   addSinglyLinkedListOrdered(singlyLinkedList, 4);
+   addSinglyLinkedListOrdered(singlyLinkedList, 5);
+   addSinglyLinkedListOrdered(singlyLinkedList, 1);
+   
    printAllSinglyLinkedList(singlyLinkedList);
 
    destroySinglyLinkedList(&singlyLinkedList);
