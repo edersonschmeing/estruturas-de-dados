@@ -2,6 +2,9 @@
 
  #include "../include/GenericDoublyLinkedList.hpp"
  
+using namespace std;
+
+
  void menuGenericDoublyLInkedList() { 
    DoublyLinkedList<int> doublyLinkedList;
 
@@ -79,10 +82,11 @@
          cout << "08 - Search By Key" << endl; 
          cout << "Enter number: ";
          cin >> element;
-        /* if (doublyLinkedList.searchByKey(element)) 
-            cout << "The element "<< element <<" in the Singly Linked List" << endl; 
+         if (doublyLinkedList.searchByKey(element) == NULL) 
+            cout << "The element "<< element <<" not in the Singly Linked List" << endl; 
          else
-            cout << "The element "<< element <<" not in the Singly Linked List" << endl;   */      
+            cout << "The element "<< element <<" in the Singly Linked List" << endl;   
+         doublyLinkedList.printAllAsc();
          break;
       case 9:   
          cout << "08 - Search By Position" << endl; 

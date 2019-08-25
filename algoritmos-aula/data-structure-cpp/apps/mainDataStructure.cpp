@@ -28,6 +28,8 @@ void dataStructureMenu() {
       cout << "Choose an option" << endl;
       cin >> dataStructure;
 
+      system("clear");
+
       switch (dataStructure)       {
       case 1:
          cout << "01 - Singly Linked List" << endl;

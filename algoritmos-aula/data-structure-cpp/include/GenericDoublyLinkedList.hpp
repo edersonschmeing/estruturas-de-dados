@@ -142,12 +142,23 @@ void DoublyLinkedList<T>::deleteNode(const T& element) {
 template <class T>
 T* DoublyLinkedList<T>::searchByKey(const T& element) const {
     DoublyLinkedListNode<T> *tmp = head;
+    while (tmp != 0 && !(tmp->element == element)) {
+         tmp = tmp->next;
+    }
+    if (tmp == 0)
+         return 0;
+    else 
+       return &tmp->element;
+    /*
     for ( ; tmp != 0 && !(tmp->element == element);  // overloaded ==
          tmp = tmp->next);
     if (tmp == 0)
          return 0;
-    else return &tmp->element;
+    else return &tmp->element; */   
 }
+   
+   
+
 
 template<class T>
 T& DoublyLinkedList<T>::firstElement() {

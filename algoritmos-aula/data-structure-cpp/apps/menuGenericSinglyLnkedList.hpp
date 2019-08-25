@@ -1,6 +1,8 @@
 
  #include "../include/GenericSinglyLinkedList.hpp"
  
+using namespace std;
+
  void menuGenericSinglyLInkedList() { 
    SinglyLinkedList<int> singlyLinkedList;
 
@@ -56,7 +58,8 @@
          break;
       case 5:         
          cout << "05 - Delete Tail" << endl; 
-         singlyLinkedList.deleteFromTail();        
+         singlyLinkedList.deleteFromTail(); 
+         singlyLinkedList.printAll();       
          break;
       case 6:         
          cout << "06 -Delete Node" << endl; 
@@ -80,7 +83,7 @@
             cout << "The element "<< element <<" in the Singly Linked List" << endl; 
          else
             cout << "The element "<< element <<" not in the Singly Linked List" << endl;        
-
+         singlyLinkedList.printAll();  
          break;
       case 9:   
          cout << "08 - Search By Position" << endl; 
