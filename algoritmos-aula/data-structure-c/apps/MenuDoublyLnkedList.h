@@ -2,7 +2,7 @@
 #define MENU_DOUBLY_LINKED_LIST
 
 #include <stdio.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 #include "../include/DoublyLinkedList.h"
  
@@ -11,66 +11,74 @@
 
    int operation = 1;
    while (operation < 11 && operation > 0) {
-     
-      printf("Operation \n");
-      printf("1 - Add Head \n");
-      printf("2 - Add Tail \n");
-      printf("3 - Add Sorted \n");
-      printf("4 - Delete From Head \n");
-      printf("5 - Delete From Tail \n");
-      printf("6 - Delete Node \n");
-      printf("7 - Delete Position \n");     
-      printf("8 - Search Key \n");
-      printf("9 - Search Position \n");
+      printf("---------------------------------------\n");   
+      printf("               OPERATION               \n");
+      printf("---------------------------------------\n");    
+      printf("01 - Add Head \n");
+      printf("02 - Add Tail \n");
+      printf("03 - Add Sorted \n");
+      printf("04 - Delete From Head \n");
+      printf("05 - Delete From Tail \n");
+      printf("06 - Delete Node \n");
+      printf("07 - Delete Position \n");     
+      printf("08 - Search Key \n");
+      printf("09 - Search Position \n"); 
       printf("10 - Print All  \n");
       printf("11 - Exit \n");
-      printf("Choose an Operation \n");
+      printf("Choose an Operation: ");
       scanf("%d", &operation);
-
+ 
       int element;  
 
-      switch (operation)       {
+      switch (operation) {
       case 1:
-         printf("Chosen operation - 1 - Add Head"); 
-         printf("Enter number");
+         printf("01 - Add Head \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          addToHeadDoublyLinkedList(doublyLinkedList, element); 
+         printAllAscDoublyLinkedList(doublyLinkedList);
          break;
       case 2:
-         printf("Chosen operation - 2 - Add Tail"); 
-         printf("Enter number");
+         printf("02 - Add Tail \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
-         addToTailDoublyLinkedList(doublyLinkedList, element);       
+         addToTailDoublyLinkedList(doublyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);       
          break;
       case 3:
-         printf("Chosen operation - 3 - Add Sorted"); 
-         printf("Enter number");
+         printf("03 - Add Sorted \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
-         //addSortedLinkedList(doublyLinkedList, element);         
+         //addSortedLinkedList(doublyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);         
          break;      
       case 4:
-         printf("Chosen operation - 4 - Delete Head"); 
-         //deleteFromHeadDoublyLinkedList(doublyLinkedList, element);;        
+         printf("04 - Delete Head \n"); 
+         //deleteFromHeadDoublyLinkedList(doublyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);        
          break;
       case 5:         
-         printf("Chosen operation - 5 - Delete Tail"); 
-         //deleteFromTailDoublyLinkedList(doublyLinkedList, element);;        
+         printf("05 - Delete Tail \n"); 
+         //deleteFromTailDoublyLinkedList(doublyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);        
          break;
       case 6:         
-         printf("Chosen operation - 6 -Delete Node"); 
-         printf("Enter number");
+         printf("06 -Delete Node \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          //deleteNodeDoublyLinkedList(singlyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);
          break;
       case 7:         
-         printf("Chosen operation - 7 -Delete Position"); 
-         printf("Enter number");
+         printf("07 -Delete Position \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          //deleteNodeDoublyLinkedList(doublyLinkedList, element);
+         printAllAscDoublyLinkedList(doublyLinkedList);
          break;
       case 8:   
-         printf("Chosen operation - 8 - Search By Key"); 
-         printf("Enter number");
+         printf("08 - Search By Key \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
         /* if (findByElementDoublyLinkedList.(doublyLinkedList, element)) 
             printf("The element "<< element <<" in the Doubly Linked List" << endl; 
@@ -79,8 +87,8 @@
 
          break;
       case 9:   
-         printf("Chosen operation - 8 - Search By Position"); 
-         printf("Enter number");
+         printf("08 - Search By Position \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          /*  if (findByElementDoublyLinkedList.(singlyLinkedList, element)) 
             cout << "The element "<< element <<" in the Doubly Linked List" << endl; 
@@ -88,20 +96,20 @@
             cout << "The element "<< element <<" not in the Doubly Linked List" << endl;    */    
          break;
       case 10:
-         printf("Chosen operation -  10 - Print All Asc");
+         printf("10 - Print All Asc \n");
          printAllAscDoublyLinkedList(doublyLinkedList);
          break;
       case 11:
-         printf("Chosen operation -  11 - Print All Desc"); 
+         printf("11 - Print All Desc \n"); 
          printAllAscDoublyLinkedList(doublyLinkedList);
          break;
       case 12:
-         // system("tput reset");
+         printf("12 - Exit \n"); 
          break;   
-       default:
+      default:
          break;
-      }  
-        
+      }    
+     
    } 
 }
 #endif

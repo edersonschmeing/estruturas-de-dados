@@ -24,8 +24,8 @@ int isEmptyDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
 void addToHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 void addToTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 
-int deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
-int deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+void deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+void deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 void deleteNodeDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 
 void printAllAscDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
@@ -34,7 +34,5 @@ void printAllDescDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
 int searchByKeyDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 int searchByPositionDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int position);
 
-int deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
-int deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 
 #endif 

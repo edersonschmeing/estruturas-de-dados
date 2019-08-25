@@ -23,9 +23,10 @@ void destroyDoublyLinkedListNode(DoublyLinkedListNode **doublyLinkedListNode) {
 
 DoublyLinkedList *createDoublyLinkedList() {
     DoublyLinkedList *doublyLinkedList = (DoublyLinkedList*) malloc(sizeof(DoublyLinkedList));
-    if(doublyLinkedList != NULL)
+    if(doublyLinkedList != NULL) {
        doublyLinkedList->head = NULL;
        doublyLinkedList->tail = NULL;
+    }
     return doublyLinkedList;
 }
 
@@ -75,10 +76,17 @@ void addToTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) 
 
 }
 
+void deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
+     printf("not implemented");
+}
+void deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
+    printf("not implemented");
+}
+
 void deleteNodeDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
     if (!isEmptyDoublyLinkedList(doublyLinkedList)) {
         DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->head;
-        if (doublyLinkedList->head->element = element) {
+        if (doublyLinkedList->head->element == element) {
             doublyLinkedList->head = doublyLinkedListNode->next;
 
             if (doublyLinkedList->tail == doublyLinkedListNode ) {

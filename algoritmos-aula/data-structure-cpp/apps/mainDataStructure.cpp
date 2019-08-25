@@ -15,36 +15,51 @@ void clearScreen() {
   system("tput reset"); //linux
 }
 
+
+//Fazer o usuário escolher o tipo de dados da lista Int, String, Float etc.
 void dataStructureMenu() {
    int dataStructure = 1;
    while (dataStructure < 3 && dataStructure > 0) {
+      cout <<"--------------------------------------------"<< endl;   
+      cout <<"               DATA STRUCTURE               "<< endl;
+      cout <<"--------------------------------------------"<< endl;
       cout << "Data Structure" << endl;
-      cout << "1 - Singly Linked List" << endl;
-      cout << "2 - Doubly Linked List" << endl;
-      cout << "3 - Stack" << endl;
-      cout << "4 - Queues" << endl;
-      
+      cout << "01 - Singly Linked List" << endl;
+      cout << "02 - Doubly Linked List" << endl;
+      cout << "03 - Stack" << endl;
+      cout << "04 - Queues" << endl;
+     
+      cout << "15 - Sorts" << endl;
       cout << "99 - Exit" << endl;
       cout << "Choose an option" << endl;
       cin >> dataStructure;
       //clearScreen();
       switch (dataStructure)       {
       case 1:
-         cout << "Data Structure choose 1 - Singly Linked List" << endl;
+         cout << "01 - Singly Linked List" << endl;
           menuGenericSinglyLInkedList();
          break;
       case 2:
-         cout << "Data Structure choose 2 - Doubly Linked List" << endl;
+         cout << "02 - Doubly Linked List" << endl;
          menuGenericDoublyLInkedList();
          break;
       case 3:
-         cout << "Data Structure choose 3 - Stack - not implemented " << endl;
+         cout << "03 - Stack - not implemented " << endl;
          //menuGenericStack();
          break;
       case 4:
-         cout << "Data Structure choose 4 - Queues - not implemented " << endl;
+         cout << "04 - Queues - not implemented " << endl;
          //menuGenericQueues();
-         break;   
+         break;
+      case 15:
+         cout << "15 - Sorts " << endl;
+         //menuSorts();
+         break;
+   
+      case 99:
+         cout << "99 - Exit" << endl;
+         //menuGenericQueues();
+         break;      
       default:
          break;
       }

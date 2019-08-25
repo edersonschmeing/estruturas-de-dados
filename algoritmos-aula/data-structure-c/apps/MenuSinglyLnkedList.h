@@ -12,66 +12,75 @@
 
    int operation = 1;
    while (operation < 11 && operation > 0) {
-     
-      printf("Operation \n");
-      printf("1 - Add Head \n");
-      printf("2 - Add Tail \n");
-      printf("3 - Add Sorted \n");
-      printf("4 - Delete From Head \n");
-      printf("5 - Delete From Tail \n");
-      printf("6 - Delete Node \n");
-      printf("7 - Delete Position \n");      
-      printf("8 - Search Key \n");
-      printf("9 - Search Position \n");
+           
+      printf("---------------------------------------\n");   
+      printf("               OPERATION               \n");
+      printf("---------------------------------------\n");     
+      printf("01 - Add Head \n");
+      printf("02 - Add Tail \n");
+      printf("03 - Add Sorted \n");
+      printf("04 - Delete From Head \n");
+      printf("05 - Delete From Tail \n"); 
+      printf("06 - Delete Node \n");
+      printf("07 - Delete Position \n");      
+      printf("08 - Search Key \n");
+      printf("09 - Search Position \n");
       printf("10 - Print All  \n");
       printf("11 - Exit \n");
-      printf("Choose an Operation \n");
+      printf("Choose an Operation: ");
       scanf("%d", &operation);
 
       int element;  
 
       switch (operation)       {
       case 1:
-         printf("Chosen operation - 1 - Add Head \n"); 
-         printf("Enter number \n");
+         printf("01 - Add Head \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          addToHeadSinglyLinkedList(singlyLinkedList, element); 
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 2:
-         printf("Chosen operation - 2 - Add Tail \n"); 
-         printf("Enter number \n");
+         printf("02 - Add Tail \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          addToTailSinglyLinkedList(singlyLinkedList, element);       
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 3:
-         printf("Chosen operation - 3 - Add Sorted \n"); 
-         printf("Enter number \n");
+         printf("03 - Add Sorted \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
-         addSortedSinglyLinkedList(singlyLinkedList, element);         
+         addSortedSinglyLinkedList(singlyLinkedList, element);
+         printAllSinglyLinkedList(singlyLinkedList);         
          break;      
       case 4:
-         printf("Chosen operation - 4 - Delete Head \n"); 
+         printf("04 - Delete Head \n"); 
         // deleteFromHeadSinglyLinkedList(singlyLinkedList, element);;        
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 5:         
-         printf("Chosen operation - 5 - Delete Tail \n"); 
+         printf("05 - Delete Tail \n"); 
         // deleteFromTailSinglyLinkedList(singlyLinkedList, element);;        
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 6:         
-         printf("Chosen operation - 6 -Delete Node \n"); 
-         printf("Enter number \n");
+         printf("06 -Delete Node \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
         // deleteNodeSinglyLinkedList(singlyLinkedList, element);
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 7:         
-         printf("Chosen operation - 7 -Delete Position \n"); 
-         printf("Enter number \n");
+         printf("07 -Delete Position \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          //deleteNodeFromSinglyLinkedList(singlyLinkedList, element);
+         printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 8:   
-         printf("Chosen operation - 8 - Search By Key \n"); 
-         printf("Enter number");
+         printf("08 - Search By Key \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
         /* if (findByElementSinglyLinkedList.(singlyLinkedList, element)) 
             printf("The element "<< element <<" in the Singly Linked List" << endl; 
@@ -80,8 +89,8 @@
 
          break;
       case 9:   
-         printf("Chosen operation - 8 - Search By Position \n"); 
-         printf("Enter number");
+         printf("09 - Search By Position \n"); 
+         printf("Enter number: ");
          scanf("%d", &element);
          /*  if (findByElementSinglyLinkedList.(singlyLinkedList, element)) 
             cout << "The element "<< element <<" in the Singly Linked List" << endl; 
@@ -89,16 +98,15 @@
             cout << "The element "<< element <<" not in the Singly Linked List" << endl;    */    
          break;
       case 10:
-         printf("Chosen operation -  10 - Print All \n");
+         printf("10 - Print All \n");
          printAllSinglyLinkedList(singlyLinkedList);
          break;
       case 11:
-         system("clear");
+         printf("11 - Exit \n");
          break;   
        default:
          break;
-      } 
-        
+      }  
    } 
 }
 #endif
