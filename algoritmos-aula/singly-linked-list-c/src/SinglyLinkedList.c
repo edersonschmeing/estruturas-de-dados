@@ -71,7 +71,7 @@ void addToTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) 
 
 }
 
-int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element) {
+int addSortedSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) {
     if(singlyLinkedList == NULL)
         return 0;
     SinglyLinkedListNode *singlyLinkedListNode = createSinglyLinkedListNode(element);
@@ -97,11 +97,12 @@ int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element) 
     }
 }
 
+/*
 void deleteNodeFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element) {
 
 }
 
-/*
+
 void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int element) {
     if (!isEmptyDoublyLinkedList(doublyLinkedList)) {
         DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->head;
@@ -139,7 +140,7 @@ void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int elem
 
 void printAllSinglyLinkedList(SinglyLinkedList *singlyLinkedList) {
      SinglyLinkedListNode *singlyLinkedListNode = singlyLinkedList->head;
-     printf("Head-> ");
+     printf("HEAD-> ");
      while (singlyLinkedListNode != NULL) {
        printf("%d-> ", singlyLinkedListNode->element);
        singlyLinkedListNode = singlyLinkedListNode->next;

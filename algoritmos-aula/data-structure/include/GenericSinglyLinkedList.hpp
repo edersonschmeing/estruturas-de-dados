@@ -30,19 +30,25 @@ public:
     void addToHead(const T&);
     void addToTail(const T&);
     
-    void addSorted(const T&);
+    //void addOrdered(const T&);
 
     T deleteFromHead(); 
     T deleteFromTail(); 
+    //T deleteFromElement(const T&); 
+    
     
     void deleteNode(const T&);
-    bool searchByKey(const T&) const;
-    bool searchByPosition(int position);
- 
+    bool isInList(const T&) const;
+
+    //T findElement(); 
+    //T findPosition();
+    
     //int size();
     
     void printAll() const;
-   
+    
+    //void printAllDesc() const;
+    
 
 private:
     SinglyLinkedListNode<T> *head, *tail;
@@ -143,29 +149,21 @@ void SinglyLinkedList<T>::deleteNode(const T& element) {
 }
 
 template<class T>
-bool SinglyLinkedList<T>::searchByKey(const T& element) const {
+bool SinglyLinkedList<T>::isInList(const T& element) const {
     SinglyLinkedListNode<T> *tmp;
     for (tmp = head; tmp != 0 && !(tmp->element == element); tmp = tmp->next);
     return tmp != 0;
 }
 
-/*template<class T>
-bool SinglyLinkedList<T>::searchByPosition(int position) {
-    SinglyLinkedListNode<T> *tmp;
-    for (tmp = head; tmp != 0 && !(tmp->element == element); tmp = tmp->next);
-    return tmp != 0;
-}*/
-
 
 template<class T>
 void SinglyLinkedList<T>::printAll() const {
     SinglyLinkedListNode<T> *tmp = head;
-    cout << "Head-> ";
     while (tmp != 0) {
-        cout << tmp->element << " -> ";
+        cout << tmp->element << " ";
         tmp = tmp->next;
     }
-    cout << "TAIL" << endl;  
+    cout << endl;  
    
     /*for (SinglyLinkedListNode<T>*tmp = head; tmp != 0; tmp = tmp->next)
         cout << tmp->element << " ";

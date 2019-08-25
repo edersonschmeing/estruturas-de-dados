@@ -2,6 +2,7 @@
     "files.associations": {
         "iostream": "cpp",
         "doublylinkedlist.h": "c",
-        "singlylinkedlist.h": "c"
+        "singlylinkedlist.h": "c",
+        "ostream": "cpp"
     }
 }

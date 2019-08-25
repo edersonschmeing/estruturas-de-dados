@@ -1,64 +1,21 @@
-#ifndef GENERIC_SINGLY_LINKED_LIST
-#define GENERIC_SINGLY_LINKED_LIST
+//************************  GenericSinglyLinkedList.cpp  **************************
 
 #include <iostream>
+#include "GenericSinglyLinkedList.hpp"
 
 using namespace std;
 
-template<class T>
-class SinglyLinkedListNode {
-public:
-    SinglyLinkedListNode() {
-        next = 0;
-    }
-    SinglyLinkedListNode(const T& e, SinglyLinkedListNode<T> *n = 0) {
-        element = e;
-        next = n;
-    }
-    T element;
-    SinglyLinkedListNode<T> *next;
-};
-
-template<class T>
-class SinglyLinkedList {
-public:
-    SinglyLinkedList();
-    ~SinglyLinkedList();
-   
-    bool isEmpty() const; 
-    
-    void addToHead(const T&);
-    void addToTail(const T&);
-    
-    void addSorted(const T&);
-
-    T deleteFromHead(); 
-    T deleteFromTail(); 
-    
-    void deleteNode(const T&);
-    bool searchByKey(const T&) const;
-    bool searchByPosition(int position);
- 
-    //int size();
-    
-    void printAll() const;
-   
-
-private:
-    SinglyLinkedListNode<T> *head, *tail;
-};
-
-
-template<class T>
+/*template<class T>
 SinglyLinkedList<T>::SinglyLinkedList() {
-    head = 0, tail = 0;
-    cout << "Constructor class" << endl;
+    head = 0;
+    tail = 0;
+    cout << "Constructor class";
 }
 
 
 template<class T>
 SinglyLinkedList<T>::~SinglyLinkedList() {
-    cout << "Destructor class" << endl;
+    cout << "Destructor class";
     for (SinglyLinkedListNode<T> *p; !isEmpty(); ) {
         p = head->next;
         delete head;
@@ -72,16 +29,16 @@ bool SinglyLinkedList<T>:: isEmpty() const {
 }
 
 template<class T>
-void SinglyLinkedList<T>::addToHead(const T& element) {
-    head = new SinglyLinkedListNode<T>(element, head);
+void SinglyLinkedList<T>::addToHead(const T& element) const{
+    head = new SinglyLinkedListNode<T>(element,head);
     if (tail == 0)
        tail = head;
 }
 
 template<class T>
-void SinglyLinkedList<T>::addToTail(const T& element) {
+void SinglyLinkedList<T>::addToTail(const T& element) const {
     if (tail != 0) {      // if list not empty;
-       tail->next = new SinglyLinkedListNode<T>(element);
+       tail->next = new SinglyLinkedList<T>(element);
        tail = tail->next;
     }
     else 
@@ -89,18 +46,18 @@ void SinglyLinkedList<T>::addToTail(const T& element) {
 }
 
 template<class T>
-T SinglyLinkedList<T>::deleteFromHead() {
-    T element = head->element;
+T SinglyLinkedList<T>::deleteFromHead() const{
+    int el = head->info;
     SinglyLinkedListNode<T> *tmp = head;
     if (head == tail)     // if only one node on the list;
          head = tail = 0;
     else head = head->next;
     delete tmp;
-    return element;
+    return el;
 }
 
 template<class T>
-T SinglyLinkedList<T>::deleteFromTail() {
+T SinglyLinkedList<T>::deleteFromTail() const {
     T element = tail->element;
     if (head == tail) {   // if only one node on the list;
          delete head;
@@ -117,7 +74,7 @@ T SinglyLinkedList<T>::deleteFromTail() {
 }
 
 template<class T>
-void SinglyLinkedList<T>::deleteNode(const T& element) {
+void SinglyLinkedList<T>::deleteNode(const T& element) const {
     if (head != 0)                     // if non-empty list;
          if (head == tail && element == head->element) { // if only one
               delete head;                       // node on the list;
@@ -143,34 +100,17 @@ void SinglyLinkedList<T>::deleteNode(const T& element) {
 }
 
 template<class T>
-bool SinglyLinkedList<T>::searchByKey(const T& element) const {
+bool SinglyLinkedList<T>::isInList(const T& element) const {
     SinglyLinkedListNode<T> *tmp;
     for (tmp = head; tmp != 0 && !(tmp->element == element); tmp = tmp->next);
     return tmp != 0;
 }
-
-/*template<class T>
-bool SinglyLinkedList<T>::searchByPosition(int position) {
-    SinglyLinkedListNode<T> *tmp;
-    for (tmp = head; tmp != 0 && !(tmp->element == element); tmp = tmp->next);
-    return tmp != 0;
-}*/
 
 
 template<class T>
 void SinglyLinkedList<T>::printAll() const {
-    SinglyLinkedListNode<T> *tmp = head;
-    cout << "Head-> ";
-    while (tmp != 0) {
-        cout << tmp->element << " -> ";
-        tmp = tmp->next;
-    }
-    cout << "TAIL" << endl;  
-   
-    /*for (SinglyLinkedListNode<T>*tmp = head; tmp != 0; tmp = tmp->next)
+    for (SinglyLinkedListNode<T>*tmp = head; tmp != 0; tmp = tmp->next)
         cout << tmp->element << " ";
-	cout << endl; */
-}
+	cout << endl;
+} */
 
-
-#endif

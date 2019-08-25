@@ -19,16 +19,15 @@ void destroySinglyLinkedList(SinglyLinkedList **singlyLinkedList);
 
 void addToHeadSinglyLinkedList(SinglyLinkedList *SinglyLinkedList, int element);
 void addToTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
-int addSinglyLinkedListOrdered(SinglyLinkedList *singlyLinkedList, int element);
+int addSortedSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
 int deleteFromHeadSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 int deleteFromTailSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
-int deleteByElementFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
+int deleteNodeFromSinglyLinkedList(SinglyLinkedList *singlyLinkedList, int element);
 
 int sizeSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 int isEmptySinglyLinkedList(SinglyLinkedList *singlyLinkedList);
-//int lista_cheia(Lista* li);
 
 void printAllSinglyLinkedList(SinglyLinkedList *singlyLinkedList);
 
