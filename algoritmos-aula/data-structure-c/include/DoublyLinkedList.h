@@ -1,5 +1,5 @@
-#ifndef DOUBLY_LINKED_LIST
-#define DOUBLY_LINKED_LIST
+#ifndef DOUBLY_LINKED_LIST_C
+#define DOUBLY_LINKED_LIST_C
 
 typedef struct _DoublyLinkedListNode {
     int element;
@@ -24,11 +24,17 @@ int isEmptyDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
 void addToHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 void addToTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 
-//int deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
-//int deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
-void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int element);
+int deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+int deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+void deleteNodeDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
 
 void printAllAscDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
 void printAllDescDoublyLinkedList(DoublyLinkedList *doublyLinkedList);
 
-#endif
+int searchByKeyDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+int searchByPositionDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int position);
+
+int deleteFromHeadDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+int deleteFromTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element);
+
+#endif 

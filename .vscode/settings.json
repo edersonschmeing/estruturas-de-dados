@@ -3,6 +3,8 @@
         "iostream": "cpp",
         "doublylinkedlist.h": "c",
         "singlylinkedlist.h": "c",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "menudoublylnkedlist.h": "c",
+        "stdio.h": "c"
     }
 }

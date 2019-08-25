@@ -116,6 +116,8 @@ T SinglyLinkedList<T>::deleteFromTail() {
     return element;
 }
 
+
+//não esta removendo números repetidos
 template<class T>
 void SinglyLinkedList<T>::deleteNode(const T& element) {
     if (head != 0)                     // if non-empty list;

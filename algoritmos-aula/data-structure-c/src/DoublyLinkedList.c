@@ -75,7 +75,7 @@ void addToTailDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) 
 
 }
 
-void deleteFromDoublyLinkedListNode(DoublyLinkedList *doublyLinkedList, int element) {
+void deleteNodeDoublyLinkedList(DoublyLinkedList *doublyLinkedList, int element) {
     if (!isEmptyDoublyLinkedList(doublyLinkedList)) {
         DoublyLinkedListNode *doublyLinkedListNode = doublyLinkedList->head;
         if (doublyLinkedList->head->element = element) {
