@@ -12,10 +12,11 @@
 
    int operation = 1;
    while (operation < 11 && operation > 0) {
-           
       printf("---------------------------------------\n");   
+      printf("               DATA STRUCTURE          \n");
+      printf("             SINGLY LINKED LIST        \n");
       printf("               OPERATION               \n");
-      printf("---------------------------------------\n");     
+      printf("---------------------------------------\n");
       printf("01 - Add Head \n");
       printf("02 - Add Tail \n");
       printf("03 - Add Sorted \n");

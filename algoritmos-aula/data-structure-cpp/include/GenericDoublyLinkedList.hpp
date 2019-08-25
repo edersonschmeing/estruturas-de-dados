@@ -105,6 +105,8 @@ T DoublyLinkedList<T>::deleteFromTail() {
 }
 
 
+
+
 template<class T>
 void DoublyLinkedList<T>::deleteNode(const T& element) {
     if (head != 0) {                    // if non-empty list;
@@ -117,14 +119,20 @@ void DoublyLinkedList<T>::deleteNode(const T& element) {
             delete tmp;              // and old head is deleted;
         }else {                        // if more than one node in the list
             DoublyLinkedListNode<T> *pred, *tmp;
-            for (pred = head, tmp = head->next; // and a non-head node
+            pred = head;
+            tmp = head->next;
+            while ((tmp != 0) && !(tmp->element == element)) {
+                pred = pred->next; 
+                tmp = tmp->next;
+            /*for (pred = head, tmp = head->next; // and a non-head node
                 tmp != 0 && !(tmp->element == element);// is deleted;
-                pred = pred->next, tmp = tmp->next);
-                if (tmp != 0) {
-                    pred->next = tmp->next;
-                    if (tmp == tail)
-                        tail = pred;
-                    delete tmp;
+                pred = pred->next, tmp = tmp->next);*/
+            }
+            if (tmp != 0) {
+                pred->next = tmp->next;
+                if (tmp == tail)
+                    tail = pred;
+                delete tmp;
             }
         }
     }    
@@ -158,17 +166,27 @@ void DoublyLinkedList<T>::clear() {
 template<class T>
 void DoublyLinkedList<T>::printAllAsc() const {
     cout << " Order ASC - HEAD->";
-    for (DoublyLinkedListNode<T> *tmp = head; tmp != 0; tmp = tmp->next)
+    DoublyLinkedListNode<T> *tmp = head;
+    while (tmp != 0) {
+        cout << tmp->element << " -> ";
+        tmp = tmp->next;
+    }
+    cout << "TAIL" << endl;  
+
+/*    for (DoublyLinkedListNode<T> *tmp = head; tmp != 0; tmp = tmp->next)
         cout << tmp->element << "->";
-	cout << "TAIL" << endl;
+	cout << "TAIL" << endl;*/
 }
 
 template<class T>
 void DoublyLinkedList<T>::printAllDesc() const {
    cout << " Order DESC TAIL->";
-   for (DoublyLinkedListNode<T> *tmp = tail; tmp != 0; tmp = tmp->prev)
-        cout << tmp->element << "->";
-	cout << "HEAD" << endl;
+   DoublyLinkedListNode<T> *tmp = tail;
+    while (tmp != 0) {
+        cout << tmp->element << " -> ";
+        tmp = tmp->next;
+    }
+    cout << "HEAD" << endl;
 }
 
 #endif

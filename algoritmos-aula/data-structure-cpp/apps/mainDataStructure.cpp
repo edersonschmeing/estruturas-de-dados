@@ -1,19 +1,13 @@
 
-
 #include <stdio.h>
 #include <iostream>
-#include <string>
+//#include <string>
 #include "menuGenericSinglyLnkedList.hpp"
 #include "menuGenericDoublyLnkedList.hpp"
 
 //#include <new>
 
 using namespace std;
-
-
-void clearScreen() {
-  system("tput reset"); //linux
-}
 
 
 //Fazer o usuário escolher o tipo de dados da lista Int, String, Float etc.
@@ -33,7 +27,7 @@ void dataStructureMenu() {
       cout << "99 - Exit" << endl;
       cout << "Choose an option" << endl;
       cin >> dataStructure;
-      //clearScreen();
+
       switch (dataStructure)       {
       case 1:
          cout << "01 - Singly Linked List" << endl;

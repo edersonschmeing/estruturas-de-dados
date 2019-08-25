@@ -7,6 +7,8 @@
    int operation = 1;
    while (operation < 11 && operation > 0) {
       cout << "---------------------------------------" << endl;   
+      cout << "             DATA STRUCTURE            " << endl;   
+      cout << "           SINGLY LINKED LIST          " << endl;   
       cout << "               OPERATION               " << endl;
       cout << "---------------------------------------" << endl;
       cout << "01 - Add Head" << endl;
@@ -30,14 +32,14 @@
          cout << "01 - Add Head" << endl; 
          cout << "Enter number: ";
          cin >> element;
-         singlyLinkedList.addToTail(element);
+         singlyLinkedList.addToHead(element);
          singlyLinkedList.printAll();        
          break;
       case 2:
          cout << "02 - Add Tail" << endl; 
          cout << "Enter number: ";
          cin >> element;
-         singlyLinkedList.addToHead(element);
+         singlyLinkedList.addToTail(element);
          singlyLinkedList.printAll();        
          break;
       case 3:
@@ -45,7 +47,7 @@
          cout << "Enter number: ";
          cin >> element;
          //singlyLinkedList.addToHead(element);
-         singlyLinkedList.printAll()        
+         singlyLinkedList.printAll();       
          break;      
       case 4:
          cout << "04 - Delete Head" << endl; 

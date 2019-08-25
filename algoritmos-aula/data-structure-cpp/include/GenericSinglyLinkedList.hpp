@@ -126,15 +126,23 @@ void SinglyLinkedList<T>::deleteNode(const T& element) {
             SinglyLinkedListNode<T> *tmp = head;
             head = head->next;
             delete tmp;              // and old head is deleted;
-        } else {                        // if more than one node in the list
+        } else {  
             SinglyLinkedListNode<T> *pred, *tmp;
+            pred = head;
+            tmp = head->next;
+            while ((tmp != 0) && !(tmp->element == element)) {
+                pred = pred->next; 
+                tmp = tmp->next;
+                                  // if more than one node in the list
+           /* SinglyLinkedListNode<T> *pred, *tmp;
             for (pred = head, tmp = head->next; // and a non-head node
                  tmp != 0 && !(tmp->element == element);// is deleted;
-                 pred = pred->next, tmp = tmp->next);
-                if (tmp != 0) {
-                    pred->next = tmp->next;
-                    if (tmp == tail)
-                        tail = pred;
+                 pred = pred->next, tmp = tmp->next); */
+            } 
+            if (tmp != 0) {
+                pred->next = tmp->next;
+                if (tmp == tail)
+                    tail = pred;
                 delete tmp;
             }
         }
@@ -159,7 +167,7 @@ bool SinglyLinkedList<T>::searchByPosition(int position) {
 template<class T>
 void SinglyLinkedList<T>::printAll() const {
     SinglyLinkedListNode<T> *tmp = head;
-    cout << "Head-> ";
+    cout << "HEAD-> ";
     while (tmp != 0) {
         cout << tmp->element << " -> ";
         tmp = tmp->next;

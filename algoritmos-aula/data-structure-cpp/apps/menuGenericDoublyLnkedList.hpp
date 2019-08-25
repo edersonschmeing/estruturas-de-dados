@@ -8,6 +8,8 @@
    int operation = 1;
    while (operation < 11 && operation > 0) {
       cout << "---------------------------------------" << endl;   
+      cout << "             DATA STRUCTURE            " << endl;   
+      cout << "           DOUBLY LINKED LIST          " << endl;   
       cout << "               OPERATION               " << endl;
       cout << "---------------------------------------" << endl;
       cout << "01 - Add Head" << endl;
@@ -32,14 +34,14 @@
          cout << "01 - Add Head" << endl; 
          cout << "Enter number: "; 
          cin >> element;
-         doublyLinkedList.addToTail(element);
+         doublyLinkedList.addToHead(element);
          doublyLinkedList.printAllAsc();        
          break;
       case 2:
          cout << "02 - Add Tail" << endl; 
          cout << "Enter number: ";
          cin >> element;
-         doublyLinkedList.addToHead(element);
+         doublyLinkedList.addToTail(element);
          doublyLinkedList.printAllAsc();        
          break;
       case 3:
