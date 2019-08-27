@@ -12,7 +12,7 @@ using namespace std;
    while (operation < 11 && operation > 0) {
       cout << "---------------------------------------" << endl;   
       cout << "             DATA STRUCTURE            " << endl;   
-      cout << "           DOUBLY LINKED LIST          " << endl;   
+      cout << "      DOUBLY LINKED LIST - DEQUE       " << endl;   
       cout << "               OPERATION               " << endl;
       cout << "---------------------------------------" << endl;
       cout << "01 - Add Head" << endl;

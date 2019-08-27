@@ -5,6 +5,10 @@
         "singlylinkedlist.h": "c",
         "ostream": "cpp",
         "menudoublylnkedlist.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "type_traits": "cpp",
+        "queue": "cpp",
+        "vector": "cpp",
+        "deque": "cpp"
     }
 }

@@ -2,20 +2,20 @@
 //                 Generic sorting algorithms
 //               overloading of < and = required
 
+
 //conflict with <algorithms>, <queue>
 //template<class T>
 //inline void swap (T& e1, T& e2) {
 //    T tmp = e1; e1 = e2; e2 = tmp;
 //}
 
-#ifndef SORTS
-#define SORTS
+#ifndef GENERIC_SORTS
+#define GENERIC_SORTS
 
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
 
-#include "../include/Sorts.hpp"
 
 using namespace std;
 
@@ -235,7 +235,6 @@ void mergesort(T data[], const int n) {
     mergesort(data,temp,0,n-1);
 }
 
-//queue bliblioteca padrão
 #include <queue>
 
 template<class T>
@@ -249,7 +248,7 @@ public:
     void enqueue(const T& el) {
         queue<T>::push(el);
     }
-};
+}; 
 
 const int bits = 31;
 const int radix = 10;

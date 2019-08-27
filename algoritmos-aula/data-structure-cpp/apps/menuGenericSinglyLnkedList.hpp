@@ -10,7 +10,7 @@ using namespace std;
    while (operation < 11 && operation > 0) {
       cout << "---------------------------------------" << endl;   
       cout << "             DATA STRUCTURE            " << endl;   
-      cout << "           SINGLY LINKED LIST          " << endl;   
+      cout << "  SINGLY LINKED LIST - QUEUE - STACK   " << endl;   
       cout << "               OPERATION               " << endl;
       cout << "---------------------------------------" << endl;
       cout << "01 - Add Head" << endl;

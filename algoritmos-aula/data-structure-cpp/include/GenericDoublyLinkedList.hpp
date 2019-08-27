@@ -48,6 +48,7 @@ public:
 
 protected:
     DoublyLinkedListNode<T> *head, *tail;
+    //colocar a quantidade de item da lista
     
     friend ostream& operator<<(ostream& out, const DoublyLinkedList<T>& doublyLinkedList) {
         for (DoublyLinkedListNode<T> *tmp = doublyLinkedList.head; tmp != 0; tmp = tmp->next)
@@ -103,9 +104,6 @@ T DoublyLinkedList<T>::deleteFromTail() {
     }
     return el;
 }
-
-
-
 
 template<class T>
 void DoublyLinkedList<T>::deleteNode(const T& element) {

@@ -66,8 +66,11 @@ int main(){
     //  cout << "Sort with quicksort2 first and last" << endl;
     //  quicksort2(data, 0, 99);
 
-    cout << "Sort with quicksort2 n" << endl;
-    quicksort2(data, 100);
+//    cout << "Sort with quicksort2 n" << endl;
+//    quicksort2(data, 100);
+
+      
+     // radixsort2(data, 100);
 
     // cout << "Sort with countingsort n" << endl;
     // long longNumber[5] = { 5, 2, 1, 4, 3};

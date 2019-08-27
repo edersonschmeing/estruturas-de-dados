@@ -46,6 +46,7 @@ public:
 
 private:
     SinglyLinkedListNode<T> *head, *tail;
+    //colocar a quantidade de item da lista
 };
 
 

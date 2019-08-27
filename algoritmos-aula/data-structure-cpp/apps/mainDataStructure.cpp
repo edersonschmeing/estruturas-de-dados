@@ -4,6 +4,9 @@
 //#include <string>
 #include "menuGenericSinglyLnkedList.hpp"
 #include "menuGenericDoublyLnkedList.hpp"
+#include "menuGenericArrayQueue.hpp"
+#include "menuGenericArrayStack.hpp"
+#include "menuGenericSorts.hpp"
 
 //#include <new>
 
@@ -13,17 +16,16 @@ using namespace std;
 //Fazer o usuário escolher o tipo de dados da lista Int, String, Float etc.
 void dataStructureMenu() {
    int dataStructure = 1;
-   while (dataStructure < 3 && dataStructure > 0) {
+   while (dataStructure < 11 && dataStructure > 0) {
       cout <<"--------------------------------------------"<< endl;   
       cout <<"               DATA STRUCTURE               "<< endl;
       cout <<"--------------------------------------------"<< endl;
-      cout << "Data Structure" << endl;
-      cout << "01 - Singly Linked List" << endl;
-      cout << "02 - Doubly Linked List" << endl;
-      cout << "03 - Stack" << endl;
-      cout << "04 - Queues" << endl;
-     
-      cout << "15 - Sorts" << endl;
+      cout << "01 - Singly Linked List - Queue - Stack" << endl;
+      cout << "02 - Doubly Linked List - Deque" << endl;
+      cout << "03 - Array Queues" << endl;
+      cout << "04 - Array Stack" << endl;
+      
+      cout << "10 - Sorts" << endl;
       cout << "99 - Exit" << endl;
       cout << "Choose an option" << endl;
       cin >> dataStructure;
@@ -32,24 +34,24 @@ void dataStructureMenu() {
 
       switch (dataStructure)       {
       case 1:
-         cout << "01 - Singly Linked List" << endl;
+         cout << "01 - Singly Linked List - Queue - Stack" << endl;
           menuGenericSinglyLInkedList();
          break;
       case 2:
-         cout << "02 - Doubly Linked List" << endl;
+         cout << "02 - Doubly Linked List - Deque" << endl;
          menuGenericDoublyLInkedList();
          break;
       case 3:
-         cout << "03 - Stack - not implemented " << endl;
-         //menuGenericStack();
+         cout << "03 - Array Queues" << endl;
+         menuGenericArrayQueue();
          break;
       case 4:
-         cout << "04 - Queues - not implemented " << endl;
-         //menuGenericQueues();
+         cout << "04 - Array QueuesStack " << endl;
+         menuGenericArrayStack();
          break;
-      case 15:
-         cout << "15 - Sorts " << endl;
-         //menuSorts();
+      case 10:
+         cout << "10 - Sorts " << endl;
+         menuGenericSorts();
          break;
    
       case 99:
