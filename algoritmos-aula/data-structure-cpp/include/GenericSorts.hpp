@@ -19,24 +19,78 @@
 
 using namespace std;
 
+
+
+int cout1 = 0;
+int cout2 = 0;
+
+template<class T>
+void printAllY(T data) { 
+   for(int i = 0; i < 100; i++){
+        cout<< data[i]<<" - ";
+    }
+    cout <<  endl;
+    cout << "cout For 1: " << cout1 << endl;
+    cout << "cout For 2: " <<  cout2 << endl;
+        
+}
+
+//somente para iverter o vetor.
+template<class T>
+void bubblesortDesc(T data[], const int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = n-1; j > i; --j)
+            if (data[j] > data[j-1])
+                swap(data[j],data[j-1]);
+}
+
+
+
 template<class T>
 void insertionsort(T data[], const int n) {
-    for (int i = 1, j; i < n; i++) {
+    cout1 = 0;
+    cout2 = 0;
+    for (int i = 0, j; i < n; i++) {
         T tmp = data[i];
-        for (j = i; j > 0 && tmp < data[j-1]; j--)
+        cout1++;
+        for (j = i; j > 0 && tmp < data[j-1]; j--) { 
             data[j] = data[j-1];
+            cout2++;
+        }
         data[j] = tmp;
     }
+    printAllY(data);
 }
+
+//exemplo professor passou
+template<class T>
+void shell_sort(T v[], int n) {
+    for (int i= n/2; i>2; i/=2) {
+        for (int j=0; j <i; j++) { 
+            insert2(&v[j], n-j, i);
+        }            
+    }
+    insert2(v, n, 1);
+}
+
+
+
+
 
 template<class T>
 void selectionsort(T data[], const int n) {
+    cout1 = 0;
+    cout2 = 0;
     for (int i = 0, least, j; i < n-1; i++) {
-        for (j = i+1, least = i; j < n; j++)
+        cout1++;
+        for (j = i+1, least = i; j < n; j++) {
+             cout2++;
             if (data[j] < data[least])
                 least = j;
-        swap(data[least],data[i]);
+        }
+        swap(data[least],data[i]); //stl
     }
+    printAllY(data);
 }
 
 template<class T>
@@ -142,6 +196,7 @@ void quicksort(T data[], int first, int last) {
     if (upper+1 < last)
         quicksort (data,upper+1,last);
 }
+
 
 template<class T>
 void quicksort(T data[], const int n) {

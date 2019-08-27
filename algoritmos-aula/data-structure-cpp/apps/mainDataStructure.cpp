@@ -12,25 +12,23 @@
 
 using namespace std;
 
-
 //Fazer o usuário escolher o tipo de dados da lista Int, String, Float etc.
 void dataStructureMenu() {
    int dataStructure = 1;
-   while (dataStructure < 11 && dataStructure > 0) {
+   while (dataStructure < 12 && dataStructure > 0) {
       cout <<"--------------------------------------------"<< endl;   
       cout <<"               DATA STRUCTURE               "<< endl;
       cout <<"--------------------------------------------"<< endl;
       cout << "01 - Singly Linked List - Queue - Stack" << endl;
       cout << "02 - Doubly Linked List - Deque" << endl;
       cout << "03 - Array Queues" << endl;
-      cout << "04 - Array Stack" << endl;
-      
-      cout << "10 - Sorts" << endl;
+      cout << "04 - Array Stack" << endl;      
+      cout << "05 - Sorts" << endl;
       cout << "99 - Exit" << endl;
       cout << "Choose an option" << endl;
       cin >> dataStructure;
 
-      system("clear");
+      system("clear"); 
 
       switch (dataStructure)       {
       case 1:
@@ -49,14 +47,13 @@ void dataStructureMenu() {
          cout << "04 - Array QueuesStack " << endl;
          menuGenericArrayStack();
          break;
-      case 10:
+      case 5:
          cout << "10 - Sorts " << endl;
          menuGenericSorts();
          break;
    
       case 99:
          cout << "99 - Exit" << endl;
-         //menuGenericQueues();
          break;      
       default:
          break;
@@ -69,4 +66,5 @@ int main() {
    dataStructureMenu();
      
    return 0;
+   
 }

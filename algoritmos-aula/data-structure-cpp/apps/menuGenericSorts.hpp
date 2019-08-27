@@ -1,5 +1,6 @@
 
  #include "../include/GenericSorts.hpp"
+  #include "../include/GenericInsertionSort.hpp"
  
 using namespace std;
 
@@ -29,17 +30,20 @@ void printAll(T data) {
    for(int i = 0; i < 100; i++){
         cout<< data[i]<<" - ";
     }
-    cout << endl;
+    cout <<  endl;
 }
 
 void menuGenericSorts() { 
    
-   int limit = 100;
+   int limit = 1000;
    int size = 100;
    int data[size];
    generateRandomNumbers(data, size, limit);
- 
- 
+
+   //quicksort(data, size); //ordenar antes de chamar o algoritmos de ordenação para testar 
+   //bubblesortDesc(data, size);
+   
+  
    int operation = 1;
    while (operation < 16 && operation > 0) {
       cout << "---------------------------------------" << endl;   
@@ -73,13 +77,16 @@ void menuGenericSorts() {
       switch (operation)       {
       case 1:
          cout << "01 - insertionsort" << endl;
-         insertionsort(data, size); 
-         printAll(data);
+         insertionsort(data, size);
+         //InsertionSort<int> insertionSort (data, size);
+         //insertionSort.sort();
+
+         //printAll(data);
          break;
       case 2:
          cout << "02 - selectionsort" << endl;
          selectionsort(data, size);
-         printAll(data); 
+         //printAll(data); 
          break;
       case 3:
          cout << "03 - bubblesort" << endl;
@@ -94,7 +101,7 @@ void menuGenericSorts() {
       case 5:
          cout << "05 - Shellsort" << endl;
          Shellsort(data, size);
-         printAll(data);
+         //printAll(data);
          break;
       case 6:
          cout << "06 - heapsort" << endl;

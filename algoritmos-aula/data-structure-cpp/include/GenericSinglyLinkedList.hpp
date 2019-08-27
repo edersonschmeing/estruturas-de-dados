@@ -1,3 +1,6 @@
+//----------------------SINGLY LINKED LIST and QUEUE and STACK --------------- 
+
+
 #ifndef GENERIC_SINGLY_LINKED_LIST
 #define GENERIC_SINGLY_LINKED_LIST
 
