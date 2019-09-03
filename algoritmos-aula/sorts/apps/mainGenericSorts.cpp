@@ -26,23 +26,21 @@ void generateRandomNumbers(T data[], int n, int limit){
 
 template<class T>
 void printAll(T data) { 
-   for(int i = 0; i < 100; i++){
+   for(int i = 0; i < 20; i++){
         cout<< data[i]<<" - ";
     }
     cout <<  endl;
 }
-
 void menuGenericSorts() { 
    
-   int limit = 1000;
-   int size = 100;
+   int limit = 100;
+   int size = 20;
    int data[size];
    generateRandomNumbers(data, size, limit);
 
-   //quicksort(data, size); //ordenar antes de chamar o algoritmos de ordenação para testar 
-   //bubblesortDesc(data, size);
-   
-  
+   //bubblesortDesc(data)
+
+     
    int operation = 1;
    while (operation < 16 && operation > 0) {
       cout << "---------------------------------------" << endl;   
@@ -51,35 +49,35 @@ void menuGenericSorts() {
       cout << "---------------------------------------" << endl;
       cout << "01 - insertionsort" << endl;
       cout << "02 - selectionsort" << endl;
-      cout << "03 - bubblesort" << endl;
+      cout << "03 - shellsort" << endl;
+      cout << "04 - mergesort " << endl;
+      cout << "05 - quicksort" << endl;
+      cout << "06 - quicksort2" << endl;
+      cout << "07 - heapsort" << endl;
+      cout << "08 - bucketsort" << endl;
+      
+     /* cout << "03 - bubblesort" << endl;
       cout << "04 - combsort" << endl;
-      cout << "05 - Shellsort" << endl;
-      cout << "06 - heapsort" << endl;
-      cout << "07 - quicksort first and last" << endl;
       cout << "08 - quicksort" << endl;
-      cout << "09 - mergesort " << endl;
-      cout << "10 - quicksort2" << endl;
       cout << "11 - radixsort" << endl;
       cout << "12 - radixsort2" << endl;
       cout << "13 - countingsort" << endl;
       cout << "14 - bitRadixsort" << endl;
       cout << "15 - bitRadixsort2" << endl;
-      cout << "99 - Exit" << endl;
+      cout << "99 - Exit" << endl; */
       cout << "Choose an Operation: ";
       cin >> operation;
       
-      int element;  
+     // int element;  
       
       cout << "Random Numbers" << endl;
-      printAll(data); 
-      
+      printAll(data);     
       switch (operation)       {
       case 1:
          cout << "01 - insertionsort" << endl;
          insertionsort(data, size);
-         //InsertionSort<int> insertionSort (data, size);
+         //InsertionSort<int> insertionSort 7
          //insertionSort.sort();
-
          //printAll(data);
          break;
       case 2:
@@ -88,73 +86,51 @@ void menuGenericSorts() {
          //printAll(data); 
          break;
       case 3:
-         cout << "03 - bubblesort" << endl;
-         bubblesort(data, size);
+         cout << "03 - shellsort" << endl;
+         shellsort(data, size);
          printAll(data); 
          break;
       case 4:
-         cout << "04 - combsort" << endl;
-         combsort(data, size);
+         cout << "04 - mergesort" << endl;
+         mergesort(data, size);
          printAll(data);
          break;
       case 5:
-         cout << "05 - Shellsort" << endl;
-         Shellsort(data, size);
+         cout << "05 - quicksort" << endl;
+         quicksort(data, size);
          printAll(data);
          break;
       case 6:
-         cout << "06 - heapsort" << endl;
+         cout << "06 - quicksort2" << endl;
+         quicksort2(data, size);
+         printAll(data);
+         break;   
+      case 7:
+         cout << "07 - heapsort" << endl;
          heapsort(data, size);
          printAll(data);
          break;
          printAll(data);
          break;
       case 8:
-         cout << "08 - quicksort" << endl;
-         quicksort(data, size);
-         printAll(data);
-         break;
-      case 9:
-         cout << "09 - mergesort" << endl;
-         mergesort(data, size);
-         printAll(data);
+         cout << "08 - bucketsort" << endl;
+         //quicksort(data, size);
+         //printAll(data);
+         cout << "Not implemented" << endl;
          break;
       case 10:
-         cout << "10 - quicksort2" << endl;
-         quicksort2(data, size);
-         printAll(data);
-         break;
-      case 11:
-         cout << "11 - radixsort" << endl;
-         radixsort(data, size);
-         printAll(data);
-         break;
-      case 12:
-         cout << "12 - radixsort2" << endl;
-         //radixsort2(data, size);
-         printAll(data);
-         break;
-      case 13:
-         cout << "13 - countingsort" << endl;
-         //countingsort(data, size);
-         printAll(data);
-         break;
-      case 14:
-         cout << "14 - bitRadixsort" << endl;
-         //bitRadixsort(data, size, 5);
-         printAll(data);
-         break;
-      case 15:
-         cout << "15 - bitRadixsort2" << endl;
-         //bitRadixsort2(data, size, 5);
-         printAll(data);
-         break;
-      case 99:
-         cout << "99 - Exit" << endl;
+         cout << "10 - Exit" << endl;
          break;   
        default:
          break;
-      } 
-        
+      }         
    } 
+}
+
+int main() {
+    
+   menuGenericSorts();
+     
+   return 0;
+   
 }

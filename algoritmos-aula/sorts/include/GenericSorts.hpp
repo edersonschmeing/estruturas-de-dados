@@ -2,7 +2,6 @@
 //                 Generic sorting algorithms
 //               overloading of < and = required
 
-
 //conflict with <algorithms>, <queue>
 //template<class T>
 //inline void swap (T& e1, T& e2) {
@@ -16,10 +15,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-
 using namespace std;
-
-
 
 int cout1 = 0;
 int cout2 = 0;
@@ -31,17 +27,7 @@ void printAllY(T data) {
     }
     cout <<  endl;
     cout << "cout For 1: " << cout1 << endl;
-    cout << "cout For 2: " <<  cout2 << endl;
-        
-}
-
-//somente para iverter o vetor.
-template<class T>
-void bubblesortDesc(T data[], const int n) {
-    for (int i = 0; i < n-1; i++)
-        for (int j = n-1; j > i; --j)
-            if (data[j] > data[j-1])
-                swap(data[j],data[j-1]);
+    cout << "cout For 2: " <<  cout2 << endl;       
 }
 
 
@@ -62,7 +48,6 @@ void insertionsort(T data[], const int n) {
     printAllY(data);
 }
 
-
 template<class T>
 void selectionsort(T data[], const int n) {
     cout1 = 0;
@@ -77,6 +62,15 @@ void selectionsort(T data[], const int n) {
         swap(data[least],data[i]); //stl
     }
     printAllY(data);
+}
+
+//somente para iverter o vetor.
+template<class T>
+void bubblesortDesc(T data[], const int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = n-1; j > i; --j)
+            if (data[j] > data[j-1])
+                swap(data[j],data[j-1]);
 }
 
 template<class T>
@@ -125,7 +119,7 @@ void shell_sort(T v[], int n) {
 }
 
 template<class T>
-void Shellsort(T data[], const int n) {
+void shellsort(T data[], const int n) {
     register int i, j, hCnt, h;
     int increments[20], k;
 //  create an appropriate number of increments h
