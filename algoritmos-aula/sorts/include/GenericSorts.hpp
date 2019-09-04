@@ -1,12 +1,5 @@
-//************************  sorts.h  ***************************
-//                 Generic sorting algorithms
-//               overloading of < and = required
-
-//conflict with <algorithms>, <queue>
-//template<class T>
-//inline void swap (T& e1, T& e2) {
-//    T tmp = e1; e1 = e2; e2 = tmp;
-//}
+//--------------------METHODS SORTS----------------------------- 
+  
 
 #ifndef GENERIC_SORTS
 #define GENERIC_SORTS
@@ -21,37 +14,40 @@ int cout1 = 0;
 int cout2 = 0;
 
 template<class T>
-void printAllY(T data) { 
-   for(int i = 0; i < 100; i++){
+void printAll2(T data) { 
+   for(int i = 0; i < 20; i++){
         cout<< data[i]<<" - ";
     }
-    cout <<  endl;
-    cout << "cout For 1: " << cout1 << endl;
-    cout << "cout For 2: " <<  cout2 << endl;       
+    cout <<  endl;  
 }
-
-
 
 template<class T>
 void insertionsort(T data[], const int n) {
-    cout1 = 0;
-    cout2 = 0;
+    
+     cout << "Vetor original "<< endl;
+    printAll2(data);
+    
+    int coutFor1 =0, coutFor2 = 0;
+    
     for (int i = 0, j; i < n; i++) {
         T tmp = data[i];
-        cout1++;
+        coutFor1++;
         for (j = i; j > 0 && tmp < data[j-1]; j--) { 
             data[j] = data[j-1];
-            cout2++;
+            coutFor2++;
         }
         data[j] = tmp;
     }
-    printAllY(data);
+    
+    cout << "Vetor ordenado "<< endl;
+    printAll2(data);
+    cout << "cout For 1: " << coutFor1 << endl;
+    cout << "cout For 2: " <<  coutFor2 << endl;    
 }
 
 template<class T>
 void selectionsort(T data[], const int n) {
-    cout1 = 0;
-    cout2 = 0;
+    int cout1, cout2 = 0;
     for (int i = 0, least, j; i < n-1; i++) {
         cout1++;
         for (j = i+1, least = i; j < n; j++) {
@@ -61,43 +57,10 @@ void selectionsort(T data[], const int n) {
         }
         swap(data[least],data[i]); //stl
     }
-    printAllY(data);
+
+    printAll2(data);
 }
 
-//somente para iverter o vetor.
-template<class T>
-void bubblesortDesc(T data[], const int n) {
-    for (int i = 0; i < n-1; i++)
-        for (int j = n-1; j > i; --j)
-            if (data[j] > data[j-1])
-                swap(data[j],data[j-1]);
-}
-
-template<class T>
-void bubblesort(T data[], const int n) {
-    for (int i = 0; i < n-1; i++)
-        for (int j = n-1; j > i; --j)
-            if (data[j] < data[j-1])
-                swap(data[j],data[j-1]);
-}
-
-template <class T>
-void combsort(T data[], const int n) {
-    int step = n, j, k;
-    while ((step = int(step/1.3)) > 1)        // phase 1
-        for (j = n-1; j >= step; j--) {
-            k = j-step;
-            if (data[j] < data[k])
-                swap(data[j],data[k]);
-        } 
-    bool again = true;
-    for (int i = 0; i < n-1 && again; i++)    // phase 2
-        for (j = n-1, again = false; j > i; --j)
-            if (data[j] < data[j-1]) {
-                swap(data[j],data[j-1]);
-                again = true;
-            }
-}
 
 //begin shellsort
 //exemplo professor marcio passou passou shellsort
@@ -117,6 +80,7 @@ void shell_sort(T v[], int n) {
     }
     insert2(v, n, 1);
 }
+//END shell_short professor
 
 template<class T>
 void shellsort(T data[], const int n) {
@@ -177,6 +141,7 @@ void heapsort(T data[], const int n) {
     }
 }
 //end heapsort
+
 
 //begin quicksort exemplo professor
 
@@ -267,6 +232,7 @@ void quicksort2(T data[], const int n) {
 }
 //end  quicksort2
 
+
 //begin mergesort
 template<class T>
 void merge(T array1[], T temp[], int first, int last) {
@@ -299,191 +265,6 @@ void mergesort(T data[], const int n) {
     mergesort(data,temp,0,n-1);
 }
 //end mergesort
-
-
-#include <queue>
-
-template<class T>
-class Queue : public queue<T> {
-public:
-    T dequeue() {
-        T tmp = queue<T>::front();
-        queue<T>::pop();
-        return tmp;
-    }
-    void enqueue(const T& el) {
-        queue<T>::push(el);
-    }
-}; 
-
-const int bits = 31;
-const int radix = 10;
-const int digits = 10;
-
-template<class T>
-void radixsort(T data[], const int n) {
-    register int d, j, k, factor;
-    Queue<T> queues[radix];
-    for (d = 0, factor = 1; d < digits; factor *= radix, d++) {
-        for (j = 0; j < n; j++)
-            queues[(data[j] / factor) % radix].enqueue(data[j]);
-        for (j = k = 0; j < radix; j++)
-            while (!queues[j].empty())
-                 data[k++] = queues[j].dequeue();
-    }
-}
-
-void bitRadixsort(long data[], const int n, int b) {
-    int pow2b = 1;
-    pow2b <<= b;
-    int i, j, k, pos = 0, mask = pow2b-1;
-    int last = (bits % b == 0) ? (bits/b) : (bits/b + 1);
-    Queue<long> *queues = new Queue<long>[pow2b];
-    for (i = 0; i < last; i++) {
-        for (j = 0; j < n; j++)
-            queues[(data[j] & mask) >> pos].enqueue(data[j]);
-        mask <<= b;
-        pos = pos+b;
-        for (j = k = 0; j < pow2b; j++) 
-            while (!queues[j].empty())
-                data[k++] = queues[j].dequeue();
-    }
-}
-
-void inline clear(long& q) {
-    q = -1;
-}
-int inline isEmpty(long q) {
-    return q == -1;
-}
-
-template<class T>
-class RadixSortNode {
-public:
-    T *arr;
-    RadixSortNode *next;
-};
-
-template<class T>
-void radixsort2(long data[], const int n) {
-    register int d, j, k, factor, where;
-    RadixSortNode<long> n1, n2, *p1, *p2;
-    n1.arr = data;
-    n2.arr = new long[n];
-    for (j = 0; j < n; j++)
-        n2.arr[j] = data[j];
-    long *queue = new long[n], queueHeads[radix], queueTails[radix];
-    p1 = n2.next = &n1;
-    p2 = n1.next = &n2;
-    for (d = 0, factor = 1; d < digits; factor *= radix, d++) {
-        for (j = 0; j < radix; j++)
-            clear(queueHeads[j]);
-        for (j = 0; j < n; j++) {
-            where = (p1->arr[j] / factor) % radix;
-            if (isEmpty(queueHeads[where]))
-                 queueTails[where] = queueHeads[where] = j;
-            else {
-                 queue[queueTails[where]] = j;
-                 queueTails[where] = j;
-            }
-        }
-        for (j = 0; j < radix; j++)
-            if (!(isEmpty(queueHeads[j])))
-                 clear(queue[queueTails[j]]);
-        for (j = k = 0; j < radix; j++)
-            while (!(isEmpty(queueHeads[j]))) {
-                 p2->arr[k++] = p1->arr[queueHeads[j]];
-                 queueHeads[j] = queue[queueHeads[j]];
-            }
-        p2 = p2->next;
-        p1 = p1->next;
-    }
-    if (digits % 2 != 0) // if digits is an odd number;
-        for (d = 0; d < n; d++)
-            data[d] = p1->arr[d];
-}
-
-class RadixsortNode {
-public:
-    long *arr;
-    RadixsortNode *next;
-    RadixsortNode() {
-        next = 0;
-    }
-    RadixsortNode(long *a, int n) {
-        arr = new long[n];
-        for (int i = 0; i < n; i++)
-            arr[i] = a[i];
-        next = 0;
-    }
-    RadixsortNode(int n) {
-        arr = new long[n];
-        next = 0;
-    }
-};
-
-void bitRadixsort2(long data[], const int n, int b) {
-        int pow2b = 1;
-        pow2b <<= b;
-        int d, j, k, where, pos = 0, mask = pow2b-1;
-        int last = (bits % b == 0) ? (bits/b) : (bits/b + 1);
-        long *queues = new long[n], *queueHeads = new long[pow2b];
-        long *queueTails = new long[pow2b];
-        RadixsortNode *n2 = new RadixsortNode(data,n), *n1 = new RadixsortNode(n);
-        n1->arr = data;
-        n2->next = n1;
-        n1->next = n2;
-        for (d = 0; d < last; d++) {
-            for (j = 0; j < pow2b; j++) 
-                clear(queueHeads[j]);
-            for (j = 0; j < n; j++) {
-                where = (n1->arr[j] & mask) >> pos;
-                if (isEmpty(queueHeads[where]))
-                     queueTails[where] = queueHeads[where] = j;
-                else {
-                     queues[queueTails[where]] = j;
-                     queueTails[where] = j;
-                }
-            }
-            mask <<= b;
-            pos = pos+b;
-            for (j = 0; j < pow2b; j++)
-                if (!(isEmpty(queueHeads[j])))
-                     clear(queues[queueTails[j]]);
-            for (j = k = 0; j < pow2b; j++)
-                while (!(isEmpty(queueHeads[j]))) {
-                     n2->arr[k++] = n1->arr[queueHeads[j]];
-                     queueHeads[j] = queues[queueHeads[j]];
-                }
-            n2 = n2->next;
-            n1 = n1->next;
-        }
-        if (last % 2 != 0) // if bits is an odd number;
-            for (d = 0; d < n; d++)
-                data[d] = n1->arr[d];
-}
-
-void countingsort(long data[], const long n) {
-    long i;
-    long largest = data[0];
-    long *tmp = new long[n];
-    for (i = 1; i < n; i++)        // find the largest number
-        if (largest < data[i])     // in data and create the array
-            largest = data[i];     // of counters accordingly;
-    unsigned long *count = new unsigned long[largest+1];
-    for (i = 0; i <= largest; i++)
-        count[i] = 0;
-    for (i = 0; i < n; i++)        // count numbers in data[];
-        count[data[i]]++;
-    for (i = 1; i <= largest; i++) // count numbers <= i; 
-        count[i] = count[i-1] + count[i];
-    for (i = n-1; i >= 0; i--) {   // put numbers in order in tmp[];
-        tmp[count[data[i]]-1] = data[i];
-        count[data[i]]--;
-    }
-    for (i = 0; i < n; i++)        // transfer numbers from tmp[]
-        data[i] = tmp[i];          // to the original array;
-}
 
 
 #endif

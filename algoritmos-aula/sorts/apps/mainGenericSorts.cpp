@@ -31,6 +31,16 @@ void printAll(T data) {
     }
     cout <<  endl;
 }
+
+template<class T>
+void bubblesortDesc(T data[], const int n) {
+    for (int i = 0; i < n-1; i++)
+        for (int j = n-1; j > i; --j)
+            if (data[j] > data[j-1])
+                swap(data[j],data[j-1]);
+}
+
+
 void menuGenericSorts() { 
    
    int limit = 100;
@@ -42,10 +52,9 @@ void menuGenericSorts() {
 
      
    int operation = 1;
-   while (operation < 16 && operation > 0) {
+   while (operation < 10 && operation > 0) {
       cout << "---------------------------------------" << endl;   
-      cout << "             ORDINATION METHODS        " << endl;   
-      cout << "                 SORTS                 " << endl;    
+      cout << "          MÉTODOS DE ORDENAÇÃO         " << endl;       
       cout << "---------------------------------------" << endl;
       cout << "01 - insertionsort" << endl;
       cout << "02 - selectionsort" << endl;
@@ -55,67 +64,41 @@ void menuGenericSorts() {
       cout << "06 - quicksort2" << endl;
       cout << "07 - heapsort" << endl;
       cout << "08 - bucketsort" << endl;
-      
-     /* cout << "03 - bubblesort" << endl;
-      cout << "04 - combsort" << endl;
-      cout << "08 - quicksort" << endl;
-      cout << "11 - radixsort" << endl;
-      cout << "12 - radixsort2" << endl;
-      cout << "13 - countingsort" << endl;
-      cout << "14 - bitRadixsort" << endl;
-      cout << "15 - bitRadixsort2" << endl;
-      cout << "99 - Exit" << endl; */
-      cout << "Choose an Operation: ";
+      cout << "Escolha um método: ";
       cin >> operation;
-      
-     // int element;  
-      
-      cout << "Random Numbers" << endl;
-      printAll(data);     
+    
       switch (operation)       {
       case 1:
          cout << "01 - insertionsort" << endl;
          insertionsort(data, size);
-         //InsertionSort<int> insertionSort 7
-         //insertionSort.sort();
-         //printAll(data);
          break;
       case 2:
          cout << "02 - selectionsort" << endl;
          selectionsort(data, size);
-         //printAll(data); 
          break;
       case 3:
          cout << "03 - shellsort" << endl;
          shellsort(data, size);
-         printAll(data); 
          break;
       case 4:
          cout << "04 - mergesort" << endl;
          mergesort(data, size);
-         printAll(data);
          break;
       case 5:
          cout << "05 - quicksort" << endl;
          quicksort(data, size);
-         printAll(data);
          break;
       case 6:
          cout << "06 - quicksort2" << endl;
          quicksort2(data, size);
-         printAll(data);
          break;   
       case 7:
          cout << "07 - heapsort" << endl;
          heapsort(data, size);
-         printAll(data);
-         break;
-         printAll(data);
          break;
       case 8:
          cout << "08 - bucketsort" << endl;
          //quicksort(data, size);
-         //printAll(data);
          cout << "Not implemented" << endl;
          break;
       case 10:
