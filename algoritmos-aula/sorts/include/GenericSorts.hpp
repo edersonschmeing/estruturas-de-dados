@@ -109,6 +109,7 @@ void shellsort(T data[], const int n) {
             }
         }
     }
+    printAll2(data);
 }
 //end shellsort
 
@@ -139,6 +140,7 @@ void heapsort(T data[], const int n) {
         swap(data[0],data[i]);     // move the largest item to data[i];
         moveDown(data,0,i-1);      // restore the heap property;
     }
+    printAll2(data);
 }
 //end heapsort
 
@@ -180,6 +182,7 @@ void quicksort(T data[], const int n) {
             max = i;                // at the end of data[];
     swap(data[n-1],data[max]); // largest el is now in its
     quicksort(data,0,n-2);     // final position;
+    printAll2(data);
 }
 //end quicksort
 
@@ -217,6 +220,7 @@ void quicksort2(T data[], int first, int last) {
          if (upper+1 < last)
              quicksort2(data,upper+1,last);
     }
+    printAll2(data);
 }
 
 template<class T>
@@ -263,6 +267,7 @@ template<class T>
 void mergesort(T data[], const int n) {
     T *temp = new T[n];
     mergesort(data,temp,0,n-1);
+    printAll2(data);
 }
 //end mergesort
 

@@ -101,9 +101,11 @@ protected:
     void preorder(BSTNode<T>*);
     void inorder(BSTNode<T>*);
     void postorder(BSTNode<T>*);
+    
     virtual void visit(BSTNode<T>* p) { 
         cout << p->el << ' '; 
     }
+
 };
 
 template<class T>
@@ -164,6 +166,7 @@ T* BST<T>::recursiveSearch(BSTNode<T>* p, const T& el) const {
 
 template<class T>
 void BST<T>::inorder(BSTNode<T> *p) {
+     
      if (p != 0) {
          inorder(p->left);
          visit(p);
@@ -213,7 +216,6 @@ void BST<T>::deleteByCopying(BSTNode<T>*& node) {
 
 // findAndDeleteByCopying() searches the tree to locate the node containing
 // el. If the node is located, the function DeleteByCopying() is called.
-
 template<class T>
 void BST<T>::findAndDeleteByCopying(const T& el) {    
     BSTNode<T> *p = root, *prev = 0;

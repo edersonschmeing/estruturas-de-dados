@@ -40,7 +40,6 @@ void bubblesortDesc(T data[], const int n) {
                 swap(data[j],data[j-1]);
 }
 
-
 void menuGenericSorts() { 
    
    int limit = 100;
@@ -50,7 +49,6 @@ void menuGenericSorts() {
 
    //bubblesortDesc(data)
 
-     
    int operation = 1;
    while (operation < 10 && operation > 0) {
       cout << "---------------------------------------" << endl;   
@@ -63,7 +61,8 @@ void menuGenericSorts() {
       cout << "05 - quicksort" << endl;
       cout << "06 - quicksort2" << endl;
       cout << "07 - heapsort" << endl;
-      cout << "08 - bucketsort" << endl;
+      cout << "08 - heapsort min" << endl;
+      cout << "09 - bucketsort" << endl;
       cout << "Escolha um método: ";
       cin >> operation;
     
@@ -71,33 +70,45 @@ void menuGenericSorts() {
       case 1:
          cout << "01 - insertionsort" << endl;
          insertionsort(data, size);
+         //printAll(data);
          break;
       case 2:
          cout << "02 - selectionsort" << endl;
-         selectionsort(data, size);
+         //selectionsort(data, size);
+         printAll(data);
          break;
       case 3:
          cout << "03 - shellsort" << endl;
-         shellsort(data, size);
+         //shellsort(data, size);
+         printAll(data);
          break;
       case 4:
          cout << "04 - mergesort" << endl;
          mergesort(data, size);
+         printAll(data);
          break;
       case 5:
          cout << "05 - quicksort" << endl;
          quicksort(data, size);
+         printAll(data);
          break;
       case 6:
          cout << "06 - quicksort2" << endl;
          quicksort2(data, size);
+         printAll(data);
          break;   
       case 7:
          cout << "07 - heapsort" << endl;
          heapsort(data, size);
+         printAll(data);
          break;
       case 8:
-         cout << "08 - bucketsort" << endl;
+         cout << "08 - heapsort min" << endl;
+         heapsort(data, size);
+         printAll(data);
+         break;
+      case 9:
+         cout << "09 - bucketsort" << endl;
          //quicksort(data, size);
          cout << "Not implemented" << endl;
          break;
