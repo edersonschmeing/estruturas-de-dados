@@ -6,4 +6,4 @@
 Aresta::Aresta() {
     this->verticeX = NULL;
     this->verticeY = NULL;
-};
+}

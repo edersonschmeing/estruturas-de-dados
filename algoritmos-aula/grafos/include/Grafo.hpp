@@ -8,7 +8,8 @@
 
 using namespace std;
 
-template  <class T>
+//template  <class T>
+
 
 class Aresta;
 class Vertice;
@@ -19,9 +20,11 @@ public:
     
     Lista<Vertice*>* vertices;
     
-    Grafo();
+    Grafo() {
+        
+    };
 
 };
 
 
-#endif;
+#endif
