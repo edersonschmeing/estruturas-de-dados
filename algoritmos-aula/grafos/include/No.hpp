@@ -12,31 +12,24 @@ public:
     No* proximo;
     No* anterior;
     
-    No();
-    No(T elemento);    
-    No(T elemento, No<T> *proximo = 0, No<T> *anterior = 0);
-   
-};
+    No() {
+        this->elemento = NULL;
+        this->anterior  = NULL;
+        this->proximo = NULL;
+    };
 
-template <class T>
-No<T>::No() {
-    this->elemento = NULL;
-    this->anterior  = NULL;
-    this->proximo = NULL;
-};
+    No(T elemento ) {
+        this->elemento = elemento;
+        this->anterior  = NULL;
+        this->proximo = NULL;
+    };
 
-template <class T>
-No<T>::No(T elemento ) {
-    this->elemento = elemento;
-    this->anterior  = NULL;
-    this->proximo = NULL;
-};
+    No(T elemento, No<T> *proximo, No<T> *anterior) {
+        this->elemento = elemento;
+        this->anterior  = anterior;
+        this->proximo = proximo;
+    };
 
-template <class T>
-No<T>::No(T elemento, No<T> *proximo, No<T> *anterior) {
-    this->elemento = elemento;
-    this->anterior  = anterior;
-    this->proximo = proximo;
 };
 
 #endif

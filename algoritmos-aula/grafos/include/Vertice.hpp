@@ -1,4 +1,3 @@
-
 #ifndef VERTICE_HPP
 #define VERTICE_HPP
 
@@ -19,6 +18,5 @@ public:
     Vertice();
     
 };
-
 
 #endif

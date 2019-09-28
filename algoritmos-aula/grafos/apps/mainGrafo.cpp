@@ -123,8 +123,17 @@ void menuGenericSorts() {
 
 int main() {
     
-   Grafo grafo;
-     
+   Grafo* grafo;
+   grafo = new Grafo();
+
+   grafo->adicionarVertice("V1");
+   grafo->adicionarVertice("V2");
+   grafo->adicionarVertice("V3");
+   grafo->adicionarVertice("V4");
+   grafo->adicionarVertice("V5");
+
+   grafo->imprimirVertices();
+
    return 0;
    
-}
+} 
