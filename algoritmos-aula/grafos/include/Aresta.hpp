@@ -14,6 +14,8 @@ class Vertice;
 
 class Aresta {
 public:
+    
+    int id;
     Vertice* verticeX; //verificar se coloca o nome origem
     Vertice* verticeY; //verificar se coloca o nome destino
 

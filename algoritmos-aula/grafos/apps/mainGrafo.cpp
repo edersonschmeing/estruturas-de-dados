@@ -1,5 +1,7 @@
 
  #include "../include/Grafo.hpp"
+ #include "../include/Vertice.hpp"
+ 
  
 using namespace std;
 
@@ -131,9 +133,34 @@ int main() {
    grafo->adicionarVertice("V3");
    grafo->adicionarVertice("V4");
    grafo->adicionarVertice("V5");
+   grafo->adicionarVertice("V6");
+   grafo->adicionarVertice("V7");
+   grafo->adicionarVertice("V8");
+   grafo->adicionarVertice("V9");
+   grafo->adicionarVertice("V10");
+
 
    grafo->imprimirVertices();
 
+   Vertice *primeiroVertice = grafo->getPrimeiroVertice();
+   if (primeiroVertice == NULL) 
+      cout << "NÃO TEM VERTICE NA LISTA" << endl; 
+   else
+      cout << "PRIMEIRO VERTICE: "  << primeiroVertice->getNome()  << "." << endl; 
+
+   Vertice *ultimoVertice = grafo->getUltimoVertice();
+   if (ultimoVertice == NULL) 
+      cout << "NÃO TEM VERTICE NA LISTA" << endl; 
+   else
+      cout << "ULTIMO VERTICE: "  << ultimoVertice->getNome()  << "." << endl; 
+
+   Vertice *vertice = grafo->getVertice("V5");
+   if (vertice == NULL) 
+      cout << "NÃO ESTA NA LISTA" << endl; 
+   else
+      cout << "VERTICE: "  << vertice->getNome()  << "." << endl; 
+
+   
    return 0;
    
 } 

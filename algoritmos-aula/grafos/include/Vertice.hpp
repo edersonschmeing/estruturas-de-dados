@@ -11,11 +11,25 @@ using namespace std;
 class Aresta;
 
 class Vertice {
+private:
+    int id;
+    string nome;   
+protected:
+    //int id;
+    //string nome;
 public:
-    string nome;
+    
     Lista<Aresta*>* arestas;
     
     Vertice();
+    ~Vertice();
+
+    string getNome();
+    void setNome(string nome); 
+     
+    
+
+    bool adicionarAresta(Aresta* aresta);
     
 };
 

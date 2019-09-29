@@ -16,17 +16,21 @@ class Vertice;
 class Grafo {
 public:
     
+    int id;
+
     Lista<Vertice*> *vertices;
     
     Grafo();
 
     bool adicionarVertice(string nome);
 
+    
+    Vertice* getVertice(string nome);
+
+    void imprimirVertices();
+
     Vertice* getPrimeiroVertice();
-
-    Vertice* imprimirVertices();
-
-    void printAllAsc();
+    Vertice* getUltimoVertice();
 
 };
 
