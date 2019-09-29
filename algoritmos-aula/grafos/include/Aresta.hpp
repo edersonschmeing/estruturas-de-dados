@@ -15,16 +15,20 @@ class Vertice;
 class Aresta {
 private:
     int id;
-    Vertice* verticeX; //verificar se coloca o nome origem
-    Vertice* verticeY; //verificar se coloca o nome destino
-
+    int peso;
+    Vertice* verticeX; 
+    Vertice* verticeY;
 
 public:
 
     Aresta(); 
+    ~Aresta(); 
 
     int getId();
     void SetId(int id);
+
+    int getPeso();
+    void SetPeso(int peso);
 
     void setVerticeX(Vertice *vertice);
     void setVerticeY(Vertice *vertice);

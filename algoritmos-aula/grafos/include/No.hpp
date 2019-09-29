@@ -7,6 +7,8 @@ using namespace std;
 
 template <class T>
 class No {
+
+
 public:
     T elemento;
     No* proximo;

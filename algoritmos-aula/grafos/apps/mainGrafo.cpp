@@ -139,43 +139,35 @@ int main() {
    grafo->adicionarVertice("V9");
    grafo->adicionarVertice("V10");
 
+   grafo->imprimirVertices();
+
+   grafo->excluirVertice("V8");
 
    grafo->imprimirVertices();
 
    Vertice *primeiroVertice = grafo->getPrimeiroVertice();
-   if (primeiroVertice == NULL) 
-      cout << "NÃO TEM VERTICE NA LISTA" << endl; 
-   else
-      cout << "PRIMEIRO VERTICE: "  << primeiroVertice->getNome()  << "." << endl; 
-
    Vertice *ultimoVertice = grafo->getUltimoVertice();
-   if (ultimoVertice == NULL) 
-      cout << "NÃO TEM VERTICE NA LISTA" << endl; 
-   else
-      cout << "ULTIMO VERTICE: "  << ultimoVertice->getNome()  << "." << endl; 
 
    Vertice *vertice1 = grafo->getVertice("V5");
-   if (vertice1 == NULL) 
-      cout << "NÃO ESTA NA LISTA" << endl; 
-   else
-      cout << "VERTICE: "  << vertice1->getNome()  << "." << endl; 
-
    Vertice *vertice2 = grafo->getVertice("V10");
-   if (vertice2 == NULL) 
-      cout << "NÃO ESTA NA LISTA" << endl; 
-   else
-      cout << "VERTICE: "  << vertice2->getNome()  << "." << endl; 
-
-   
    Aresta *aresta = new Aresta();
    aresta->setVerticeX(vertice1);
    aresta->setVerticeY(vertice2);
-   
    vertice1->adicionarAresta(aresta);
    vertice2->adicionarAresta(aresta);
    
+   Vertice *vertice3 = grafo->getVertice("V3");
+   Vertice *vertice4 = grafo->getVertice("V6");
+   Aresta *aresta1 = new Aresta();
+   aresta1->setVerticeX(vertice3);
+   aresta1->setVerticeY(vertice4);
+   vertice3->adicionarAresta(aresta1);
+   vertice4->adicionarAresta(aresta1);
+   
    vertice1->imprimirArestas(); 
    vertice2->imprimirArestas();
+   vertice3->imprimirArestas();
+   vertice4->imprimirArestas();
 
    return 0;
    

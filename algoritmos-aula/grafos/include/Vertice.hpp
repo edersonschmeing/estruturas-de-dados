@@ -8,28 +8,40 @@
 
 using namespace std;
 
+const int BRANCA = 0;
+const int CINZA = 1;
+const int PRETA = 2;
+
 class Aresta;
 
 class Vertice {
-private:
-    int id;
-    string nome;   
-protected:
-    //int id;
-    //string nome;
-public:
-    
-    Lista<Aresta*>* arestas;
-    
-    Vertice();
-    ~Vertice();
+    private:
+        int id;
+        int cor;
+        string nome;   
 
-    string getNome();
-    void setNome(string nome); 
-     
+    protected:
     
-    bool adicionarAresta(Aresta* aresta);
-    void imprimirArestas();
+    public:
+    
+        Lista<Aresta*>* arestas;
+
+        Vertice();
+        ~Vertice();
+
+        int getId();
+        void setId(int id);
+
+        string getNome();
+        void setNome(string nome);
+
+        int getCor();
+        void setCor(int cor);
+    
+        bool adicionarAresta(Aresta* aresta);
+        //bool excluirrAresta(Aresta* aresta);
+        
+        void imprimirArestas();
     
 };
 

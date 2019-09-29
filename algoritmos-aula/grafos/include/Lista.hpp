@@ -1,4 +1,4 @@
-//----------------------CLASSE LISTA HPP--------------- 
+//----------------------CLASSE LISTA HPP (Lista Simples, Lista Dupla, Deque, Fila, Pilha)--------------- 
 
 #ifndef LISTAS_HPP
 #define LISTAS_HPP
@@ -19,31 +19,29 @@ class Lista {
         void Limpa();
     
     protected:
-        //No<T> *cabeca;
-        //No<T> *cauda;
     
     public:
         Lista();
         ~Lista();
 
-        bool estaVazia() const;
-  
         bool adicionarNaCabeca(const T& elemento);
         bool adicionarNaCauda(const T& elemento);
+        bool adicionarNaPosicao(const T& elemento, int posicao);
 
         T excluirDaCabeca();
         T excluirDaCauda();
+        T excluirDaPosicao(int posicao);
         void excluirNo(const T&);
-       
+         
+        bool estaVazia() const; 
+        
         int getTamanho();
-
         T& getElemento(int posicao);    
         T& getPrimeiroElemento(); 
         T& getUltimoElemento();
 
         T* buscarElemento(const T& elemento) const; 
    
-
 };
 
 template <class T>
@@ -80,6 +78,26 @@ bool Lista<T>::adicionarNaCabeca(const T& elemento) {
     tamanho++;
 }
 
+template  <class T>
+bool Lista<T>::adicionarNaCauda(const T& elemento) {
+    if (cauda != 0) {
+       cauda = new No<T>(elemento,0,cauda);
+       cauda->anterior->proximo = cauda;
+    } else {
+        No<T> *no = new No<T>(elemento); 
+        cauda = no;
+        cabeca = no;       
+    }
+    tamanho++;  
+}
+
+template<class T>
+bool Lista<T>::adicionarNaPosicao(const T& elemento, int posicao) {
+    //implementar
+    return false;
+}
+
+
 template<class T>
 T Lista<T>::excluirDaCabeca() {
     T elemento = cabeca->elemento;
@@ -95,19 +113,6 @@ T Lista<T>::excluirDaCabeca() {
     return elemento;
 }
 
-template  <class T>
-bool Lista<T>::adicionarNaCauda(const T& elemento) {
-    if (cauda != 0) {
-       cauda = new No<T>(elemento,0,cauda);
-       cauda->anterior->proximo = cauda;
-    } else {
-        No<T> *no = new No<T>(elemento); 
-        cauda = no;
-        cabeca = no;       
-    }
-    tamanho++;  
-}
-
 template<class T>
 T Lista<T>::excluirDaCauda() {
     T elemento = cauda->elemento;
@@ -115,7 +120,7 @@ T Lista<T>::excluirDaCauda() {
          delete cabeca;
          cabeca = 0; 
          cauda = 0;
-    }else {              // if more than one DLLNode in the list;
+    }else {              
          cauda = cauda->anterior;
          delete cauda->proximo;
          cauda->proximo = 0;
@@ -124,8 +129,15 @@ T Lista<T>::excluirDaCauda() {
 }
 
 template<class T>
+T Lista<T>:: excluirDaPosicao(int posicao) {
+    //implementar
+    return NULL;
+}
+
+template<class T>
 void Lista<T>::excluirNo(const T& elemento) {
     if (cabeca != 0) {                   
+        tamanho--;
         if (cabeca == cauda && elemento == cabeca->elemento) {
             delete cabeca;                      
             cabeca = 0;
@@ -152,15 +164,17 @@ void Lista<T>::excluirNo(const T& elemento) {
     }    
 }
 
-template<class T>
-int Lista<T>::getTamanho(){
-    return this->tamanho;
-}
 
 template<class T> 
 bool Lista<T>::estaVazia() const {
     return cabeca == 0;
 }
+
+template<class T>
+int Lista<T>::getTamanho(){
+    return this->tamanho;
+}
+
 
 //custo alto, verificar
 template<class T>
@@ -171,7 +185,6 @@ T& Lista<T>::getElemento(int posicao) {
     }
     return objeto->elemento;
 }
-
 
 template<class T>
 T& Lista<T>::getPrimeiroElemento() {

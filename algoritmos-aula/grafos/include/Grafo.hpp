@@ -14,23 +14,28 @@ class Aresta;
 class Vertice;
 
 class Grafo {
-public:
-    
     int id;
 
-    Lista<Vertice*> *vertices;
+public:
     
+    Lista<Vertice*> *vertices;
+
     Grafo();
+    ~Grafo();
 
     bool adicionarVertice(string nome);
 
-    
     Vertice* getVertice(string nome);
+
+    bool excluirVertice(string nome);
 
     void imprimirVertices();
 
     Vertice* getPrimeiroVertice();
     Vertice* getUltimoVertice();
+
+    //bsf(); busca por largura
+    //dsf(); busca por profundidade
 
 };
 

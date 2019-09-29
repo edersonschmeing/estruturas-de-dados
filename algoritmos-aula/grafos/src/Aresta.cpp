@@ -9,6 +9,11 @@ Aresta::Aresta() {
     this->verticeY = NULL;
 }
 
+Aresta::~Aresta() {
+    id = 0;
+    this->verticeX = NULL;
+    this->verticeY = NULL;
+}
 
 int Aresta::getId() {
     return this->id;
@@ -16,6 +21,14 @@ int Aresta::getId() {
 
 void Aresta::SetId(int id) {
     this->id = id;
+}
+
+int Aresta::getPeso() {
+    return this->peso;
+}
+
+void Aresta::SetPeso(int peso) {
+    this->peso = peso;
 }
 
 void Aresta::setVerticeX(Vertice *vertice) {
