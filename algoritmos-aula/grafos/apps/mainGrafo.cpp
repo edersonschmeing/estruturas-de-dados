@@ -151,6 +151,7 @@ int main() {
    Vertice *vertice1 = grafo->getVertice("V5");
    Vertice *vertice2 = grafo->getVertice("V10");
    Aresta *aresta = new Aresta();
+   aresta->SetPeso(2);
    aresta->setVerticeX(vertice1);
    aresta->setVerticeY(vertice2);
    vertice1->adicionarAresta(aresta);
@@ -159,6 +160,7 @@ int main() {
    Vertice *vertice3 = grafo->getVertice("V3");
    Vertice *vertice4 = grafo->getVertice("V6");
    Aresta *aresta1 = new Aresta();
+   aresta1->SetPeso(1);
    aresta1->setVerticeX(vertice3);
    aresta1->setVerticeY(vertice4);
    vertice3->adicionarAresta(aresta1);
