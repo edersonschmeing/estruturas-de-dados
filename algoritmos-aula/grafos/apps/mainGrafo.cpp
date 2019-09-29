@@ -154,13 +154,29 @@ int main() {
    else
       cout << "ULTIMO VERTICE: "  << ultimoVertice->getNome()  << "." << endl; 
 
-   Vertice *vertice = grafo->getVertice("V5");
-   if (vertice == NULL) 
+   Vertice *vertice1 = grafo->getVertice("V5");
+   if (vertice1 == NULL) 
       cout << "NÃO ESTA NA LISTA" << endl; 
    else
-      cout << "VERTICE: "  << vertice->getNome()  << "." << endl; 
+      cout << "VERTICE: "  << vertice1->getNome()  << "." << endl; 
+
+   Vertice *vertice2 = grafo->getVertice("V10");
+   if (vertice2 == NULL) 
+      cout << "NÃO ESTA NA LISTA" << endl; 
+   else
+      cout << "VERTICE: "  << vertice2->getNome()  << "." << endl; 
 
    
+   Aresta *aresta = new Aresta();
+   aresta->setVerticeX(vertice1);
+   aresta->setVerticeY(vertice2);
+   
+   vertice1->adicionarAresta(aresta);
+   vertice2->adicionarAresta(aresta);
+   
+   vertice1->imprimirArestas(); 
+   vertice2->imprimirArestas();
+
    return 0;
    
 } 

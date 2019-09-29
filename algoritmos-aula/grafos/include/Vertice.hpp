@@ -28,8 +28,8 @@ public:
     void setNome(string nome); 
      
     
-
     bool adicionarAresta(Aresta* aresta);
+    void imprimirArestas();
     
 };
 

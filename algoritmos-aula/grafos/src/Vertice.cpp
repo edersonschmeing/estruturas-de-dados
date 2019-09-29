@@ -20,15 +20,25 @@ void Vertice::setNome(string nome) {
 };
 
 
-
 bool Vertice::adicionarAresta(Aresta* aresta) {
     
     //if(existeVertice(nombreVertice))
       //  return false;
 
     this->arestas->adicionarNaCauda(aresta);
+    
     return true;
-};
+}
+
+void Vertice::imprimirArestas() {
+   for (int i = 0; i < this->arestas->getTamanho(); i++) {
+        Aresta *aresta = this->arestas->getElemento(i); 
+        cout << aresta->getVerticeX()->getNome()  << " -> ";
+        cout << aresta->getVerticeY()->getNome()  << " -> ";       
+   }
+   cout << endl;
+}
+
 
 
 /*void Vertice::imprimirArestas() {
