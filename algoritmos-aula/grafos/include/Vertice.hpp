@@ -18,6 +18,7 @@ class Vertice {
     private:
         int id;
         int cor;
+        int distancia;
         string nome;   
 
     protected:
@@ -32,11 +33,15 @@ class Vertice {
         int getId();
         void setId(int id);
 
+        int getCor();
+        void setCor(int cor);
+        
+        int getDistancia();
+        void setDistancia(int distancia);
+
         string getNome();
         void setNome(string nome);
 
-        int getCor();
-        void setCor(int cor);
     
         bool adicionarAresta(Aresta* aresta);
         //bool excluirrAresta(Aresta* aresta);

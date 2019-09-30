@@ -1,5 +1,7 @@
 #include <iostream>
 #include "../include/Grafo.hpp"
+#include "../include/Lista.hpp"
+
 
 Grafo::Grafo() {
     this->vertices = new Lista<Vertice*>();
@@ -23,7 +25,7 @@ bool Grafo::excluirVertice(string nome) {
     Vertice *vertice = this->getVertice(nome);
     if (vertice == NULL)
         return false;
-    this->vertices->excluirNo(vertice);
+    this->vertices->excluirElemento(vertice);
     return true;
 };
 
@@ -66,6 +68,34 @@ void Grafo::imprimirVertices() {
     }
     cout << endl;
 }
+
+void Grafo::bfs(Vertice* verticeInicial) {
+
+    //já esta com as variaveis incializadas
+    for (int i = 0; i < this->vertices->getTamanho(); i++) {
+        Vertice *vertice = this->vertices->getElemento(i);
+        vertice->setCor(BRANCA);
+        vertice->setDistancia(0);
+    }
+
+    //ja esta com as variaveis inicializadas
+    verticeInicial->setCor(CINZA);
+    verticeInicial->setDistancia(0);
+
+    Lista<Vertice*>* filaVertice = new Lista<Vertice*>();
+    filaVertice->adicionarNaCauda(verticeInicial);
+
+    while (!filaVertice->estaVazia()) {
+ 
+        Vertice *vertice = filaVertice->excluirDaCabeca();
+        
+        while (1==1 ) {
+        
+        }
+        vertice->setCor(PRETA);
+    }
+}
+
 /*
 void bfs(struct node *graph, int size, int node_search)
 {

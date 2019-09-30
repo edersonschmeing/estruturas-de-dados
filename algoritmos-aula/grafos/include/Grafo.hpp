@@ -34,6 +34,8 @@ public:
     Vertice* getPrimeiroVertice();
     Vertice* getUltimoVertice();
 
+    void bfs(Vertice* verticeInicial);
+
     //bsf(); busca por largura
     //dsf(); busca por profundidade
 

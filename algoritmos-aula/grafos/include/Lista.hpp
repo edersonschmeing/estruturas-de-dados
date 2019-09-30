@@ -31,7 +31,7 @@ class Lista {
         T excluirDaCabeca();
         T excluirDaCauda();
         T excluirDaPosicao(int posicao);
-        void excluirNo(const T&);
+        void excluirElemento(const T& elemento);
          
         bool estaVazia() const; 
         
@@ -135,7 +135,7 @@ T Lista<T>:: excluirDaPosicao(int posicao) {
 }
 
 template<class T>
-void Lista<T>::excluirNo(const T& elemento) {
+void Lista<T>::excluirElemento(const T& elemento) {
     if (cabeca != 0) {                   
         tamanho--;
         if (cabeca == cauda && elemento == cabeca->elemento) {
