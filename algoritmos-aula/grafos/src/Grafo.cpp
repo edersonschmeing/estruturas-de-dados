@@ -11,6 +11,10 @@ Grafo::~Grafo() {
     delete this->vertices;
 }
 
+Lista<Vertice*>* Grafo::getVertices() {
+   return this->vertices;
+};
+
 bool Grafo::adicionarVertice(string nome) {
 
     //verificar se vertice existe
@@ -64,20 +68,18 @@ Vertice *Grafo::getVertice(string nome) {
 void Grafo::imprimirVertices() {
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
         Vertice *vertice = this->vertices->getElemento(i);
-        cout << vertice->getNome() << " -> ";
+        cout << vertice->getNome() << " - " << vertice->getCor() << " -> ";
     }
     cout << endl;
 }
-
+ 
 void Grafo::bfs(Vertice* verticeInicial) {
-
     //já esta com as variaveis incializadas
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
         Vertice *vertice = this->vertices->getElemento(i);
         vertice->setCor(BRANCA);
         vertice->setDistancia(0);
     }
-
     //ja esta com as variaveis inicializadas
     verticeInicial->setCor(CINZA);
     verticeInicial->setDistancia(0);
@@ -86,14 +88,22 @@ void Grafo::bfs(Vertice* verticeInicial) {
     filaVertice->adicionarNaCauda(verticeInicial);
 
     while (!filaVertice->estaVazia()) {
- 
         Vertice *vertice = filaVertice->excluirDaCabeca();
-        
-        while (1==1 ) {
-        
+        Lista<Aresta*>* arestas = vertice->getArestas(); 
+        for (int i = 0; i < arestas->getTamanho(); i++) {
+            Aresta *aresta = arestas->getElemento(i);
+            Vertice *verticeVisitado = aresta->getVerticeX();
+            if (vertice == verticeVisitado)
+                verticeVisitado = aresta->getVerticeY();
+            if (verticeVisitado->getCor() == BRANCA) {
+                verticeVisitado->setCor(CINZA);
+                verticeVisitado->setDistancia( vertice->getDistancia() + 1);
+                filaVertice->adicionarNaCauda(verticeVisitado);
+            }
         }
         vertice->setCor(PRETA);
     }
+    delete filaVertice;                
 }
 
 /*

@@ -76,6 +76,7 @@ bool Lista<T>::adicionarNaCabeca(const T& elemento) {
         cabeca = no;           
     }
     tamanho++;
+    return true;
 }
 
 template  <class T>
@@ -89,6 +90,7 @@ bool Lista<T>::adicionarNaCauda(const T& elemento) {
         cabeca = no;       
     }
     tamanho++;  
+    return true;
 }
 
 template<class T>

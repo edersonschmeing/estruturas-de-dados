@@ -21,13 +21,13 @@ class Vertice {
         int distancia;
         string nome;   
 
+        Lista<Aresta*>* arestas;
+
     protected:
     
     public:
     
-        Lista<Aresta*>* arestas;
-
-        Vertice();
+         Vertice();
         ~Vertice();
 
         int getId();
@@ -41,6 +41,8 @@ class Vertice {
 
         string getNome();
         void setNome(string nome);
+
+        Lista<Aresta*>* getArestas();
 
     
         bool adicionarAresta(Aresta* aresta);

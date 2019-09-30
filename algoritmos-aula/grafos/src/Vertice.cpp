@@ -45,6 +45,9 @@ void Vertice::setNome(string nome) {
    this->nome = nome;
 };
 
+Lista<Aresta*>* Vertice::getArestas() {
+   return this->arestas;
+};
 
 bool Vertice::adicionarAresta(Aresta* aresta) {
     return this->arestas->adicionarNaCauda(aresta);    

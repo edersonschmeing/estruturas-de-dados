@@ -14,14 +14,16 @@ class Aresta;
 class Vertice;
 
 class Grafo {
+ private:   
     int id;
+    Lista<Vertice*> *vertices;
 
 public:
     
-    Lista<Vertice*> *vertices;
-
     Grafo();
     ~Grafo();
+
+    Lista<Vertice*>* getVertices();
 
     bool adicionarVertice(string nome);
 
@@ -34,12 +36,18 @@ public:
     Vertice* getPrimeiroVertice();
     Vertice* getUltimoVertice();
 
-    void bfs(Vertice* verticeInicial);
+    void bfs(Vertice* verticeInicial); //busca em largura
 
-    //bsf(); busca por largura
     //dsf(); busca por profundidade
+     //- Detecção de ciclos
+     //- Ordenação topológica
+    //tarjan(); Componentes fortemente conectados, baseado em busca de profundiade, utiliza pilha.
+    //kruskal(); Árvore geradora mínima, conjutos sets.
+    //prim();  Árvore geradora mínima, utilzar o HEAPs(binário e Fibonacci) para otimização.
+    //dijkstra(); Caminho minímo, utilizar heap para otimizar a distancia mínima
+    //ford_fulkerson(); fluxo de máximo
+    
 
 };
-
 
 #endif
