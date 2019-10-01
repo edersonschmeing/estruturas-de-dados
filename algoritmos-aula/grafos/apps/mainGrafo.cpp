@@ -87,15 +87,11 @@ int main() {
    grafo->adicionarVertice("V3");
    grafo->adicionarVertice("V4");
    grafo->adicionarVertice("V5");
-   grafo->adicionarVertice("V6");
-   grafo->adicionarVertice("V7");
-   grafo->adicionarVertice("V8");
-   grafo->adicionarVertice("V9");
-   grafo->adicionarVertice("V10");
+
 
    grafo->imprimirVertices();
 
-   grafo->excluirVertice("V8");
+   grafo->excluirVertice("V5");
 
    grafo->imprimirVertices();
 
@@ -127,13 +123,21 @@ int main() {
    aresta1->setVerticeY(vertice4);
    vertice3->adicionarAresta(aresta1);
    vertice4->adicionarAresta(aresta1);
+
+   Aresta *aresta4 = new Aresta();
+   aresta1->SetPeso(1);
+   aresta1->setVerticeX(vertice1);
+   aresta1->setVerticeY(vertice4);
+   vertice3->adicionarAresta(aresta4);
+   vertice4->adicionarAresta(aresta4);
+
    
    vertice1->imprimirArestas(); 
    vertice2->imprimirArestas();
-   vertice3->imprimirArestas();
-   vertice4->imprimirArestas();
+   //vertice3->imprimirArestas();
+   //vertice4->imprimirArestas();
 
-   grafo->bfs(vertice3);
+   //grafo->bfs(vertice1);
 
    grafo->imprimirVertices();
 

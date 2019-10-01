@@ -99,11 +99,13 @@ void Grafo::bfs(Vertice* verticeInicial) {
                 verticeVisitado->setCor(CINZA);
                 verticeVisitado->setDistancia( vertice->getDistancia() + 1);
                 filaVertice->adicionarNaCauda(verticeVisitado);
+                cout << "BSF: " << verticeVisitado->getNome() << " -> ";
+
             }
         }
         vertice->setCor(PRETA);
     }
-    delete filaVertice;                
+    //delete filaVertice;                
 }
 
 /*
