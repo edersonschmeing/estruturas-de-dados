@@ -78,11 +78,9 @@ void Grafo::bfs(Vertice* verticeInicial) {
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
         Vertice *vertice = this->vertices->getElemento(i);
         vertice->setCor(BRANCA);
-        vertice->setDistancia(0);
     }
     //ja esta com as variaveis inicializadas
     verticeInicial->setCor(CINZA);
-    verticeInicial->setDistancia(0);
 
     Lista<Vertice*>* filaVertice = new Lista<Vertice*>();
     filaVertice->adicionarNaCauda(verticeInicial);

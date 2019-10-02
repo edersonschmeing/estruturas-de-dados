@@ -4,7 +4,6 @@
 Vertice::Vertice() {
     id = 0;
     this->cor = BRANCA;
-    this->distancia = 0;
     this->nome = "";
     this->arestas = new Lista<Aresta*>();   
 };
@@ -29,14 +28,6 @@ void Vertice::setCor(int cor) {
    this->cor = cor;
 };
 
-int Vertice::getDistancia() {
-    return this->distancia;
-}
-
-void Vertice::setDistancia(int distancia) {
-   this->distancia = distancia;
-}
-
 string Vertice::getNome() {
    return this->nome;
 };
@@ -57,7 +48,8 @@ bool Vertice::adicionarAresta(Aresta* aresta) {
 void Vertice::imprimirArestas() {
    for (int i = 0; i < this->arestas->getTamanho(); i++) {
         Aresta *aresta = this->arestas->getElemento(i); 
-        cout << aresta->getVertice()->getNome()  << " -> ";
+        cout << " O "  << this->getNome()  << " -> ";
+        cout << " D " << aresta->getVertice()->getNome()  << " -> ";
    }
    cout << endl;
 }

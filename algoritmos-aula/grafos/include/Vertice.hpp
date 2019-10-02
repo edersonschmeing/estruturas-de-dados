@@ -18,7 +18,6 @@ class Vertice {
     private:
         int id;
         int cor;
-        int distancia;
         string nome;   
 
         Lista<Aresta*>* arestas;
@@ -34,10 +33,7 @@ class Vertice {
         void setId(int id);
 
         int getCor();
-        void setCor(int cor);
-        
-        int getDistancia();
-        void setDistancia(int distancia);
+        void setCor(int cor);   
 
         string getNome();
         void setNome(string nome);
