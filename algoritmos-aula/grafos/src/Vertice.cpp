@@ -53,11 +53,11 @@ bool Vertice::adicionarAresta(Aresta* aresta) {
     return this->arestas->adicionarNaCauda(aresta);    
 }
 
+//verificar se precisa
 void Vertice::imprimirArestas() {
    for (int i = 0; i < this->arestas->getTamanho(); i++) {
         Aresta *aresta = this->arestas->getElemento(i); 
-        cout << aresta->getVerticeX()->getNome()  << " -> ";
-        cout << aresta->getVerticeY()->getNome()  << " -> ";       
+        cout << aresta->getVertice()->getNome()  << " -> ";
    }
    cout << endl;
 }

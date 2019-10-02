@@ -102,35 +102,28 @@ int main() {
    Vertice *vertice2 = grafo->getVertice("V2");
    Aresta *aresta = new Aresta();
    aresta->SetPeso(2);
-   aresta->setVerticeX(vertice1);
-   aresta->setVerticeY(vertice2);
-   vertice1->adicionarAresta(aresta);
+   aresta->setVertice(vertice2);
    vertice2->adicionarAresta(aresta);
       
    Vertice *vertice3 = grafo->getVertice("V3");
    
    Aresta *aresta3 = new Aresta();
    aresta3->SetPeso(2);
-   aresta3->setVerticeX(vertice2);
-   aresta3->setVerticeY(vertice3);
+   aresta3->setVertice(vertice3);
    vertice2->adicionarAresta(aresta3);
-   vertice3->adicionarAresta(aresta3);
-   
+
+
    Vertice *vertice4 = grafo->getVertice("V4");
    Aresta *aresta1 = new Aresta();
    aresta1->SetPeso(1);
-   aresta1->setVerticeX(vertice3);
-   aresta1->setVerticeY(vertice4);
+   aresta1->setVertice(vertice4);
    vertice3->adicionarAresta(aresta1);
-   vertice4->adicionarAresta(aresta1);
-
+  
    Aresta *aresta4 = new Aresta();
    aresta1->SetPeso(1);
-   aresta1->setVerticeX(vertice1);
-   aresta1->setVerticeY(vertice4);
+   aresta1->setVertice(vertice2);
    vertice3->adicionarAresta(aresta4);
-   vertice4->adicionarAresta(aresta4);
-
+   
    
    vertice1->imprimirArestas(); 
    vertice2->imprimirArestas();

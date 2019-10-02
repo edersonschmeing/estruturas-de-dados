@@ -87,7 +87,7 @@ void Grafo::bfs(Vertice* verticeInicial) {
     Lista<Vertice*>* filaVertice = new Lista<Vertice*>();
     filaVertice->adicionarNaCauda(verticeInicial);
 
-    while (!filaVertice->estaVazia()) {
+   /* while (!filaVertice->estaVazia()) {
         Vertice *vertice = filaVertice->excluirDaCabeca();
         Lista<Aresta*>* arestas = vertice->getArestas(); 
         for (int i = 0; i < arestas->getTamanho(); i++) {
@@ -102,9 +102,9 @@ void Grafo::bfs(Vertice* verticeInicial) {
                 cout << "BSF: " << verticeVisitado->getNome() << " -> ";
 
             }
-        }
+        } 
         vertice->setCor(PRETA);
-    }
+    }*/
     //delete filaVertice;                
 }
 

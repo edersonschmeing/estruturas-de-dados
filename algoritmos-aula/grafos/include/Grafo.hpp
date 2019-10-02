@@ -44,7 +44,9 @@ public:
     //tarjan(); Componentes fortemente conectados, baseado em busca de profundiade, utiliza pilha.
     //kruskal(); Árvore geradora mínima, conjutos sets.
     //prim();  Árvore geradora mínima, utilzar o HEAPs(binário e Fibonacci) para otimização.
+    
     //dijkstra(); Caminho minímo, utilizar heap para otimizar a distancia mínima
+   
     //ford_fulkerson(); fluxo de máximo
     
 

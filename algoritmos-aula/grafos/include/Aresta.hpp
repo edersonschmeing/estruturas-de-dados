@@ -16,8 +16,7 @@ class Aresta {
 private:
     int id;
     int peso;
-    Vertice* verticeX; 
-    Vertice* verticeY;
+    Vertice* vertice; 
 
 public:
 
@@ -30,13 +29,10 @@ public:
     int getPeso();
     void SetPeso(int peso);
 
-    void setVerticeX(Vertice *vertice);
-    void setVerticeY(Vertice *vertice);
+    void setVertice(Vertice *vertice);
     
-    Vertice* getVerticeX();
-    Vertice* getVerticeY();
-
-    
+    Vertice* getVertice();
+       
 };
 
 #endif
