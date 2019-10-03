@@ -15,14 +15,17 @@ Lista<Vertice*>* Grafo::getVertices() {
    return this->vertices;
 };
 
+
 bool Grafo::adicionarVertice(string nome) {
 
-    //verificar se vertice existe
+    if (this->getVertice(nome) == NULL) { 
+        Vertice *vertice = new Vertice();
+        vertice->setNome(nome);
+        this->vertices->adicionarNaCauda(vertice);
+        return true;
+    }
+    return false;
 
-    Vertice *vertice = new Vertice();
-    vertice->setNome(nome);
-    this->vertices->adicionarNaCauda(vertice);
-    return true;
 };
 
 bool Grafo::excluirVertice(string nome) {
@@ -57,10 +60,11 @@ Vertice *Grafo::getUltimoVertice() {
 }*/
 
 Vertice *Grafo::getVertice(string nome) {
+
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
-        Vertice *vertice = this->vertices->getElemento(i);
-        if (vertice->getNome() == nome)
-            return vertice;
+       Vertice *vertice = this->vertices->getElemento(i);
+       if (vertice->getNome() == nome)
+           return vertice;
     }
     return NULL;
 }
@@ -68,7 +72,8 @@ Vertice *Grafo::getVertice(string nome) {
 void Grafo::imprimirVertices() {
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
         Vertice *vertice = this->vertices->getElemento(i);
-        cout << vertice->getNome() << " - " << vertice->getCor() << " -> ";
+        //cout << vertice->getNome() << " - " << vertice->getCor() << " -> ";
+        cout << vertice->getNome() << " -> ";        
     }
     cout << endl;
 }
@@ -85,26 +90,25 @@ void Grafo::bfs(Vertice* verticeInicial) {
     Lista<Vertice*>* filaVertice = new Lista<Vertice*>();
     filaVertice->adicionarNaCauda(verticeInicial);
 
-   /* while (!filaVertice->estaVazia()) {
+    cout << "BSF INICIAL: " << verticeInicial->getNome() << " -> ";
+    while (!filaVertice->estaVazia()) {
         Vertice *vertice = filaVertice->excluirDaCabeca();
         Lista<Aresta*>* arestas = vertice->getArestas(); 
         for (int i = 0; i < arestas->getTamanho(); i++) {
             Aresta *aresta = arestas->getElemento(i);
-            Vertice *verticeVisitado = aresta->getVerticeX();
-            if (vertice == verticeVisitado)
-                verticeVisitado = aresta->getVerticeY();
-            if (verticeVisitado->getCor() == BRANCA) {
-                verticeVisitado->setCor(CINZA);
-                verticeVisitado->setDistancia( vertice->getDistancia() + 1);
-                filaVertice->adicionarNaCauda(verticeVisitado);
-                cout << "BSF: " << verticeVisitado->getNome() << " -> ";
-
-            }
+            Vertice *verticeDestino = aresta->getVertice();
+            if (verticeDestino->getCor() == BRANCA) {
+                verticeDestino->setCor(CINZA);
+                cout << verticeDestino->getNome() << " -> "; 
+                filaVertice->adicionarNaCauda(verticeDestino);
+                //cout << &verticeVisitado << " -> ";
+            } 
         } 
         vertice->setCor(PRETA);
-    }*/
-    //delete filaVertice;                
+    }
+    delete filaVertice;                
 }
+
 
 /*
 void bfs(struct node *graph, int size, int node_search)
