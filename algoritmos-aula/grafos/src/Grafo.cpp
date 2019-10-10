@@ -41,14 +41,14 @@ Vertice *Grafo::getPrimeiroVertice() {
     if (vertice != NULL)
         return vertice;
     return NULL;
-}
+};
 
 Vertice *Grafo::getUltimoVertice() {
     Vertice *vertice = this->vertices->getUltimoElemento();
     if (vertice != NULL)
         return vertice;
     return NULL;
-}
+};
 
 /*Vertice* Grafo::getVertice(string nome) {
     Vertice *vertice = new Vertice();

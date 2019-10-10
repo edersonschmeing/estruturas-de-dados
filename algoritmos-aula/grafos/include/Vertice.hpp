@@ -14,11 +14,15 @@ const int PRETA = 2;
 
 class Aresta;
 
+
+//template<class T> 
 class Vertice {
     private:
         int id;
         int cor;
         string nome;   
+
+       // T dados;
 
         Lista<Aresta*>* arestas;
 
