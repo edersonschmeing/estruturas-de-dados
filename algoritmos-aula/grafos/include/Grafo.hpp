@@ -38,6 +38,8 @@ public:
 
     void bfs(Vertice* verticeInicial); //busca em largura
 
+    void dijkstra(Vertice* verticeInicial); //Caminho minímo, utilizar heap para otimizar a distancia mínima
+
     //dsf(); busca por profundidade
      //- Detecção de ciclos
      //- Ordenação topológica

@@ -4,7 +4,9 @@
 Vertice::Vertice() {
     id = 0;
     this->cor = BRANCA;
+    this->distancia = -1;
     this->nome = "";
+    this->antecessor = NULL;
     this->arestas = new Lista<Aresta*>();   
 }
 
@@ -28,6 +30,14 @@ void Vertice::setCor(int cor) {
    this->cor = cor;
 }
 
+int Vertice::getDistancia() {
+   return this->distancia;
+}
+
+void Vertice::setDistancia(int distancia) {
+   this->distancia = distancia;
+}
+
 string Vertice::getNome() {
    return this->nome;
 }
@@ -35,6 +45,15 @@ string Vertice::getNome() {
 void Vertice::setNome(string nome) {
    this->nome = nome;
 }
+
+void Vertice::setAntecessor(Vertice *antecessor) {
+    this->antecessor = antecessor;
+}
+
+Vertice* Vertice::getAntecessor() {
+    return this->antecessor;
+}
+
 
 Lista<Aresta*>* Vertice::getArestas() {
    return this->arestas;

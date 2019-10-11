@@ -14,14 +14,16 @@ const int PRETA = 2;
 
 class Aresta;
 
-
 //template<class T> 
 class Vertice {
     private:
         int id;
         int cor;
+        int distancia;
         string nome;   
 
+        Vertice *antecessor;
+        
        // T dados;
 
         Lista<Aresta*>* arestas;
@@ -39,9 +41,15 @@ class Vertice {
         int getCor();
         void setCor(int cor);   
 
+        int getDistancia();
+        void setDistancia(int distancia);   
+
         string getNome();
         void setNome(string nome);
-
+    
+        void setAntecessor(Vertice *antecessor); 
+        Vertice* getAntecessor();
+    
         Lista<Aresta*>* getArestas();
 
     

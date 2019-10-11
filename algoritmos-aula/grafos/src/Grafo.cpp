@@ -90,10 +90,10 @@ void Grafo::bfs(Vertice* verticeInicial) {
     Lista<Vertice*>* filaVertice = new Lista<Vertice*>();
     filaVertice->adicionarNaCauda(verticeInicial);
 
-    cout << "BSF INICIAL: " << verticeInicial->getNome() << " -> ";
+    cout << "BSF VERTICE INICIAL: " << verticeInicial->getNome() << " ->> ";
     while (!filaVertice->estaVazia()) {
         Vertice *vertice = filaVertice->excluirDaCabeca();
-        Lista<Aresta*>* arestas = vertice->getArestas(); 
+        Lista<Aresta*>* arestas = vertice->getArestas();  
         for (int i = 0; i < arestas->getTamanho(); i++) {
             Aresta *aresta = arestas->getElemento(i);
             Vertice *verticeDestino = aresta->getVertice();
@@ -106,73 +106,41 @@ void Grafo::bfs(Vertice* verticeInicial) {
         } 
         vertice->setCor(PRETA);
     }
-    delete filaVertice;                
+    delete filaVertice;               
 }
 
 
-/*
-void bfs(struct node *graph, int size, int node_search)
-{
-    int i;
-    for (i = 0; i < size; i++)  {
-        if (i != node_search)  {
-            graph[i].color = WHITE;
-            graph[i].distance = 0;
-        }
-    }
-    graph[node_search].color = GRAY;
-    graph[node_search].distance = 0;
-    graph[node_search].pi = NULL;
-    push_queue(node_search);
-    while (in != out)
-    {
-        int u = pop_queue();
-        struct node *v = graph[u].next;
-        while (v != NULL)
-        {
-            if (graph[v->key].color == WHITE)
-            {
-                graph[v->key].color = GRAY;
-                graph[v->key].distance = graph[u].distance + 1;
-                graph[v->key].pi = &graph[u];
-                push_queue(v->key);
+void Grafo::dijkstra(Vertice *verticeInicial) {
+    
+    Lista<Vertice *> *filaPrioridade = new Lista<Vertice *>();
+    verticeInicial->setDistancia(0);
+    filaPrioridade->adicionarNaCauda(verticeInicial);
+    
+    while (!filaPrioridade->estaVazia()) {
+        Vertice *visitado = filaPrioridade->getPrimeiroElemento();
+        filaPrioridade->excluirDaCabeca();
+        Lista<Aresta *> *arestas = visitado->getArestas();
+        
+        for (int i = 0; i < arestas->getTamanho(); i++) {
+            Aresta *aresta = arestas->getElemento(i);
+            Vertice *vizinho = aresta->getVertice();
+            int peso = aresta->getPeso();
+            int minimaDistancia = visitado->getDistancia() + peso;
+            cout << "Visitado: " << visitado->getNome() << endl;
+            cout << "Minima Distancia: " << minimaDistancia << " Distancia Vizinho: " << vizinho->getDistancia() << endl;
+
+            if (minimaDistancia < vizinho->getDistancia() || vizinho->getDistancia() == -1) {
+                filaPrioridade->excluirElemento(visitado);
+                vizinho->setAntecessor(visitado);
+                vizinho->setDistancia(minimaDistancia);
+                filaPrioridade->adicionarNaCauda(vizinho);
+                cout << "Vizinho: " << vizinho->getNome() << " Distancia " << vizinho->getDistancia() << endl;
             }
-            v = v->next;
-        }
-        graph[u].color = BLACK;
-    }
-}*/
-
-/*
-void visit_dfs(struct node *graph, int size, int u){
-    int t;
-    tempo++;
-    graph[u].distance=tempo;
-    graph[u].color= GRAY;
-    for (int v=0; v < size; v++){
-        if ((v!=u) && (isAdjacent(graph, u,v)) && (graph[v].color==WHITE)){
-            graph[v].pi=&graph[u];
-            visit_dfs(graph, size,v);   
-          }
-    }
-    graph[u].color=BLACK;
-    tempo++;
-    graph[u].f= tempo;
-}
-
-
-void dfs(struct node *graph, int size){
-    for (int i=0; i < size; i++ ){
-        graph[i].color= WHITE;
-        graph[i].pi= NULL;
-        graph[i].distance=0;
-    }
-    tempo=0;
-    in=0; out=0;n_queue=0;
-    for (int i=0; i < size; i++ ){
-        if (graph[i].color== WHITE){
-            visit_dfs(graph, size, i);
         }
     }
+    delete filaPrioridade; 
+    for (int i = 0; i < this->vertices->getTamanho(); i++)     {
+        Vertice *vertice = this->vertices->getElemento(i);
+        cout << vertice->getNome() << " -> " << vertice->getDistancia() << endl;
+    }
 }
-*/

@@ -19,14 +19,13 @@ AppGrafo::~AppGrafo() {
    
 void AppGrafo::carregarGrafoDoArquivo(string diretorioArquivo) { 
 
-	
     string origem, destino; 
-	int peso;
+	 int peso;
 
     ifstream arquivo;
     //tratar exception de abertura de arquivo
     arquivo.open(diretorioArquivo);
-
+        
     if(arquivo.is_open()){
          while (!arquivo.eof()) {         
            arquivo >> origem >> peso >> destino;
@@ -55,6 +54,7 @@ void AppGrafo::mostrarMenu() {
    
    int operacao = 1;
    while (operacao < 10 && operacao >= 0) {
+      cout << "                                       " << endl;
       cout << "---------------------------------------" << endl;   
       cout << "          TEORIA DOS GRAFOS                       " << endl;       
       cout << "---------------------------------------" << endl;
@@ -66,11 +66,11 @@ void AppGrafo::mostrarMenu() {
       cout << "06 - Excluir Aresta" << endl;
       cout << "07 - Imprimir Aresta" << endl;
       cout << "08 - BFS" << endl;
-      cout << "09 - DFS" << endl;
-      cout << "10 - SAIR" << endl;
-
+      cout << "09 - Dijkstra" << endl;
+      cout << "10 - Sair" << endl;
+ 
       cout << "Escolha uma opção: ";
-      cin >> operacao;
+      cin >> operacao; 
     
       string nome;
       
@@ -81,13 +81,14 @@ void AppGrafo::mostrarMenu() {
             cout << "01 - Carregar de Grafo de Arquivo " << endl;
             cout << "Nome do arquivo: ";
             cin >> nome;
-            carregarGrafoDoArquivo(nome);
+           // this->grafo = NULL;
+            this->carregarGrafoDoArquivo(nome);
          break;
       case 2:
             cout << "02 - Nome do Vertice: " << endl;
             cout << "Nome do Vertice: ";
             cin >> nome;
-            grafo->adicionarVertice(nome);
+            this->grafo->adicionarVertice(nome);
          break;
       case 3:
          cout << "03 - Nome do Vertice: " << endl;
@@ -110,10 +111,16 @@ void AppGrafo::mostrarMenu() {
          carregarGrafoDoArquivo("grafo.txt");
          break;
       case 8:
-         cout << "BFS - Escolha um vertice inicial" << endl;
+         cout << "BFS - Escolha um vertice inicial: ";
          cin >> nome;
          vertice = grafo->getVertice(nome);
          grafo->bfs(vertice);
+         break;
+      case 9:
+         cout << "Dijkstra - Escolha um vertice inicial: ";
+         cin >> nome;
+         vertice = grafo->getVertice(nome);
+         grafo->dijkstra(vertice);
          break;
       case 10:
          cout << "10 - Exit" << endl;
