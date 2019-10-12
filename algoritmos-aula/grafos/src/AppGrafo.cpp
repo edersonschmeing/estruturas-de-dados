@@ -75,6 +75,7 @@ void AppGrafo::mostrarMenu() {
       string nome;
       
      Vertice *vertice = NULL;
+     Vertice *verticeDestino = NULL;
 
      switch (operacao) { 
      case 1:
@@ -117,10 +118,13 @@ void AppGrafo::mostrarMenu() {
          grafo->bfs(vertice);
          break;
       case 9:
-         cout << "Dijkstra - Escolha um vertice inicial: ";
+         cout << "Dijkstra - Escolha um vertice origem: ";
          cin >> nome;
          vertice = grafo->getVertice(nome);
-         grafo->dijkstra(vertice);
+         cout << "Dijkstra - Escolha um vertice destino: ";
+         cin >> nome;
+         verticeDestino = grafo->getVertice(nome);
+         grafo->dijkstra(vertice, verticeDestino);
          break;
       case 10:
          cout << "10 - Exit" << endl;

@@ -99,7 +99,7 @@ void Grafo::bfs(Vertice* verticeInicial) {
             Vertice *verticeDestino = aresta->getVertice();
             if (verticeDestino->getCor() == BRANCA) {
                 verticeDestino->setCor(CINZA);
-                cout << verticeDestino->getNome() << " -> "; 
+                //9cout << verticeDestino->getNome() << " -> "; 
                 filaVertice->adicionarNaCauda(verticeDestino);
                 //cout << &verticeVisitado << " -> ";
             } 
@@ -108,17 +108,24 @@ void Grafo::bfs(Vertice* verticeInicial) {
     }
     delete filaVertice;               
 }
+ 
 
+void Grafo::dijkstra(Vertice *verticeOrigem, Vertice *verticeDestino ) {
 
-void Grafo::dijkstra(Vertice *verticeInicial) {
+    for (int i = 0; i < this->vertices->getTamanho(); i++)     {
+        Vertice *vertice = this->vertices->getElemento(i);
+        vertice->setDistancia(-1);
+        vertice->setAntecessor(NULL);
+    }
     
-    Lista<Vertice *> *filaPrioridade = new Lista<Vertice *>();
-    verticeInicial->setDistancia(0);
-    filaPrioridade->adicionarNaCauda(verticeInicial);
+    Lista<Vertice *> *fila = new Lista<Vertice*>();
+    verticeOrigem->setDistancia(0);
+    fila->adicionarNaCauda(verticeOrigem);
     
-    while (!filaPrioridade->estaVazia()) {
-        Vertice *visitado = filaPrioridade->getPrimeiroElemento();
-        filaPrioridade->excluirDaCabeca();
+    while (!fila->estaVazia()) {
+        
+        Vertice *visitado = fila->getPrimeiroElemento();
+        fila->excluirDaCabeca();
         Lista<Aresta *> *arestas = visitado->getArestas();
         
         for (int i = 0; i < arestas->getTamanho(); i++) {
@@ -126,21 +133,34 @@ void Grafo::dijkstra(Vertice *verticeInicial) {
             Vertice *vizinho = aresta->getVertice();
             int peso = aresta->getPeso();
             int minimaDistancia = visitado->getDistancia() + peso;
-            cout << "Visitado: " << visitado->getNome() << endl;
-            cout << "Minima Distancia: " << minimaDistancia << " Distancia Vizinho: " << vizinho->getDistancia() << endl;
+            //cout << "Visitado: " << visitado->getNome() << endl;
+            //cout << "Minima Distancia: " << minimaDistancia << " Distancia Vizinho: " << vizinho->getDistancia() << endl;
 
             if (minimaDistancia < vizinho->getDistancia() || vizinho->getDistancia() == -1) {
-                filaPrioridade->excluirElemento(visitado);
+                //filaPrioridade->excluirElemento(visitado);
                 vizinho->setAntecessor(visitado);
                 vizinho->setDistancia(minimaDistancia);
-                filaPrioridade->adicionarNaCauda(vizinho);
-                cout << "Vizinho: " << vizinho->getNome() << " Distancia " << vizinho->getDistancia() << endl;
+                fila->adicionarNaCauda(vizinho);
+                //cout << "Vizinho: " << vizinho->getNome() << " Distancia " << vizinho->getDistancia() << endl;
             }
         }
     }
-    delete filaPrioridade; 
+    delete fila; 
     for (int i = 0; i < this->vertices->getTamanho(); i++)     {
         Vertice *vertice = this->vertices->getElemento(i);
         cout << vertice->getNome() << " -> " << vertice->getDistancia() << endl;
     }
+    
+    cout << "Caminho Mínimo" << endl;
+    Lista<Vertice *> *pilha = new Lista<Vertice*>();
+    Vertice *verticeAntecessor = verticeDestino;
+    while (verticeAntecessor != NULL) {
+        pilha->adicionarNaCabeca(verticeAntecessor);  
+        verticeAntecessor = verticeAntecessor->getAntecessor();             
+    }
+    for (int i = 0; i < pilha->getTamanho(); i++)     {
+        Vertice *vertice = pilha->getElemento(i);
+        cout << vertice->getNome() << " -> " << vertice->getDistancia() << endl;
+    }
+    delete pilha;
 }
