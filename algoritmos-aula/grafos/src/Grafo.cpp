@@ -78,6 +78,7 @@ void Grafo::imprimirVertices() {
     cout << endl;
 }
  
+ //não esta funcionando direito.
 void Grafo::bfs(Vertice* verticeInicial) {
     //já esta com as variaveis incializadas
     for (int i = 0; i < this->vertices->getTamanho(); i++) {
@@ -99,7 +100,7 @@ void Grafo::bfs(Vertice* verticeInicial) {
             Vertice *verticeDestino = aresta->getVertice();
             if (verticeDestino->getCor() == BRANCA) {
                 verticeDestino->setCor(CINZA);
-                //9cout << verticeDestino->getNome() << " -> "; 
+                //cout << verticeDestino->getNome() << " -> "; 
                 filaVertice->adicionarNaCauda(verticeDestino);
                 //cout << &verticeVisitado << " -> ";
             } 
@@ -146,6 +147,7 @@ void Grafo::dijkstra(Vertice *verticeOrigem, Vertice *verticeDestino ) {
         }
     }
     delete fila; 
+
     for (int i = 0; i < this->vertices->getTamanho(); i++)     {
         Vertice *vertice = this->vertices->getElemento(i);
         cout << vertice->getNome() << " -> " << vertice->getDistancia() << endl;
