@@ -19,7 +19,7 @@ class Grafo {
     Lista<Vertice*> *vertices;
 
 public:
-    
+    8
     Grafo();
     ~Grafo();
 

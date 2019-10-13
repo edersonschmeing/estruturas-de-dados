@@ -162,7 +162,7 @@ void Grafo::dijkstra(Vertice *verticeOrigem, Vertice *verticeDestino ) {
     }
     for (int i = 0; i < pilha->getTamanho(); i++)     {
         Vertice *vertice = pilha->getElemento(i);
-        cout << vertice->getNome() << " -> " << vertice->getDistancia() << endl;
+        cout << vertice->getNome() << " - " << vertice->getDistancia() << " -> ";
     }
     delete pilha;
 }
