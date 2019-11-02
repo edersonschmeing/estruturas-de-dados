@@ -134,6 +134,7 @@ void Grafo::dijkstra(Vertice *verticeOrigem, Vertice *verticeDestino ) {
             Vertice *vizinho = aresta->getVertice();
             int peso = aresta->getPeso();
             int minimaDistancia = visitado->getDistancia() + peso;
+            
             //cout << "Visitado: " << visitado->getNome() << endl;
             //cout << "Minima Distancia: " << minimaDistancia << " Distancia Vizinho: " << vizinho->getDistancia() << endl;
 
@@ -159,10 +160,10 @@ void Grafo::dijkstra(Vertice *verticeOrigem, Vertice *verticeDestino ) {
     while (verticeAntecessor != NULL) {
         pilha->adicionarNaCabeca(verticeAntecessor);  
         verticeAntecessor = verticeAntecessor->getAntecessor();             
-    }
+    } 
     for (int i = 0; i < pilha->getTamanho(); i++)     {
         Vertice *vertice = pilha->getElemento(i);
         cout << vertice->getNome() << " - " << vertice->getDistancia() << " -> ";
-    }
+    } 
     delete pilha;
 }
