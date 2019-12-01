@@ -30,6 +30,7 @@ public:
         push(el);
     }
 };
+
 template<class T> class BST;
 
 template<class T>
