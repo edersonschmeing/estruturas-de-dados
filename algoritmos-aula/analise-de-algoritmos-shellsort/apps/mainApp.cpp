@@ -45,7 +45,6 @@ void carregarVetorDoArquivo(string diretorioArquivo) {
         //shellSort_Knuth(vetor, tamanho );
         shellSort_Donald(vetor, tamanho );
         
-        //shellsort_Knuth_Drozek(vetor, tamanho );
     }
     else{
         cout << "Não foi possível acessar o arquivo do vetor." << endl;
