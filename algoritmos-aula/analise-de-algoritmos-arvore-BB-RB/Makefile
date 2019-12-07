@@ -64,7 +64,7 @@ all: compilar app
 compilar: $(OBJETOS)
 
 #Executaveis do projeto, se tiver executaveis separar com \$(BIN)/outroaquivocommain 
-app: $(BIN)/mainApp
+app: $(BIN)/testGenBST
 	echo $(OBJETOS)
 
 #Compilar e criar os arquivos-objetos
@@ -77,7 +77,7 @@ $(BIN)/%: $(APPS)/%.cpp
 
 #Executar programa
 run:
-	$(BIN)/mainApp
+	$(BIN)/testGenBST
 
 #Limpar arquivos .o
 cleanObjetos:
@@ -85,7 +85,7 @@ cleanObjetos:
 
 #Limpar executaveis
 clean:
-	rm -f $(BIN)/mainApp
+	rm -f $(BIN)/testGenBST
 
 #Empacotar projeto
 tar:

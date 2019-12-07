@@ -34,6 +34,7 @@ int main() {
       cin >> operation;
       
       int element;  
+      int *el;
 
       switch (operation)       {
       case 1:
@@ -61,7 +62,8 @@ int main() {
          cout << "03 - Search" << endl; 
          cout << "Enter number: ";
          cin >> element;
-         //BST<int>* node = bst.search(NULL, element);        
+         el = bst.search(element);        
+         cout << *el << endl; 
          break;      
       /*case 4:
          cout << "04 - Delete Head" << endl; 

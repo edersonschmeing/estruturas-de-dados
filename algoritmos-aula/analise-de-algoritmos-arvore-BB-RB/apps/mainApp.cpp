@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <dirent.h>
 
-#include <shellsort.h>
+/*#include <shellsort.h>
 
 using namespace std;
 
@@ -88,6 +88,6 @@ int main() {
       carregarVetorDoArquivo( diretorio + "/" + listaDeArquivos[i]);
     }
    
-    return 0;
+    return 0; 
    
 }
