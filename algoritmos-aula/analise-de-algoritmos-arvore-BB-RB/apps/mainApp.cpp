@@ -11,24 +11,13 @@
 #include <stdlib.h>
 #include <dirent.h>
 
-#include <quicksort.h>
-
+#include <shellsort.h>
 
 using namespace std;
 
 /*#include <map>
 #include <ctime>
 #include <cstdlib> */
-
-
-void printArray(int A[], int n) {
-    printf("[%d", A[0]);
-    int i;
-    for (i = 1; i < n; i++) {
-        printf(", %d",A[i]);
-    }
-    printf("]\n");
-}
 
 
 void carregarVetorDoArquivo(string diretorioArquivo) { 
@@ -52,10 +41,10 @@ void carregarVetorDoArquivo(string diretorioArquivo) {
         }  
         arquivo.close();
 
-        quicksort(vetor, tamanho, 1);
+        //chama metódo de ordenação, verificar para chamar de fora da função que faz a leitura do arquivo.
+        //shellSort_Knuth(vetor, tamanho );
+        shellSort_Donald(vetor, tamanho );
         
-        //printArray(vetor, tamanho);
-
     }
     else{
         cout << "Não foi possível acessar o arquivo do vetor." << endl;
@@ -64,7 +53,7 @@ void carregarVetorDoArquivo(string diretorioArquivo) {
 }
 
 
-vector<string> lerDiretorio(string caminhoDiretorio) {
+vector<string> leDiretorio(string caminhoDiretorio) {
     
     vector<string> listaDeArquivos;
     DIR *dir;
@@ -86,17 +75,15 @@ vector<string> lerDiretorio(string caminhoDiretorio) {
 
 int main() {    
     
-    //string diretorio = "./arquivos-vetores-ordenacao/Decrescentes";  
     //string diretorio = "./arquivos-vetores-ordenacao/Aleatórios";  
-    //string diretorio = "./arquivos-vetores-ordenacao/ParcialmenteOrdenados";  
-    string diretorio = "./arquivos-vetores-ordenacao/test";  
-    
+    //string diretorio = "./arquivos-vetores-ordenacao/Aleatórios";  
+    string diretorio = "./arquivos-vetores-ordenacao/ParcialmenteOrdenados";  
 
 
     vector<string> listaDeArquivos;
-    listaDeArquivos = lerDiretorio(diretorio);
-    
-    cout << "Tamanho Vetor;Coparações;Tempo (ms);Tempo(ms d)" << endl;
+    listaDeArquivos = leDiretorio(diretorio);
+
+    cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
     for (int i = 0; i < listaDeArquivos.size(); i++)   {
       carregarVetorDoArquivo( diretorio + "/" + listaDeArquivos[i]);
     }

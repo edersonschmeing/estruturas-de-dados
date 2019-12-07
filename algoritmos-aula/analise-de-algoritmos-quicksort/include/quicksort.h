@@ -18,12 +18,13 @@ void swap(int vetor[], int i, int j){
 
 //***********************QUICKSORT DE CORMEN******************************
 //conferir com o livro.
-int partitionCormen(int vetor[], int inicio, int fim) {
+int partitionCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao ) {
     
     int pivo = vetor[fim];
     int i = inicio - 1;
     
     for (int j = inicio; j <= fim - 1; j++) {
+        quantidadeComparacao++; 
         if (vetor[j] <= pivo) {
             i++;
             swap(vetor, i, j);
@@ -33,11 +34,11 @@ int partitionCormen(int vetor[], int inicio, int fim) {
     return i + 1;
 }
 
-void quicksortCormen(int vetor[], int inicio, int fim) {
+void quicksortCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
     if (inicio < fim) {
-        int posicaoPivo = partitionCormen(vetor, inicio, fim);
-        quicksortCormen(vetor, inicio, posicaoPivo - 1);
-        quicksortCormen(vetor, posicaoPivo + 1, fim);
+        int posicaoPivo = partitionCormen(vetor, inicio, fim, quantidadeComparacao);
+        quicksortCormen(vetor, inicio, posicaoPivo - 1, quantidadeComparacao);
+        quicksortCormen(vetor, posicaoPivo + 1, fim, quantidadeComparacao);
     }
 }
 
@@ -61,7 +62,7 @@ void quicksortCormen(int vetor[], int inicio, int fim) {
     return i;
 }*/
 
-int partitionHoare(int vetor[], int inicio, int fim) {
+int partitionHoare(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
     
     int pivo = vetor[inicio];
     int i = inicio + 1;
@@ -69,9 +70,11 @@ int partitionHoare(int vetor[], int inicio, int fim) {
 
     while (i <= j) {
         while (i <= j && vetor[i] <= pivo) {
+            quantidadeComparacao++;
             i++;
         }
         while (i <= j && vetor[j] > pivo) {
+            quantidadeComparacao++;
             j--;
         }
         if (i < j) {
@@ -82,11 +85,11 @@ int partitionHoare(int vetor[], int inicio, int fim) {
     return j; 
 }
 
-void quicksortHoare(int A[], int inicio, int fim) {
+void quicksortHoare(int A[], int inicio, int fim, int &quantidadeComparacao) {
     if (inicio < fim) {
-        int posicaoPivo = partitionHoare(A, inicio, fim);
-        quicksortHoare(A, inicio, posicaoPivo - 1);
-        quicksortHoare(A, posicaoPivo + 1, fim);
+        int posicaoPivo = partitionHoare(A, inicio, fim, quantidadeComparacao);
+        quicksortHoare(A, inicio, posicaoPivo - 1, quantidadeComparacao);
+        quicksortHoare(A, posicaoPivo + 1, fim, quantidadeComparacao);
     }
 }
 
@@ -95,30 +98,33 @@ void quicksortHoare(int A[], int inicio, int fim) {
 
 //***********************QUICKSORT ALEATORIO******************************
 
-int partitionAleatorio(int vetor[], int inicio, int fim) {
+int partitionAleatorio(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
     
     int k;
     double d;
 
     //srand(time(NULL)); 
-    //int aleatorio = inicio + rand() % (fim - inicio);     
-    //swap(vetor[aleatorio], vetor[fim]); 
+    int aleatorio = inicio + rand() % (fim - inicio);     
+    swap(vetor[aleatorio], vetor[fim]); 
     
-    d = (double) rand () / ((double) RAND_MAX + 1);
-    k = d * (fim - inicio + 1);
-    int randomIndex = inicio + k;
+    //d = (double) rand () / ((double) RAND_MAX + 1);
+    //k = d * (fim - inicio + 1);
+    //int randomIndex = inicio + k;
     
-    swap(vetor, randomIndex, fim);
+    //swap(vetor, randomIndex, fim);
 
-    return partitionCormen(vetor, inicio, fim);   
+    return partitionCormen(vetor, inicio, fim, quantidadeComparacao);   
 }
 
-void quicksortAleatorio(int vetor[], int inicio, int fim) {
+void quicksortAleatorio(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+    
+    
     if (inicio < fim) {
-        int posicaoPivo = partitionAleatorio(vetor, inicio, fim);
-        quicksortAleatorio(vetor, inicio, posicaoPivo - 1);
-        quicksortAleatorio(vetor, posicaoPivo + 1, fim);
+        int posicaoPivo = partitionAleatorio(vetor, inicio, fim, quantidadeComparacao);
+        quicksortAleatorio(vetor, inicio, posicaoPivo - 1, quantidadeComparacao);
+        quicksortAleatorio(vetor, posicaoPivo + 1, fim, quantidadeComparacao);
     }
+
 }
 
 //***********************FIM QUICKSORT ALEATORIO******************************
@@ -157,7 +163,7 @@ void quicksortAleatorio(int vetor[], int inicio, int fim) {
     return middle_pos;
 } */
 
-int partitionMedianaDeTres(int vetor[], int inicio, int fim) {
+int partitionMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
     //procura a mediana entre inicio, meio e fim
     
     int meio = (inicio + fim) / 2;
@@ -202,20 +208,63 @@ int partitionMedianaDeTres(int vetor[], int inicio, int fim) {
  
     swap(vetor, medianaIndice, fim);
      
-    return partitionCormen(vetor, inicio, fim);
+    return partitionCormen(vetor, inicio, fim, quantidadeComparacao);
        
 }
 
-void quicksortMedianaDeTres(int vetor[], int inicio, int fim) {
+void quicksortMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
     if (inicio < fim) {
-        int posicaoPivo = partitionMedianaDeTres(vetor, inicio, fim);
-        quicksortMedianaDeTres(vetor, inicio, posicaoPivo - 1);
-        quicksortMedianaDeTres(vetor, posicaoPivo + 1, fim);
+        int posicaoPivo = partitionMedianaDeTres(vetor, inicio, fim, quantidadeComparacao);
+        quicksortMedianaDeTres(vetor, inicio, posicaoPivo - 1, quantidadeComparacao);
+        quicksortMedianaDeTres(vetor, posicaoPivo + 1, fim, quantidadeComparacao);
     }
 }
 
 //***********************FIM QUICKSORT MEDIANA DE TRES******************************
 
+
+
+void quicksort(int vetor[], int tamanho, int estrategia) {
+        
+    auto tempoInicial = high_resolution_clock::now();
+        
+    int quantidadeComparacao = 0;
+
+    switch(estrategia) {
+        case 1:
+            //cout << "CORMEN" << endl;
+            quicksortCormen(vetor, 0, tamanho-1, quantidadeComparacao);
+        break;
+        case 2:
+            //cout << "HOARE" << endl;
+            quicksortHoare(vetor, 0, tamanho-1, quantidadeComparacao);
+        break;
+        case 3:
+            //cout << "ALEATORIO" << endl;
+            quicksortAleatorio(vetor, 0, tamanho-1, quantidadeComparacao);
+        case 4:
+            //cout << "MEDIANA DE TRES" << endl;
+            quicksortMedianaDeTres(vetor, 0, tamanho-1, quantidadeComparacao);
+        break;
+        default: 
+           //cout << "CORMEN" << endl;
+           quicksortCormen(vetor, 0, tamanho-1, quantidadeComparacao);
+    }
+
+    auto tempoFinal = std::chrono::high_resolution_clock::now();
+    auto i_millis = duration_cast<milliseconds>( tempoFinal - tempoInicial);
+    auto f_secs = duration_cast<duration<double>>( tempoFinal - tempoInicial);
+    
+
+    cout  << tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
+
+
+}
+
+
+
+    
+    
 
 
 
