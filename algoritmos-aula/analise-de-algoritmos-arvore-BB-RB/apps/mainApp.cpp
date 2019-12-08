@@ -30,41 +30,21 @@ void printArray(int A[], int n) {
 }
 
 
-void carregarVetorDoArquivo(string diretorioArquivo) { 
+void carregarVetorDoArquivo(int *vetor, string diretorioArquivo) { 
     
-    int elemento = 0, posicao = 0, tamanho = 0;
-
-  
-    sscanf(diretorioArquivo.c_str(), "%*[^0-9]%d", &tamanho);
-    int vetor[tamanho];
-
+    int elemento = 0;
+    int posicao = 0;
     ifstream arquivo;
-
-        cout << "tamanho " << tamanho << diretorioArquivo << endl;
-    
-    BST<int> bst;
-   
+  
     //tratar exceção de abertura de arquivo 
     arquivo.open(diretorioArquivo);
     if(arquivo.is_open()){
-    
         while (!arquivo.eof()) {         
             arquivo >> elemento;
             vetor[posicao] = elemento;
             posicao++;
-           
         }  
-        arquivo.close();
-      
-
-        printArray(vetor, tamanho);
-
-        for (int i = 0; i < tamanho; i++) {
-           bst.insert(vetor[i]);
-        } 
-     
-        bst.postorder();   
-        
+        arquivo.close();  
     }
     else{
         cout << "Não foi possível acessar o arquivo do vetor." << endl;
@@ -92,6 +72,12 @@ vector<string> leDiretorio(string caminhoDiretorio) {
   
 }
 
+int retornaTamanhoVetor(string nomeArquivo ) {
+   int pos = nomeArquivo.find("."); 
+   string sub = nomeArquivo.substr(0, pos); 
+   return  stoi(sub);
+}
+
 
 int main() {    
     
@@ -99,18 +85,26 @@ int main() {
     //string diretorio = "./arquivos-arvore/consultar/conjunto-04";  
     string diretorio = "./arquivos-arvore/test-construir/conjunto";  
     
-
-
     vector<string> listaDeArquivos;
     listaDeArquivos = leDiretorio(diretorio);
 
-
-
     cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
     for (int i = 0; i < listaDeArquivos.size(); i++)   {
-      carregarVetorDoArquivo( diretorio + "/" + listaDeArquivos[i]);
+      
+      int tamanho = retornaTamanhoVetor(listaDeArquivos[i]);
+      int vetor[tamanho];
+
+      carregarVetorDoArquivo(vetor, diretorio + "/" + listaDeArquivos[i]);
+
+      printArray(vetor, tamanho);
+
+      BST<int> bst;
+      for (int i = 0; i < tamanho; i++) {
+          bst.insert(vetor[i]);
+      } 
+      bst.postorder();
+
     }
-   
     return 0; 
    
 }
