@@ -29,7 +29,6 @@ void printArray(int A[], int n) {
     printf("]\n");
 }
 
-
 void carregarVetorDoArquivo(int *vetor, string diretorioArquivo) { 
     
     int elemento = 0;
@@ -77,6 +76,8 @@ int retornaTamanhoVetor(string nomeArquivo ) {
    string sub = nomeArquivo.substr(0, pos); 
    return  stoi(sub);
 }
+
+
 
 
 int main() {    
