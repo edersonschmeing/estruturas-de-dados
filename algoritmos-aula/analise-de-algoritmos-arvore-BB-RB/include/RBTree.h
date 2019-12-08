@@ -8,6 +8,7 @@ using namespace std;
 
 #define BLACK 0
 #define RED 1
+
 // data structure that represents a node in the tree
 struct Node {
 	int data; // holds the key
