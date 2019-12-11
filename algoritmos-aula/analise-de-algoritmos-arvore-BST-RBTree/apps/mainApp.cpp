@@ -90,6 +90,7 @@ int main() {
     listaDeArquivos = leDiretorio(diretorio);
 
     cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
+    int quantidadeComparacao = 0; 
     for (int i = 0; i < listaDeArquivos.size(); i++)   {
       
       int tamanho = retornaTamanhoVetor(listaDeArquivos[i]);
@@ -97,13 +98,20 @@ int main() {
 
       carregarVetorDoArquivo(vetor, diretorio + "/" + listaDeArquivos[i]);
 
-      printArray(vetor, tamanho);
+      //printArray(vetor, tamanho);
 
+      quantidadeComparacao = 0;
       BST<int> bst;
       for (int i = 0; i < tamanho; i++) {
-          bst.insert(vetor[i]);
+          //bst.insert(vetor[i], quantidadeComparacao);
+          bst.recursiveInsert(vetor[i], quantidadeComparacao);
       } 
-      bst.postorder();
+      cout  << tamanho << ";" << quantidadeComparacao << endl;// ";" << i_millis.count() << ";" << f_secs.count() << endl;
+
+      
+      
+
+      //bst.postorder();
 
     }
     return 0; 

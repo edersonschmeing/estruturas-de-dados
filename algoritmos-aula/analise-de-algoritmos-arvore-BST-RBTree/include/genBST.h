@@ -71,9 +71,10 @@ public:
     void postorder() { 
         postorder(root);  
     }
-    void insert(const T&);
-    void recursiveInsert(const T& el) { 
-        recursiveInsert(root,el);
+    void insert(const T&, int &quantidadeComparacao);
+
+    void recursiveInsert(const T& el, int &quantidadeComparacao) { 
+        recursiveInsert(root,el, quantidadeComparacao);
     }
     T* search(const T& el) const { 
         return search(root,el);
@@ -96,7 +97,7 @@ public:
 protected:
     BSTNode<T>* root;
     void clear(BSTNode<T>*);
-    void recursiveInsert(BSTNode<T>*&, const T&);
+    void recursiveInsert(BSTNode<T>*&, const T&, int &quantidadeComparacao);
     T* search(BSTNode<T>*, const T&) const;
     T* recursiveSearch(BSTNode<T>*, const T&) const;
     void preorder(BSTNode<T>*);
@@ -119,28 +120,39 @@ void BST<T>::clear(BSTNode<T> *p) {
 }
 
 template<class T>
-void BST<T>::insert(const T& el) {   
+void BST<T>::insert(const T& el, int &quantidadeComparacao ) {   
     BSTNode<T> *p = root, *prev = 0;
     while (p != 0) {  // find a place for inserting new node;
         prev = p;
-        if (el < p->el)
-             p = p->left;
-        else p = p->right;
+        
+        if (el < p->el) { 
+            quantidadeComparacao++;  
+            p = p->left;
+        }else{
+            quantidadeComparacao++;  
+            p = p->right;
+        }
+
     }
     if (root == 0)    // tree is empty;
-         root = new BSTNode<T>(el);
+        root = new BSTNode<T>(el);
     else if (el < prev->el)
-         prev->left  = new BSTNode<T>(el);
-    else prev->right = new BSTNode<T>(el);
+        prev->left  = new BSTNode<T>(el);
+    else 
+        prev->right = new BSTNode<T>(el);
 }
 
 template<class T>
-void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el) {
+void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el, int &quantidadeComparacao) {
     if (p == 0)
-         p = new BSTNode<T>(el);
-    else if (el < p->el)
-         recursiveInsert(p->left, el);
-    else recursiveInsert(p->right,el);
+        p = new BSTNode<T>(el);
+    else if (el < p->el) {
+        quantidadeComparacao++;
+        recursiveInsert(p->left, el, quantidadeComparacao);
+    }else {
+        quantidadeComparacao++;
+        recursiveInsert(p->right,el, quantidadeComparacao);
+    }
 }
 
 template<class T>
