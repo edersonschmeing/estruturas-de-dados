@@ -121,8 +121,8 @@ int main()
 
     cout << "Informe 1 para Estratégia do Cormen" << endl;
     cout << "Informe 2 para Estratégia do Hoare" << endl;
-    cout << "Informe 2 para escolha do pivot aleatória" << endl;
-    cout << "Informe 2 para escolha do pivot mediana de três" << endl;
+    cout << "Informe 3 para escolha do pivot aleatória" << endl;
+    cout << "Informe 4 para escolha do pivot mediana de três" << endl;
     cin >> estrategia;
 
     switch (estrategia)
