@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <dirent.h>
 
-#include <genBST.h>
+#include <genericBST.h>
 
 using namespace std;
 
@@ -82,15 +82,15 @@ int retornaTamanhoVetor(string nomeArquivo ) {
 
 int main() {    
     
-    //string diretorio = "./arquivos-arvore/construir/conjunto-04";  
+    string diretorio = "./arquivos-arvore/construir/conjunto-04";  
     //string diretorio = "./arquivos-arvore/consultar/conjunto-04";  
-    string diretorio = "./arquivos-arvore/test-construir/conjunto";  
+    //string diretorio = "./arquivos-arvore/test-construir/conjunto";  
     
     vector<string> listaDeArquivos;
     listaDeArquivos = leDiretorio(diretorio);
 
     cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
-    int quantidadeComparacao = 0; 
+
     for (int i = 0; i < listaDeArquivos.size(); i++)   {
       
       int tamanho = retornaTamanhoVetor(listaDeArquivos[i]);
@@ -100,16 +100,13 @@ int main() {
 
       //printArray(vetor, tamanho);
 
-      quantidadeComparacao = 0;
+      long quantidadeComparacao = 0;
       BST<int> bst;
       for (int i = 0; i < tamanho; i++) {
-          //bst.insert(vetor[i], quantidadeComparacao);
-          bst.recursiveInsert(vetor[i], quantidadeComparacao);
+          bst.insert(vetor[i], quantidadeComparacao);
+          //bst.recursiveInsert(vetor[i], quantidadeComparacao);
       } 
       cout  << tamanho << ";" << quantidadeComparacao << endl;// ";" << i_millis.count() << ";" << f_secs.count() << endl;
-
-      
-      
 
       //bst.postorder();
 

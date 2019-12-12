@@ -71,7 +71,7 @@ public:
     void postorder() { 
         postorder(root);  
     }
-    void insert(const T&, int &quantidadeComparacao);
+    void insert(const T&, long &quantidadeComparacao);
 
     void recursiveInsert(const T& el, int &quantidadeComparacao) { 
         recursiveInsert(root,el, quantidadeComparacao);
@@ -120,7 +120,7 @@ void BST<T>::clear(BSTNode<T> *p) {
 }
 
 template<class T>
-void BST<T>::insert(const T& el, int &quantidadeComparacao ) {   
+void BST<T>::insert(const T& el, long &quantidadeComparacao ) {   
     BSTNode<T> *p = root, *prev = 0;
     while (p != 0) {  // find a place for inserting new node;
         prev = p;
