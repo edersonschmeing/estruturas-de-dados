@@ -27,12 +27,11 @@ int shellSort_Donald(int *vetor, int tamanho )
             }
             vetor[j] = temp;
         }
-    }
-
+    }    
     auto tempoFinal = std::chrono::high_resolution_clock::now();
     auto i_millis = duration_cast<milliseconds>( tempoFinal - tempoInicial);
     auto f_secs = duration_cast<duration<double>>( tempoFinal - tempoInicial);
-    cout  << tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
+    cout  << tamanho << "; " << quantidadeComparacao << "; " << i_millis.count() << "; " << f_secs.count() << endl;
    
     return 0;
 }
