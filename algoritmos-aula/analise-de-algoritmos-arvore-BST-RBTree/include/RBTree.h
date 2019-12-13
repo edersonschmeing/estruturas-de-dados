@@ -464,7 +464,7 @@ public:
 	}
 
 };
-
+/*
 
 int main() {
 	RBTree tree;
@@ -495,4 +495,4 @@ int main() {
 
 
 	return 0;
-}
+} */

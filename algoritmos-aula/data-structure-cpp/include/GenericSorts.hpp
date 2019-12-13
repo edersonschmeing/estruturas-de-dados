@@ -184,10 +184,6 @@ void heapsort(T data[], const int n) {
 }
 //end heapsort
 
-//begin quicksort exemplo professor
-
-
-//end quicksort exemplo professor
 
 //begin quicksort
 template<class T>

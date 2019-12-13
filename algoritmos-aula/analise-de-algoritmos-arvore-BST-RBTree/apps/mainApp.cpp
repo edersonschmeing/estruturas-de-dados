@@ -1,5 +1,5 @@
 
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string.h>
@@ -11,7 +11,10 @@
 #include <stdlib.h>
 #include <dirent.h>
 
+#include <RBTree.h>
 #include <genericBST.h>
+
+
 
 using namespace std;
 
@@ -19,72 +22,76 @@ using namespace std;
 #include <ctime>
 #include <cstdlib> */
 
-
-void printArray(int A[], int n) {
+void printArray(int A[], int n)
+{
     printf("[%d", A[0]);
     int i;
-    for (i = 1; i < n; i++) {
-        printf(", %d",A[i]);
+    for (i = 1; i < n; i++)
+    {
+        printf(", %d", A[i]);
     }
     printf("]\n");
 }
 
-void carregarVetorDoArquivo(int *vetor, string diretorioArquivo) { 
-    
+void carregarVetorDoArquivo(int *vetor, string diretorioArquivo)
+{
+
     int elemento = 0;
     int posicao = 0;
     ifstream arquivo;
-  
-    //tratar exceção de abertura de arquivo 
+
+    //tratar exceção de abertura de arquivo
     arquivo.open(diretorioArquivo);
-    if(arquivo.is_open()){
-        while (!arquivo.eof()) {         
+    if (arquivo.is_open())
+    {
+        while (!arquivo.eof())
+        {
             arquivo >> elemento;
             vetor[posicao] = elemento;
             posicao++;
-        }  
-        arquivo.close();  
+        }
+        arquivo.close();
     }
-    else{
+    else
+    {
         cout << "Não foi possível acessar o arquivo do vetor." << endl;
         exit(0);
     }
 }
 
+vector<string> leDiretorio(string caminhoDiretorio)
+{
 
-vector<string> leDiretorio(string caminhoDiretorio) {
-    
     vector<string> listaDeArquivos;
     DIR *dir;
     struct dirent *lsdir;
     dir = opendir(caminhoDiretorio.c_str());
-     while ((lsdir = readdir(dir) ) != NULL ) {
-        if (strstr(lsdir->d_name, ".txt") != NULL) {
-            listaDeArquivos.push_back( string( lsdir->d_name ) );
-        }       
+    while ((lsdir = readdir(dir)) != NULL)
+    {
+        if (strstr(lsdir->d_name, ".txt") != NULL)
+        {
+            listaDeArquivos.push_back(string(lsdir->d_name));
+        }
     }
     closedir(dir);
-    
+
     //ordenação considerando string, verificar para ordenar pelo tamanho do vetor.
-    sort( listaDeArquivos.begin(), listaDeArquivos.end() );
+    sort(listaDeArquivos.begin(), listaDeArquivos.end());
     return listaDeArquivos;
-  
 }
 
-int retornaTamanhoVetor(string nomeArquivo ) {
-   int pos = nomeArquivo.find("."); 
-   string sub = nomeArquivo.substr(0, pos); 
-   return  stoi(sub);
+int retornaTamanhoVetor(string nomeArquivo)
+{
+    int pos = nomeArquivo.find(".");
+    string sub = nomeArquivo.substr(0, pos);
+    return stoi(sub);
 }
 
+int main() {
 
-
-
-int main() {    
-    
-    string diretorio = "./arquivos-arvore/construir/conjunto-04";  
+    //string diretorio = "./arquivos-arvore/construir/conjunto-04";  
     //string diretorio = "./arquivos-arvore/consultar/conjunto-04";  
-    //string diretorio = "./arquivos-arvore/test-construir/conjunto";  
+    string diretorio = "./arquivos-arvore/test-construir/conjunto";  
     
     vector<string> listaDeArquivos;
     listaDeArquivos = leDiretorio(diretorio);
@@ -102,15 +109,20 @@ int main() {
 
       long quantidadeComparacao = 0;
       BST<int> bst;
+      RBTree tree;
       for (int i = 0; i < tamanho; i++) {
-          bst.insert(vetor[i], quantidadeComparacao);
+          //bst.insert(vetor[i], quantidadeComparacao);
           //bst.recursiveInsert(vetor[i], quantidadeComparacao);
+          tree.insert(vetor[i]);
       } 
+      
       cout  << tamanho << ";" << quantidadeComparacao << endl;// ";" << i_millis.count() << ";" << f_secs.count() << endl;
-
+    
       //bst.postorder();
+      tree.prettyPrint();
 
-    }
-    return 0; 
-   
+    } 
+
+    
+    return 0;
 }
