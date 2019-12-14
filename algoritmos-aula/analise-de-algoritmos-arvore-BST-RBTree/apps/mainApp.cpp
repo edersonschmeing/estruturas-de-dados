@@ -11,12 +11,15 @@
 #include <stdlib.h>
 #include <dirent.h>
 
+#include <ctime>
+#include <ratio>
+#include <chrono>
+
 #include <RBTree.h>
 #include <genericBST.h>
 
-
-
 using namespace std;
+using namespace std::chrono;
 
 /*#include <map>
 #include <ctime>
@@ -87,42 +90,78 @@ int retornaTamanhoVetor(string nomeArquivo)
     return stoi(sub);
 }
 
-int main() {
+int main()
+{
 
-    //string diretorio = "./arquivos-arvore/construir/conjunto-04";  
-    //string diretorio = "./arquivos-arvore/consultar/conjunto-04";  
-    string diretorio = "./arquivos-arvore/test-construir/conjunto";  
-    
+    string diretorio = "./arquivos-arvore/construir/conjunto-04";
+    //string diretorio = "./arquivos-arvore/consultar/conjunto-04";
+    //string diretorio = "./arquivos-arvore/test-construir/conjunto";
+
     vector<string> listaDeArquivos;
     listaDeArquivos = leDiretorio(diretorio);
 
     cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
 
-    for (int i = 0; i < listaDeArquivos.size(); i++)   {
-      
-      int tamanho = retornaTamanhoVetor(listaDeArquivos[i]);
-      int vetor[tamanho];
+    BST<int> bst;
+    RBTree rbtree;
 
-      carregarVetorDoArquivo(vetor, diretorio + "/" + listaDeArquivos[i]);
+    for (int i = 0; i < listaDeArquivos.size(); i++)
+    {
 
-      //printArray(vetor, tamanho);
+        int tamanho = retornaTamanhoVetor(listaDeArquivos[i]);
+        int vetor[tamanho];
 
-      long quantidadeComparacao = 0;
-      BST<int> bst;
-      RBTree tree;
-      for (int i = 0; i < tamanho; i++) {
-          //bst.insert(vetor[i], quantidadeComparacao);
-          //bst.recursiveInsert(vetor[i], quantidadeComparacao);
-          tree.insert(vetor[i]);
-      } 
-      
-      cout  << tamanho << ";" << quantidadeComparacao << endl;// ";" << i_millis.count() << ";" << f_secs.count() << endl;
-    
-      //bst.postorder();
-      tree.prettyPrint();
+        carregarVetorDoArquivo(vetor, diretorio + "/" + listaDeArquivos[i]);
 
-    } 
+        //printArray(vetor, tamanho);
 
-    
+        long quantidadeComparacao = 0;
+
+        auto tempoInicial = high_resolution_clock::now();
+
+        for (int i = 0; i < tamanho; i++)         {
+            bst.insert(vetor[i], quantidadeComparacao);
+            //bst.recursiveInsert(vetor[i], quantidadeComparacao);
+
+            //rbtree.insert(vetor[i], quantidadeComparacao );
+        }
+
+        auto tempoFinal = std::chrono::high_resolution_clock::now();
+        auto i_millis = duration_cast<milliseconds>(tempoFinal - tempoInicial);
+        auto f_secs = duration_cast<duration<double>>(tempoFinal - tempoInicial);
+
+        cout << tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
+
+        //bst.postorder();
+        //rbtree.prettyPrint();
+    }
+
+    //vetor de consulta
+
+    cout << "BUSCA"  << endl;
+    cout << "Tamanho Vetor  - Coparações - Tempo (ms) " << endl;
+
+    string diretorioBusca = "./arquivos-arvore/consultar/conjunto-04";
+    vector<string> listaDeArquivosBusca = leDiretorio(diretorio);
+
+    for (int i = 0; i < listaDeArquivosBusca.size(); i++)   {
+
+        int tamanhoBusca = retornaTamanhoVetor(listaDeArquivosBusca[i]);
+        int vetorBusca[tamanhoBusca];
+
+        carregarVetorDoArquivo(vetorBusca, diretorioBusca + "/" + listaDeArquivosBusca[i]);
+
+        long quantidadeComparacaoBusca = 0;
+
+        for (int i = 0; i < tamanhoBusca; i++)   {
+
+            bst.search(vetorBusca[i], quantidadeComparacaoBusca);
+
+            //rbtree.search(vetor[i], quantidadeComparacao );
+        }
+
+        cout << tamanhoBusca << ";" << quantidadeComparacaoBusca << endl; //";" << i_millis.count() << ";" << f_secs.count() << endl;
+    }
+
     return 0;
 }

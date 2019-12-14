@@ -76,8 +76,8 @@ public:
     void recursiveInsert(const T& el, int &quantidadeComparacao) { 
         recursiveInsert(root,el, quantidadeComparacao);
     }
-    T* search(const T& el) const { 
-        return search(root,el);
+    T* search(const T& el, long &quantidadeComparacao) const { 
+        return search(root,el, quantidadeComparacao );
     }
     T* recursiveSearch(const T& el) const { 
         return recursiveSearch(root,el);
@@ -98,7 +98,7 @@ protected:
     BSTNode<T>* root;
     void clear(BSTNode<T>*);
     void recursiveInsert(BSTNode<T>*&, const T&, int &quantidadeComparacao);
-    T* search(BSTNode<T>*, const T&) const;
+    T* search(BSTNode<T>*, const T&, long &quantidadeComparacao ) const;
     T* recursiveSearch(BSTNode<T>*, const T&) const;
     void preorder(BSTNode<T>*);
     void inorder(BSTNode<T>*);
@@ -125,11 +125,10 @@ void BST<T>::insert(const T& el, long &quantidadeComparacao ) {
     while (p != 0) {  // find a place for inserting new node;
         prev = p;
         
+        quantidadeComparacao++;  
         if (el < p->el) { 
-            quantidadeComparacao++;  
             p = p->left;
         }else{
-            quantidadeComparacao++;  
             p = p->right;
         }
 
@@ -156,13 +155,15 @@ void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el, int &quantidadeCompara
 }
 
 template<class T>
-T* BST<T>::search(BSTNode<T>* p, const T& el) const {
+T* BST<T>::search(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const {
     while (p != 0)
+        quantidadeComparacao++;
         if (el == p->el)
              return &p->el;
         else if (el < p->el)
              p = p->left;
-        else p = p->right;
+        else 
+           p = p->right;
     return 0;
 }
 

@@ -144,13 +144,15 @@ void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el) {
 }
 
 template<class T>
-T* BST<T>::search(BSTNode<T>* p, const T& el) const {
+T* BST<T>::search(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const {
     while (p != 0)
+        quantidadeComparacao++;
         if (el == p->el)
              return &p->el;
         else if (el < p->el)
              p = p->left;
-        else p = p->right;
+        else
+           p = p->right;
     return 0;
 }
 

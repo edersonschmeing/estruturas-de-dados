@@ -401,7 +401,7 @@ public:
 
 	// insert the key to the tree in its appropriate position
 	// and fix the tree
-	void insert(int key) {
+	void insert(int key, long &quantidadeComparacao) {
 		// Ordinary Binary Search Insertion
 		NodePtr node = new Node;
 		node->parent = nullptr;
@@ -415,6 +415,8 @@ public:
 
 		while (x != TNULL) {
 			y = x;
+			
+			quantidadeComparacao++;  //ederson schmeing - coloquei aqui a contagem, verificar se tem mais algum lugar.
 			if (node->data < x->data) {
 				x = x->left;
 			} else {
