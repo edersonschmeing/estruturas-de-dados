@@ -18,7 +18,7 @@ void swap(int vetor[], int i, int j){
 
 //***********************QUICKSORT DE CORMEN******************************
 //conferir com o livro.
-int partitionCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao ) {
+int partitionCormen(int vetor[], int inicio, int fim, long &quantidadeComparacao ) {
     
     int pivo = vetor[fim];
     int i = inicio - 1;
@@ -34,7 +34,7 @@ int partitionCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao 
     return i + 1;
 }
 
-void quicksortCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+void quicksortCormen(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     if (inicio < fim) {
         int posicaoPivo = partitionCormen(vetor, inicio, fim, quantidadeComparacao);
         quicksortCormen(vetor, inicio, posicaoPivo - 1, quantidadeComparacao);
@@ -62,7 +62,7 @@ void quicksortCormen(int vetor[], int inicio, int fim, int &quantidadeComparacao
     return i;
 }*/
 
-int partitionHoare(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+int partitionHoare(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     
     int pivo = vetor[inicio];
     int i = inicio + 1;
@@ -85,7 +85,7 @@ int partitionHoare(int vetor[], int inicio, int fim, int &quantidadeComparacao) 
     return j; 
 }
 
-void quicksortHoare(int A[], int inicio, int fim, int &quantidadeComparacao) {
+void quicksortHoare(int A[], int inicio, int fim, long &quantidadeComparacao) {
     if (inicio < fim) {
         int posicaoPivo = partitionHoare(A, inicio, fim, quantidadeComparacao);
         quicksortHoare(A, inicio, posicaoPivo - 1, quantidadeComparacao);
@@ -98,7 +98,7 @@ void quicksortHoare(int A[], int inicio, int fim, int &quantidadeComparacao) {
 
 //***********************QUICKSORT ALEATORIO******************************
 
-int partitionAleatorio(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+int partitionAleatorio(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     
     int k;
     double d;
@@ -116,7 +116,7 @@ int partitionAleatorio(int vetor[], int inicio, int fim, int &quantidadeComparac
     return partitionCormen(vetor, inicio, fim, quantidadeComparacao);   
 }
 
-void quicksortAleatorio(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+void quicksortAleatorio(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     
     
     if (inicio < fim) {
@@ -163,7 +163,7 @@ void quicksortAleatorio(int vetor[], int inicio, int fim, int &quantidadeCompara
     return middle_pos;
 } */
 
-int partitionMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+int partitionMedianaDeTres(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     //procura a mediana entre inicio, meio e fim
     
     int meio = (inicio + fim) / 2;
@@ -212,7 +212,7 @@ int partitionMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeComp
        
 }
 
-void quicksortMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeComparacao) {
+void quicksortMedianaDeTres(int vetor[], int inicio, int fim, long &quantidadeComparacao) {
     if (inicio < fim) {
         int posicaoPivo = partitionMedianaDeTres(vetor, inicio, fim, quantidadeComparacao);
         quicksortMedianaDeTres(vetor, inicio, posicaoPivo - 1, quantidadeComparacao);
@@ -222,13 +222,11 @@ void quicksortMedianaDeTres(int vetor[], int inicio, int fim, int &quantidadeCom
 
 //***********************FIM QUICKSORT MEDIANA DE TRES******************************
 
-
-
 void quicksort(int vetor[], int tamanho, int estrategia) {
         
     auto tempoInicial = high_resolution_clock::now();
         
-    int quantidadeComparacao = 0;
+    long quantidadeComparacao = 0;
 
     switch(estrategia) {
         case 1:
@@ -252,7 +250,7 @@ void quicksort(int vetor[], int tamanho, int estrategia) {
     }
 
     auto tempoFinal = std::chrono::high_resolution_clock::now();
-    auto i_millis = duration_cast<milliseconds>( tempoFinal - tempoInicial);
+    auto i_millis = duration_cast<nanoseconds>( tempoFinal - tempoInicial);
     auto f_secs = duration_cast<duration<double>>( tempoFinal - tempoInicial);
     
 

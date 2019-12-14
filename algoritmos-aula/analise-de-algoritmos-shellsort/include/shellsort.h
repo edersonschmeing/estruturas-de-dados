@@ -28,9 +28,8 @@ int shellSort_Donald(int *vetor, int tamanho )
         }
     }  
     
-    auto tempoInicial = high_resolution_clock::now();  
     auto tempoFinal = std::chrono::high_resolution_clock::now();
-    auto i_millis = duration_cast<milliseconds>( tempoFinal - tempoInicial);
+    auto i_millis = duration_cast<nanoseconds>( tempoFinal - tempoInicial);
     auto f_secs = duration_cast<duration<double>>( tempoFinal - tempoInicial);
     cout  << tamanho << "; " << quantidadeComparacao << "; " << i_millis.count() << "; " << f_secs.count() << endl;
    
@@ -63,7 +62,7 @@ void shellSort_Knuth(int *vetor, int tamanho) {
     }
 
     auto tempoFinal = std::chrono::high_resolution_clock::now();
-    auto i_millis = duration_cast<milliseconds>( tempoFinal - tempoInicial);
+    auto i_millis = duration_cast<nanoseconds>( tempoFinal - tempoInicial);
     auto f_secs = duration_cast<duration<double>>( tempoFinal - tempoInicial);
     cout  << tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
 

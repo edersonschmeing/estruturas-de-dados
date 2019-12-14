@@ -122,19 +122,18 @@ int main() {
         auto tempoInicial = high_resolution_clock::now();
         for (int i = 0; i < tamanho; i++)         {
             //bst.insert(vetor[i], quantidadeComparacao);
-            bst.recursiveInsert(vetor[i], quantidadeComparacao);
-            //rbtree.insert(vetor[i], quantidadeComparacao );
+            //bst.recursiveInsert(vetor[i], quantidadeComparacao);
+            rbtree.insert(vetor[i], quantidadeComparacao );
         }
 
         auto tempoFinal = std::chrono::high_resolution_clock::now();
-        auto i_millis = duration_cast<milliseconds>(tempoFinal - tempoInicial);
+        auto i_millis = duration_cast<nanoseconds>(tempoFinal - tempoInicial);
         auto f_secs = duration_cast<duration<double>>(tempoFinal - tempoInicial);
 
-        cout <<  "INSERÇÃO: " <<tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
-         
+        cout <<  "INSERÇÃO: ;" <<tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
         
         
-        for (int j = 0; j < listaDeArquivosConsulta.size(); j++) {
+     /*   for (int j = 0; j < listaDeArquivosConsulta.size(); j++) {
         
             int tamanhoConsulta = retornaTamanhoVetor(listaDeArquivosConsulta[j]);
             int vetorConsulta[tamanhoConsulta];
@@ -151,15 +150,13 @@ int main() {
                     //rbtree.searchTree(vetor[i], quantidadeComparacaoConsulta );
                }
                auto tempoFinalConsulta = std::chrono::high_resolution_clock::now();
-               auto i_millisConsulta = duration_cast<milliseconds>(tempoFinalConsulta - tempoInicialConsulta);
+               auto i_millisConsulta = duration_cast<nanoseconds>(tempoFinalConsulta - tempoInicialConsulta);
                auto f_secsConsulta = duration_cast<duration<double>>(tempoFinalConsulta - tempoInicialConsulta);
 
-               cout << "CONSULTA: " << tamanhoConsulta << ";" << quantidadeComparacaoConsulta << ";" << i_millisConsulta.count() << ";" << f_secsConsulta.count() << endl;
+               //cout << "CONSULTA: ;" << tamanhoConsulta << ";" << quantidadeComparacaoConsulta << ";" << i_millisConsulta.count() << ";" << f_secsConsulta.count() << endl;
                break;
-            }  
-                    
-        }
-
+            }              
+        } */
 
     } 
         //bst.postorder();
