@@ -121,8 +121,8 @@ int main() {
 
         auto tempoInicial = high_resolution_clock::now();
         for (int i = 0; i < tamanho; i++)         {
-            bst.insert(vetor[i], quantidadeComparacao);
-            //bst.recursiveInsert(vetor[i], quantidadeComparacao);
+            //bst.insert(vetor[i], quantidadeComparacao);
+            bst.recursiveInsert(vetor[i], quantidadeComparacao);
             //rbtree.insert(vetor[i], quantidadeComparacao );
         }
 
@@ -146,8 +146,8 @@ int main() {
 
                auto tempoInicialConsulta = high_resolution_clock::now();
                for (int i = 0; i < tamanhoConsulta; i++)         {
-                    bst.search(vetorConsulta[i], quantidadeComparacaoConsulta);
-                    //bst.recursiveSearch(vetor[i], quantidadeComparacaoConsulta);
+                    //bst.search(vetorConsulta[i], quantidadeComparacaoConsulta);
+                    bst.recursiveSearch(vetor[i], quantidadeComparacaoConsulta);
                     //rbtree.searchTree(vetor[i], quantidadeComparacaoConsulta );
                }
                auto tempoFinalConsulta = std::chrono::high_resolution_clock::now();

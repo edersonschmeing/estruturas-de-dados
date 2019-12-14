@@ -73,7 +73,7 @@ public:
     }
     void insert(const T&, long &quantidadeComparacao);
 
-    void recursiveInsert(const T& el, int &quantidadeComparacao) { 
+    void recursiveInsert(const T& el, long &quantidadeComparacao) { 
         recursiveInsert(root,el, quantidadeComparacao);
     }
     T* search(const T& el, long &quantidadeComparacao) const { 
@@ -97,7 +97,7 @@ public:
 protected:
     BSTNode<T>* root;
     void clear(BSTNode<T>*);
-    void recursiveInsert(BSTNode<T>*&, const T&, int &quantidadeComparacao);
+    void recursiveInsert(BSTNode<T>*&, const T&, long &quantidadeComparacao);
     T* search(BSTNode<T>*, const T&, long &quantidadeComparacao ) const;
     T* recursiveSearch(BSTNode<T>*, const T&, long &quantidadeComparacao) const;
     void preorder(BSTNode<T>*);
@@ -142,7 +142,7 @@ void BST<T>::insert(const T& el, long &quantidadeComparacao ) {
 }
 
 template<class T>
-void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el, int &quantidadeComparacao) {
+void BST<T>::recursiveInsert(BSTNode<T>*& p, const T& el, long &quantidadeComparacao) {
     if (p == 0)
         p = new BSTNode<T>(el);
     else if (el < p->el) {
