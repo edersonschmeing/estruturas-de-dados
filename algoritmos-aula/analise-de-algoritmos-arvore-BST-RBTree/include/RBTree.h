@@ -60,15 +60,16 @@ private:
 		}
 	}
 
-	NodePtr searchTreeHelper(NodePtr node, int key) {
+	NodePtr searchTreeHelper(NodePtr node, int key, long &quantidadeComparacao) {
+		quantidadeComparacao++;
 		if (node == TNULL || key == node->data) {
 			return node;
 		}
-
+        quantidadeComparacao++;
 		if (key < node->data) {
-			return searchTreeHelper(node->left, key);
+			return searchTreeHelper(node->left, key, quantidadeComparacao);
 		}
-		return searchTreeHelper(node->right, key);
+		return searchTreeHelper(node->right, key, quantidadeComparacao);
 	}
 
 	// fix the rb tree modified by the delete operation
@@ -304,8 +305,8 @@ public:
 
 	// search the tree for the key k
 	// and return the corresponding node
-	NodePtr searchTree(int k) {
-		return searchTreeHelper(this->root, k);
+	NodePtr searchTree(int k, long &quantidadeComparacao) {
+		return searchTreeHelper(this->root, k, quantidadeComparacao);
 	}
 
 	// find the node with the minimum key
