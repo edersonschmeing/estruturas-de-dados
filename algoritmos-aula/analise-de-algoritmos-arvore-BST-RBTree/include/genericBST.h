@@ -79,8 +79,8 @@ public:
     T* search(const T& el, long &quantidadeComparacao) const { 
         return search(root,el, quantidadeComparacao );
     }
-    T* recursiveSearch(const T& el) const { 
-        return recursiveSearch(root,el);
+    T* recursiveSearch(const T& el, long &quantidadeComparacao) const { 
+        return recursiveSearch(root,el, quantidadeComparacao);
     }
     void deleteByCopying(BSTNode<T>*&);
     void findAndDeleteByCopying(const T&);
@@ -99,7 +99,7 @@ protected:
     void clear(BSTNode<T>*);
     void recursiveInsert(BSTNode<T>*&, const T&, int &quantidadeComparacao);
     T* search(BSTNode<T>*, const T&, long &quantidadeComparacao ) const;
-    T* recursiveSearch(BSTNode<T>*, const T&) const;
+    T* recursiveSearch(BSTNode<T>*, const T&, long &quantidadeComparacao) const;
     void preorder(BSTNode<T>*);
     void inorder(BSTNode<T>*);
     void postorder(BSTNode<T>*);
@@ -168,14 +168,15 @@ T* BST<T>::search(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const 
 }
 
 template<class T>
-T* BST<T>::recursiveSearch(BSTNode<T>* p, const T& el) const {
-    if (p != 0)
+T* BST<T>::recursiveSearch(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const {
+    if (p != 0) {
+         quantidadeComparacao++;
          if (el == p->el)
               return &p->el;
          else if (el < p->el)
-              return recursiveSearch(p->left,el);
-         else return recursiveSearch(p->right,el);
-    else return 0;
+              return recursiveSearch(p->left, el, quantidadeComparacao);
+         else return recursiveSearch(p->right,el, quantidadeComparacao);
+    }else return 0;
 }
 
 template<class T>
