@@ -72,10 +72,11 @@ vector<string> lerDiretorio(string caminhoDiretorio)
     DIR *dir;
     struct dirent *lsdir;
     dir = opendir(caminhoDiretorio.c_str());
-    while ((lsdir = readdir(dir)) != NULL)
+    while ((lsdir = readdir(dir)) != NULL)     
     {
         if (strstr(lsdir->d_name, ".txt") != NULL)
         {
+            
             listaDeArquivos.push_back(string(lsdir->d_name));
         }
     }
@@ -108,11 +109,11 @@ int main()
         dirSelecionado = "Aleatórios";
         break;
     case 2:
-        diretorio = "./arquivos-vetores-ordenacao/Decrescentes";
+        diretorio = "./arquivos-vetores-ordenacao/Decrescentes"; //"./arquivos-vetores-ordenacao/test"
         dirSelecionado = "Decrescentes";
         break;
     case 3:
-        diretorio = "./arquivos-vetores-ordenacao/ParcialmenteOrdenados";
+        diretorio = "./arquivos-vetores-ordenacao/Parcialment1eOrdenados";
         dirSelecionado = "Parcialmente Ordenados";
         break;
     default:
