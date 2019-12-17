@@ -93,8 +93,11 @@ int retornaTamanhoVetor(string nomeArquivo)
 
 int main() {
 
-    string diretorio = "./arquivos-arvore/construir/conjunto-04";
-    string diretorioConsulta = "./arquivos-arvore/consultar/conjunto-04";
+    string diretorio = "./arquivos-arvore/construir/prova-construir";
+    string diretorioConsulta = "./arquivos-arvore/consultar/prova-consuta";
+
+    //string diretorio = "./arquivos-arvore/construir/conjunto-04";
+    //string diretorioConsulta = "./arquivos-arvore/consultar/conjunto-04";
     //string diretorio = "./arquivos-arvore/test-construir/conjunto";
 
     vector<string> listaDeArquivos;
@@ -115,15 +118,15 @@ int main() {
 
         carregarVetorDoArquivo(vetor, diretorio + "/" + listaDeArquivos[i]);
         
-        //printArray(vetor, tamanho);
+        printArray(vetor, tamanho);
 
         long quantidadeComparacao = 0;
 
         auto tempoInicial = high_resolution_clock::now();
         for (int i = 0; i < tamanho; i++)         {
             //bst.insert(vetor[i], quantidadeComparacao);
-            //bst.recursiveInsert(vetor[i], quantidadeComparacao);
-            rbtree.insert(vetor[i], quantidadeComparacao );
+            bst.recursiveInsert(vetor[i], quantidadeComparacao);
+            //rbtree.insert(vetor[i], quantidadeComparacao );
         }
 
         auto tempoFinal = std::chrono::high_resolution_clock::now();
@@ -133,30 +136,37 @@ int main() {
         cout <<  "INSERÇÃO: ;" <<tamanho << ";" << quantidadeComparacao << ";" << i_millis.count() << ";" << f_secs.count() << endl;
         
         
-     /*   for (int j = 0; j < listaDeArquivosConsulta.size(); j++) {
+        for (int j = 0; j < listaDeArquivosConsulta.size(); j++) {
         
             int tamanhoConsulta = retornaTamanhoVetor(listaDeArquivosConsulta[j]);
             int vetorConsulta[tamanhoConsulta];
 
-            
-            if (tamanho == tamanhoConsulta) {           
+        
+            if (1 == 1) {           
                long quantidadeComparacaoConsulta = 0;
-               carregarVetorDoArquivo(vetorConsulta, diretorio + "/" + listaDeArquivosConsulta[j]);
-
+               carregarVetorDoArquivo(vetorConsulta, diretorioConsulta + "/" + listaDeArquivosConsulta[j]);
+               long teste = 0;
                auto tempoInicialConsulta = high_resolution_clock::now();
-               for (int i = 0; i < tamanhoConsulta; i++)         {
+               for (int k = 0; k < tamanhoConsulta; k++)         {
+                    
+                    long teste = quantidadeComparacaoConsulta;
                     //bst.search(vetorConsulta[i], quantidadeComparacaoConsulta);
-                    bst.recursiveSearch(vetor[i], quantidadeComparacaoConsulta);
-                    //rbtree.searchTree(vetor[i], quantidadeComparacaoConsulta );
+                    bst.recursiveSearch(vetorConsulta[i], quantidadeComparacaoConsulta);
+                   // rbtree.searchTree(vetorConsulta[k], quantidadeComparacaoConsulta );
+
+                    cout << vetorConsulta[k] << ";" << quantidadeComparacaoConsulta - teste << endl;
+
                }
                auto tempoFinalConsulta = std::chrono::high_resolution_clock::now();
                auto i_millisConsulta = duration_cast<nanoseconds>(tempoFinalConsulta - tempoInicialConsulta);
                auto f_secsConsulta = duration_cast<duration<double>>(tempoFinalConsulta - tempoInicialConsulta);
-
-               //cout << "CONSULTA: ;" << tamanhoConsulta << ";" << quantidadeComparacaoConsulta << ";" << i_millisConsulta.count() << ";" << f_secsConsulta.count() << endl;
+               cout << "CONSULTA: ;" << tamanhoConsulta << ";" << quantidadeComparacaoConsulta << ";" << i_millisConsulta.count() << ";" << f_secsConsulta.count() << endl;
+               printArray(vetorConsulta, tamanhoConsulta);
                break;
+
+               
             }              
-        } */
+        } 
 
     } 
         //bst.postorder();

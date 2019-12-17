@@ -163,7 +163,7 @@ T* BST<T>::search(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const 
         else if (el < p->el)
              p = p->left;
         else 
-           p = p->right;
+           p = p->right; 
     return 0;
 }
 
@@ -171,16 +171,20 @@ template<class T>
 T* BST<T>::recursiveSearch(BSTNode<T>* p, const T& el, long &quantidadeComparacao) const {
     if (p != 0) {
          quantidadeComparacao++;
-         if (el == p->el)
+         if (el == p->el) {
               return &p->el;
-         else if (el < p->el)
+         }else if (el < p->el) {
               return recursiveSearch(p->left, el, quantidadeComparacao);
-         else return recursiveSearch(p->right,el, quantidadeComparacao);
+         }else {
+             return recursiveSearch(p->right,el, quantidadeComparacao);         
+         }
+         quantidadeComparacao++;
+      
     }else return 0;
 }
 
 template<class T>
-void BST<T>::inorder(BSTNode<T> *p) {
+void BST<T>::inorder(BSTNode<T> *p) { 
      
      if (p != 0) {
          inorder(p->left);

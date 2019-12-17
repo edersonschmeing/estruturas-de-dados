@@ -65,8 +65,8 @@ private:
 		if (node == TNULL || key == node->data) {
 			return node;
 		}
-        quantidadeComparacao++;
-		if (key < node->data) {
+		quantidadeComparacao++;
+        if (key < node->data) {
 			return searchTreeHelper(node->left, key, quantidadeComparacao);
 		}
 		return searchTreeHelper(node->right, key, quantidadeComparacao);
