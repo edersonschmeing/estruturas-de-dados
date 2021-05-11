@@ -3,6 +3,7 @@
 using namespace std;
 
 int main() {
+  
    int x, y;
    int& rx = x;
    int& ry = y;
@@ -16,8 +17,10 @@ int main() {
    cout << "y:  " << y << endl;
    cout << "rx:  " << rx << endl;
    cout << "ry:  " << ry << endl;
+   cout << "rx&:  " << &rx << endl;
+   cout << "x&:  " << &x << endl;   
    cout << "ry&:  " << &ry << endl;
-   cout << "ry&:  " << &ry << endl;
+   cout << "y&:  " << &y << endl;
 
    cout << "Example reference" << endl;
    

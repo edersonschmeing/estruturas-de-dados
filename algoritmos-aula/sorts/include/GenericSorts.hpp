@@ -21,6 +21,8 @@ void printAll2(T data) {
     cout <<  endl;  
 }
 
+   
+
 template<class T>
 void insertionsort(T data[], const int n) {
     
